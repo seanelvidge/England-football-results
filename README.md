@@ -20,6 +20,8 @@ The database is a comma (",") delimited csv file with the following columns:
 | Result | the result "H" (home win), "A" (away win), "D" (draw) (string) |
 
 
+Between 1921 and 1958 there was a Third Division North and South, in the database we give both the numerical representation "3".
+
 Such a long database of results leads to some confusion around team names, the answer to the most common set of questions I have received in terms of team names:
 
 * [Accrington F.C.](https://en.wikipedia.org/wiki/Accrington_F.C.) is a different team to [Accrington Stanley](https://en.wikipedia.org/wiki/Accrington_Stanley_F.C.). Acrrington F.C. were one of the founder members of the Football League, but unfortunately were dissolved in 1896.
