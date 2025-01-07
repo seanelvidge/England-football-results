@@ -1,4 +1,4 @@
-This is a plain text database of all England football (soccer) league results from 1888 to 2025/01/05 (covering 209,105 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2025/01/06 (covering 209,107 matches).
 
 The database is updated roughly every two days (although I am looking for approaches to speed this up) for the top four divisions in England: Premier League, Championship, League 1 and League 2.
 
