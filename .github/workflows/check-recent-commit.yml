@@ -1,0 +1,46 @@
+name: Check Recent File Activity
+
+on:
+  schedule:
+    - cron: '0 7 * * *'  # Every day at 07:00 UTC
+
+jobs:
+  check_commit_age:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0  # Important for git log access
+
+      - name: Check date range
+        id: datecheck
+        run: |
+          TODAY=$(date +'%m-%d')
+          if [[ "$TODAY" > "05-05" && "$TODAY" < "08-23" ]]; then
+            echo "Outside valid date range. Skipping."
+            echo "skip=true" >> $GITHUB_OUTPUT
+          else
+            echo "In valid date range."
+            echo "skip=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check last commit time of EnglandLeagueResults.csv
+        if: steps.datecheck.outputs.skip == 'false'
+        run: |
+          LAST_COMMIT_DATE=$(git log -1 --format=%ct -- EnglandLeagueResults.csv)
+          NOW=$(date +%s)
+          SEVEN_DAYS_SECONDS=$((7 * 24 * 60 * 60))
+
+          if [ -z "$LAST_COMMIT_DATE" ]; then
+            echo "No commit found for the file."
+            exit 1
+          fi
+
+          AGE=$((NOW - LAST_COMMIT_DATE))
+          if [ "$AGE" -gt "$SEVEN_DAYS_SECONDS" ]; then
+            echo "Last commit to EnglandLeagueResults.csv is older than 7 days."
+            exit 1
+          else
+            echo "File was updated within the last 7 days."
+          fi
