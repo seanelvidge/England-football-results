@@ -4,6 +4,7 @@ on:
   push:
     paths:
       - EnglandLeagueResults.csv
+  workflow_dispatch:
 
 jobs:
   validate_file:
