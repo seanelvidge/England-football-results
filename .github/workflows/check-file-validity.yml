@@ -1,0 +1,28 @@
+name: Check File Validity
+
+on:
+  push:
+    paths:
+      - EnglandLeagueResults.csv
+
+jobs:
+  validate_file:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check EnglandLeagueResults.csv
+        run: |
+          FILE="EnglandLeagueResults.csv"
+          if [ ! -s "$FILE" ]; then
+            echo "$FILE is empty."
+            exit 1
+          fi
+
+          LINE_COUNT=$(wc -l < "$FILE")
+          echo "Line count: $LINE_COUNT"
+          if [ "$LINE_COUNT" -lt 200000 ]; then
+            echo "$FILE has fewer than 200000 lines."
+            exit 1
+          fi
