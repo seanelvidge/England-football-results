@@ -1,9 +1,6 @@
-This is a plain text database of all England football (soccer) league results from 1888 to 2025/05/05 (covering 210,034 matches).
+# England League Results (EnglandLeagueResults.csv)This is a plain text database of all England football (soccer) league results from 1888 to 2025/05/05 (covering 210,162 matches).
 
-The database is updated roughly every two days (although I am looking for approaches to speed this up) for the top four divisions in England: Premier League, Championship, League 1 and League 2.
-
-The 1888-2016 data is based on that from:
-James P. Curley (2016). engsoccerdata: English Soccer Data 1871-2016. http://dx.doi.org/10.5281/zenodo.13158
+The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
 The database is a comma (",") delimited csv file with the following columns:
 
@@ -16,11 +13,10 @@ The database is a comma (",") delimited csv file with the following columns:
 | Score | the final score (string; format "X-Z") |
 | hGoal | number of goals scored by the home team (integer; "X" from the "Score" column) |
 | aGoal | number of goals scored by the away team (integer; "Z" from the "Score" column) |
-| Division | numerical representation of the division which the match was from: 1, 2, 3 or 4, where "1" is the top division (currently the Premier League) (integer) |
+| Division | name of the division the match was played in (string) |
+| Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (currently the Premier League) (integer) |
 | Result | the result "H" (home win), "A" (away win), "D" (draw) (string) |
 
-
-Between 1921 and 1958 there was a Third Division North and South, in the database we give both the numerical representation "3".
 
 Such a long database of results leads to some confusion around team names, the answer to the most common set of questions I have received in terms of team names:
 
@@ -33,3 +29,31 @@ Such a long database of results leads to some confusion around team names, the a
 * [Rotherham County](https://en.wikipedia.org/wiki/Rotherham_County_F.C.) merged with [Rotherham Town](https://en.wikipedia.org/wiki/Rotherham_Town_F.C._(1899)) in 1925 to form [Rotherham United](https://en.wikipedia.org/wiki/Rotherham_United_F.C.).
 * Throughout the database we refer to [Stevenage](https://en.wikipedia.org/wiki/Stevenage_F.C.) not Stevenage Borough ("Borough" was dropped in June 2010).
 * [Wigan Athletic](https://en.wikipedia.org/wiki/Wigan_Athletic_F.C.) were formed (1932) a year after [Wigan Borough](https://en.wikipedia.org/wiki/Wigan_Borough_F.C.) were wound up (1931) and we treat them separately. Wigan Athletic was the sixth attempt to create a stable football club in Wigan following the dissolving of Wigan A.F.C., [County](https://en.wikipedia.org/wiki/Wigan_County_F.C.) (1897-1900), [United](https://en.wikipedia.org/wiki/Wigan_United_A.F.C.) (1896-1914), [Town](https://en.wikipedia.org/wiki/Wigan_Town_A.F.C.) (1905-1908) and [Borough](https://en.wikipedia.org/wiki/Wigan_Borough_F.C.) (1920-1931).
+
+The 1888-2016 data is based on that from:
+James P. Curley (2016). engsoccerdata: English Soccer Data 1871-2016. http://dx.doi.org/10.5281/zenodo.13158
+
+
+# England League Names (EnglandLeagueNames.csv)
+
+A comma (",") delimited csv file of the names of the English football divisions and the years they were active. It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Name | the name of the division (string) |
+| Years Active | the seasons [inclusive - exclusive) that the name was/is active (string) |
+| Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (integer) |
+
+
+# England League Point Deductions (EnglandLeaguePointDeductions.csv)
+
+A comma (",") delimited csv file of all point deductions (and in two cases, additions), with reasoning, applied to English football league teams.
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Season | the season the deduction took place in (where, for example, 2025 refers to the 2024/2025 season) (integer) |
+| Team | the team who the deduction was applied to (string) |
+| Pts_deducted | the number of points deducted (a negative value means a point addition) (integer) |
+| Notes | the reasoning for the points deduction (string) |
