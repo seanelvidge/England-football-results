@@ -34,6 +34,8 @@ Such a long database of results leads to some confusion around team names, the a
 The 1888-2016 data is based on that from:
 James P. Curley (2016). engsoccerdata: English Soccer Data 1871-2016. http://dx.doi.org/10.5281/zenodo.13158
 
+A number of tools making use of the data, such as a [league table generator](https://seanelvidge.com/leaguetable) and [head-to-head statistics](https://seanelvidge.com/h2h) are available at [seanelvidge.com/tools](https://seanelvidge.com/tools/)
+
 
 # England League Names (EnglandLeagueNames.csv)
 
