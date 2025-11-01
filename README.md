@@ -1,5 +1,5 @@
 # England League Results (EnglandLeagueResults.csv)
-This is a plain text database of all England football (soccer) league results from 1888 to 2025/10/28 (covering 210,756 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2025/10/28 (covering 210,770 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -48,7 +48,7 @@ A comma (",") delimited csv file of the names of the English football divisions 
 | Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (integer) |
 
 
-# England League Point Deductions (EnglandLeaguePointDeductions.csv)
+# English Team Point Deductions (EnglishTeamPointDeductions.csv)
 
 A comma (",") delimited csv file of all point deductions (and in two cases, additions), with reasoning, applied to English football league teams.
 
@@ -60,3 +60,16 @@ It has the following columns:
 | Team | the team who the deduction was applied to (string) |
 | Pts_deducted | the number of points deducted (a negative value means a point addition) (integer) |
 | Notes | the reasoning for the points deduction (string) |
+
+
+# English Team Logos (EnglishTeamLogos.csv)
+
+A comma (",") delimited csv file of all (known) English football league team logos.
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Team Name |the English football league team name (matching the names in EnglandLeagueResults.csv) |
+| URL | the link to image (png or svg), usually on Wikipedia |
+
