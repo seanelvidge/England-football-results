@@ -31,8 +31,7 @@ Such a long database of results leads to some confusion around team names, the a
 * Throughout the database we refer to [Stevenage](https://en.wikipedia.org/wiki/Stevenage_F.C.) not Stevenage Borough ("Borough" was dropped in June 2010).
 * [Wigan Athletic](https://en.wikipedia.org/wiki/Wigan_Athletic_F.C.) were formed (1932) a year after [Wigan Borough](https://en.wikipedia.org/wiki/Wigan_Borough_F.C.) were wound up (1931) and we treat them separately. Wigan Athletic was the sixth attempt to create a stable football club in Wigan following the dissolving of Wigan A.F.C., [County](https://en.wikipedia.org/wiki/Wigan_County_F.C.) (1897-1900), [United](https://en.wikipedia.org/wiki/Wigan_United_A.F.C.) (1896-1914), [Town](https://en.wikipedia.org/wiki/Wigan_Town_A.F.C.) (1905-1908) and [Borough](https://en.wikipedia.org/wiki/Wigan_Borough_F.C.) (1920-1931).
 
-The 1888-2016 data is based on that from:
-James P. Curley (2016). engsoccerdata: English Soccer Data 1871-2016. http://dx.doi.org/10.5281/zenodo.13158
+The 1888-2016 data is based on that from the [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)).
 
 A number of tools making use of the data, such as a [league table generator](https://seanelvidge.com/leaguetable) and [head-to-head statistics](https://seanelvidge.com/h2h) are available at [seanelvidge.com/tools](https://seanelvidge.com/tools/)
 
