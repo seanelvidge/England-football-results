@@ -23,10 +23,6 @@ The database is a comma (",") delimited csv file with the following columns:
 | AwayRank_before | the away teams numeric rank before the fixture was played |
 | HomeRank_after | the home teams numeric rank after the fixture was played |
 | AwayRank_after | the away teams numeric rank after the fixture was played |
-| HomeVar_before | the variance of the home teams rank before the fixture was played |
-| AwayVar_before | the variance of the away teams rank before the fixture was played |
-| HomeVar_after | the variance of the home teams rank after the fixture was played |
-| AwayVar_after | the variance of the away teams rank after the fixture was played |
 
 
 Such a long database of results leads to some confusion around team names, the answer to the most common set of questions I have received in terms of team names:
