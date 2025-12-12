@@ -21,9 +21,9 @@ The database is a comma (",") delimited csv file with the following columns:
 
 Such a long database of results leads to some confusion around team names, the answer to the most common set of questions I have received in terms of team names:
 
-* [Accrington F.C.](https://en.wikipedia.org/wiki/Accrington_F.C.) is a different team to [Accrington Stanley](https://en.wikipedia.org/wiki/Accrington_Stanley_F.C.). Acrrington F.C. were one of the founder members of the Football League, but unfortunately were dissolved in 1896.
+* [Accrington F.C.](https://en.wikipedia.org/wiki/Accrington_F.C.) is a different team to [Accrington Stanley](https://en.wikipedia.org/wiki/Accrington_Stanley_F.C.). Acrrington F.C. were one of the founder members of the Football League, but were dissolved in 1896.
 * [Aldershot](https://en.wikipedia.org/wiki/Aldershot_F.C.) and [Aldershot Town](https://en.wikipedia.org/wiki/Aldershot_Town_F.C.) are listed as separate teams (Aldershot Town was formed in the spring of 1992 after the closure of Aldershot).
-* Throughout the database we refere to [Arsenal](https://en.wikipedia.org/wiki/Arsenal_F.C.) not "Woolwich Arsenal" (from 1893-1914) nor "The Arsenal" (from April 1914 - November 1919).
+* Throughout the database we refer to [Arsenal](https://en.wikipedia.org/wiki/Arsenal_F.C.) not "Woolwich Arsenal" (from 1893-1914) nor "The Arsenal" (from April 1914 - November 1919).
 * [Brighton & Hove Albion](https://en.wikipedia.org/wiki/Brighton_%26_Hove_Albion_F.C.), [New Brighton Tower](https://en.wikipedia.org/wiki/New_Brighton_Tower_F.C.) and [New Brighton](https://en.wikipedia.org/wiki/New_Brighton_A.F.C.) are all different clubs. New Brighton Tower were in existence from 1896-1901 and whilst Brighton & Hove Albion were formed in 1901, the "spiritual" successor to New Brighton Tower, was New Brighton (1921-1983 and 1993-2012; originally formed by the relocation of [South Liverpool](https://en.wikipedia.org/wiki/South_Liverpool_F.C._(1890s)))
 * Burton [Swifts](https://en.wikipedia.org/wiki/Burton_Swifts_F.C.), [Wanderers](https://en.wikipedia.org/wiki/Burton_Wanderers_F.C.), [United](https://en.wikipedia.org/wiki/Burton_United_F.C.), [Town](https://en.wikipedia.org/wiki/Burton_Town_F.C.) and [Albion](https://en.wikipedia.org/wiki/Burton_Albion_F.C.) are all different teams. Burton Swifts joined with Wanderers to form Burton United in 1901, which in 1924 merged with Burton Town and in 1950 merged with the newly formed Burton Albion.
 * The Gateshead in the database refers to [Gateshead A.F.C](https://en.wikipedia.org/wiki/Gateshead_A.F.C.) not [Gateshead F.C.](https://en.wikipedia.org/wiki/Gateshead_F.C.).
@@ -73,4 +73,18 @@ It has the following columns:
 | ------ | ------- |
 | Team Name |the English football league team name (matching the names in EnglandLeagueResults.csv) |
 | URL | the link to image (png or svg), usually on Wikipedia |
+
+
+# English Team Active Years (EnglishTeamActivePeriods.csv)
+
+A comma (",") delimited csv file of the periods which each club, which appears at least once in the database, was active within the top four tiers of English football (Premier League and English Football League). Breaks in apperances in these divisions are separated by a semicolon (";").
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Team Name | the English football league team name (matching the names in EnglandLeagueResults.csv) |
+| Years | semicolon delimited list of active years, e.g. of the form YYYY-YYYY; YYYY-YYYY; YYYY-present. YYYY represents the initial year of that season, e.g. a club appearing in the top 4 tiers in the 1991/1992 season, leaving in 1995/1996 and then coming back from 2004 to present day would be: 1991-1995; 2004-present |
+
+
 
