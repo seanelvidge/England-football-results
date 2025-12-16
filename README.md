@@ -1,5 +1,5 @@
 # England League Results (EnglandLeagueResults.csv)
-This is a plain text database of all England football (soccer) league results from 1888 to 2025/12/10 (covering 211,027 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2025/12/14 (covering 211,071 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -36,6 +36,29 @@ Such a long database of results leads to some confusion around team names, the a
 The 1888-2016 data is based on that from the [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)).
 
 A number of tools making use of the data, such as a [league table generator](https://seanelvidge.com/leaguetable) and [head-to-head statistics](https://seanelvidge.com/h2h) are available at [seanelvidge.com/tools](https://seanelvidge.com/tools/)
+
+
+# England League Results with team strength rankings (EnglandLeagueResults_wRank.csv)
+This file contains the same data as `EnglandLeagueResults.csv` but with a measure of the teams strength via a ranking scheme.
+
+The database is a comma (",") delimited csv file with the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Date | the day of the match (string; format "YYYY-MM-DD") |
+| Season | the season the match took place in (string; format "YYYY/YYYY") |
+| HomeTeam | the home team name (string) |
+| AwayTeam | the away team name (string) |
+| Score | the final score (string; format "X-Z") |
+| hGoal | number of goals scored by the home team (integer; "X" from the "Score" column) |
+| aGoal | number of goals scored by the away team (integer; "Z" from the "Score" column) |
+| Division | name of the division the match was played in (string) |
+| Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (currently the Premier League) (integer) |
+| Result | the result "H" (home win), "A" (away win), "D" (draw) (string) |
+| HomeRank_before | the ranking of the home team before the fixture was played (integer) |
+| AwayRank_before | the ranking of the away team before the fixture was played (integer) |
+| HomeRank_after | the ranking of the home team after the fixture was played (integer) |
+| AwayRank_after | the ranking of the away team after the fixture was played (integer) |
 
 
 # England League Names (EnglandLeagueNames.csv)
