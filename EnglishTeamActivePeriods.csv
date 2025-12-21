@@ -1,147 +1,148 @@
-Team,ActivePeriods
-AFC Bournemouth,1923-present
-AFC Wimbledon,2011-present
-Aberdare Athletic,1921-1926
-Accrington F.C.,1888-1892
-Accrington Stanley,1921-1961; 2006-present
-Aldershot Town,1932-1990; 2008-2012
-Arsenal,1893-present
-Ashington,1921-1928
-Aston Villa,1888-present
-Barnet,1991-2000; 2005-2012; 2015-2017; 2025-present
-Barnsley,1898-present
-Barrow,1921-1971; 2020-present
-Birmingham City,1892-present
-Blackburn Rovers,1888-present
-Blackpool,1896-1898; 1900-present
-Bolton Wanderers,1888-present
-Bootle,1892
-Boston United,2002-2006
-Bradford City,1903-present
-Bradford Park Avenue,1908-1969
-Brentford,1920-present
-Brighton & Hove Albion,1920-present
-Bristol City,1901-present
-Bristol Rovers,1920-2013; 2015-present
-Bromley,2024-present
-Burnley,1888-present
-Burton Albion,2009-present
-Burton Swifts,1892-1900
-Burton United,1901-1906
-Burton Wanderers,1894-1896
-Bury,1894-2018
-Cambridge United,1970-2004; 2014-present
-Cardiff City,1920-present
-Carlisle United,1928-2003; 2005-2024
-Charlton Athletic,1921-present
-Chelsea,1905-present
-Cheltenham Town,1999-2014; 2016-present
-Chester,1931-1999; 2004-2008
-Chesterfield,1899-1908; 1921-2017; 2024-present
-Colchester United,1950-1989; 1992-present
-Coventry City,1919-present
-Crawley Town,2011-present
-Crewe Alexandra,1892-1895; 1921-present
-Crystal Palace,1920-present
-Dagenham and Redbridge,2007-2015
-Darlington,1921-1988; 1990-2009
-Darwen,1891-1898
-Derby County,1888-present
-Doncaster Rovers,1901-1902; 1904; 1923-1997; 2003-present
-Durham City,1921-1927
-Everton,1888-present
-Exeter City,1920-2002; 2008-present
-Fleetwood Town,2012-present
-Forest Green Rovers,2017-2023
-Fulham,1907-present
-Gainsborough Trinity,1896-1911
-Gateshead,1930-1959
-Gillingham,1920-1937; 1950-present
-Glossop North End,1898-1914
-Grimsby Town,1892-1909; 1911-2009; 2016-2020; 2022-present
-Halifax Town,1921-1992; 1998-2001
-Harrogate Town,2020-present
-Hartlepool United,1921-2016; 2021-2022
-Hereford United,1972-1996; 2006-2011
-Huddersfield Town,1910-present
-Hull City,1905-present
-Ipswich Town,1938-present
-Kidderminster Harriers,2000-2004
-Leeds City,1905-1919
-Leeds United,1920-present
-Leicester City,1894-present
-Leyton Orient,1905-2016; 2019-present
-Lincoln City,1892-1907; 1909-1910; 1912-1919; 1921-1986; 1988-2010; 2017-present
-Liverpool,1893-present
-Loughborough,1895-1899
-Luton Town,1897-1899; 1920-2008; 2014-present
-Macclesfield Town,1997-2011; 2018-2019
-Maidstone United,1989-1991
-Manchester City,1892-present
-Manchester United,1892-present
-Mansfield Town,1931-2007; 2013-present
-Merthyr Town,1920-1929
-Middlesbrough,1899-present
-Middlesbrough Ironopolis,1893
-Millwall,1920-present
-Milton Keynes Dons,2004-present
-Morecambe,2007-2024
-Nelson,1921-1930
-New Brighton,1923-1950
-New Brighton Tower,1898-1900
-Newcastle United,1893-present
-Newport County,1920-1930; 1932-1987; 2013-present
-Northampton Town,1920-present
-Northwich Victoria,1892-1893
-Norwich City,1920-present
-Nottingham Forest,1892-present
-Notts County,1888-2018; 2023-present
-Oldham Athletic,1907-2021; 2025-present
-Oxford United,1962-2005; 2010-present
-Peterborough United,1960-present
-Plymouth Argyle,1920-present
-Port Vale,1892-1895; 1898-1906; 1919-present
-Portsmouth,1920-present
-Preston North End,1888-present
-Queens Park Rangers,1920-present
-Reading,1920-present
-Rochdale,1921-2022
-Rotherham County,1919-1924
-Rotherham Town,1893-1895
-Rotherham United,1925-present
-Rushden & Diamonds,2001-2005
-Salford City,2019-present
-Scarborough,1987-1998
-Scunthorpe United,1950-2021
-Sheffield United,1892-present
-Sheffield Wednesday,1892-present
-Shrewsbury Town,1950-2002; 2004-present
-South Shields,1919-1929
-Southampton,1920-present
-Southend United,1920-2020
-Southport,1921-1977
-Stalybridge Celtic,1921-1922
-Stevenage,2010-present
-Stockport County,1900-1903; 1905-2010; 2022-present
-Stoke City,1888-1889; 1891-1907; 1919-present
-Sunderland,1890-present
-Sutton United,2021-2023
-Swansea City,1920-present
-Swindon Town,1920-present
-Thames,1930-1931
-Torquay United,1927-2006; 2009-2013
-Tottenham Hotspur,1908-present
-Tranmere Rovers,1921-2014; 2018-present
-Walsall,1892-1894; 1896-1900; 1921-present
-Watford,1920-present
-West Bromwich Albion,1888-present
-West Ham United,1919-present
-Wigan Athletic,1978-present
-Wigan Borough,1921-1931
-Wimbledon,1977-2003
-Wolverhampton Wanderers,1888-present
-Workington,1951-1976
-Wrexham,1921-2007; 2023-present
-Wycombe Wanderers,1993-present
-Yeovil Town,2003-2018
-York City,1929-2003; 2012-2015
+Team,ShortName,ActivePeriods
+AFC Bournemouth,Bournemouth,1923-present
+AFC Wimbledon,Wimbledon,2011-present
+Aberdare Athletic,Aberdare,1921-1926
+Accrington F.C.,Accrington,1888-1892
+Accrington Stanley,Accrington,1921-1961; 2006-present
+Aldershot,Aldershot,1932-1990
+Aldershot Town,Aldershot,2008-2012
+Arsenal,Arsenal,1893-present
+Ashington,Ashington,1921-1928
+Aston Villa,Aston Villa,1888-present
+Barnet,Barnet,1991-2000; 2005-2012; 2015-2017; 2025-present
+Barnsley,Barnsley,1898-present
+Barrow,Barrow,1921-1971; 2020-present
+Birmingham City,Birmingham,1892-present
+Blackburn Rovers,Blackburn,1888-present
+Blackpool,Blackpool,1896-1898; 1900-present
+Bolton Wanderers,Bolton,1888-present
+Bootle,Bootle,1892
+Boston United,Boston,2002-2006
+Bradford City,Bradford,1903-present
+Bradford Park Avenue,Bradford PA,1908-1969
+Brentford,Brentford,1920-present
+Brighton & Hove Albion,Brighton,1920-present
+Bristol City,Bristol City,1901-present
+Bristol Rovers,Bristol Rvrs,1920-2013; 2015-present
+Bromley,Bromley,2024-present
+Burnley,Burnley,1888-present
+Burton Albion,Burton,2009-present
+Burton Swifts,Burton Swft,1892-1900
+Burton United,Burton,1901-1906
+Burton Wanderers,Burton,1894-1896
+Bury,Bury,1894-2018
+Cambridge United,Cambridge,1970-2004; 2014-present
+Cardiff City,Cardiff,1920-present
+Carlisle United,Carlisle,1928-2003; 2005-2024
+Charlton Athletic,Charlton,1921-present
+Chelsea,Chelsea,1905-present
+Cheltenham Town,Cheltenham,1999-2014; 2016-present
+Chester,Chester,1931-1999; 2004-2008
+Chesterfield,Chesterfield,1899-1908; 1921-2017; 2024-present
+Colchester United,Colchester,1950-1989; 1992-present
+Coventry City,Coventry,1919-present
+Crawley Town,Crawley,2011-present
+Crewe Alexandra,Crewe,1892-1895; 1921-present
+Crystal Palace,Palace,1920-present
+Dagenham and Redbridge,Dag&Red,2007-2015
+Darlington,Darlington,1921-1988; 1990-2009
+Darwen,Darwen,1891-1898
+Derby County,Derby,1888-present
+Doncaster Rovers,Doncaster,1901-1902; 1904; 1923-1997; 2003-present
+Durham City,Durham,1921-1927
+Everton,Everton,1888-present
+Exeter City,Exeter,1920-2002; 2008-present
+Fleetwood Town,Fleetwood,2012-present
+Forest Green Rovers,Forest Grn Rvrs,2017-2023
+Fulham,Fulham,1907-present
+Gainsborough Trinity,Gainsborough,1896-1911
+Gateshead,Gateshead,1930-1959
+Gillingham,Gillingham,1920-1937; 1950-present
+Glossop North End,Glossop,1898-1914
+Grimsby Town,Grimsby,1892-1909; 1911-2009; 2016-2020; 2022-present
+Halifax Town,Halifax,1921-1992; 1998-2001
+Harrogate Town,Harrogate,2020-present
+Hartlepool United,Hartlepool,1921-2016; 2021-2022
+Hereford United,Hereford,1972-1996; 2006-2011
+Huddersfield Town,Huddersfield,1910-present
+Hull City,Hull,1905-present
+Ipswich Town,Ipswich,1938-present
+Kidderminster Harriers,Kidderminster,2000-2004
+Leeds City,Leeds,1905-1919
+Leeds United,Leeds,1920-present
+Leicester City,Leicester,1894-present
+Leyton Orient,Orient,1905-2016; 2019-present
+Lincoln City,Lincoln,1892-1907; 1909-1910; 1912-1919; 1921-1986; 1988-2010; 2017-present
+Liverpool,Liverpool,1893-present
+Loughborough,L'boro,1895-1899
+Luton Town,Luton,1897-1899; 1920-2008; 2014-present
+Macclesfield Town,Macclesfield,1997-2011; 2018-2019
+Maidstone United,Maidstone,1989-1991
+Manchester City,Man City,1892-present
+Manchester United,Man Utd,1892-present
+Mansfield Town,Mansfield,1931-2007; 2013-present
+Merthyr Town,Merthyr,1920-1929
+Middlesbrough,M'boro,1899-present
+Middlesbrough Ironopolis,M'boro,1893
+Millwall,Millwall,1920-present
+Milton Keynes Dons,MK Dons,2004-present
+Morecambe,Morecambe,2007-2024
+Nelson,Nelson,1921-1930
+New Brighton,N. Brighton,1923-1950
+New Brighton Tower,N. Brighton,1898-1900
+Newcastle United,Newcastle,1893-present
+Newport County,Newport,1920-1930; 1932-1987; 2013-present
+Northampton Town,Northampton,1920-present
+Northwich Victoria,Northwich,1892-1893
+Norwich City,Norwich,1920-present
+Nottingham Forest,Nottm Forest,1892-present
+Notts County,Notts County,1888-2018; 2023-present
+Oldham Athletic,Oldham,1907-2021; 2025-present
+Oxford United,Oxford,1962-2005; 2010-present
+Peterborough United,P'boro,1960-present
+Plymouth Argyle,Plymouth,1920-present
+Port Vale,Port Vale,1892-1895; 1898-1906; 1919-present
+Portsmouth,Portsmouth,1920-present
+Preston North End,Preston,1888-present
+Queens Park Rangers,QPR,1920-present
+Reading,Reading,1920-present
+Rochdale,Rochdale,1921-2022
+Rotherham County,Rotherham,1919-1924
+Rotherham Town,Rotherham,1893-1895
+Rotherham United,Rotherham,1925-present
+Rushden & Diamonds,Rushden,2001-2005
+Salford City,Salford,2019-present
+Scarborough,S'boro,1987-1998
+Scunthorpe United,Scunthorpe,1950-2021
+Sheffield United,Sheff Utd,1892-present
+Sheffield Wednesday,Sheff Wed,1892-present
+Shrewsbury Town,Shrewsbury,1950-2002; 2004-present
+South Shields,S. Shields,1919-1929
+Southampton,Soton,1920-present
+Southend United,Southend,1920-2020
+Southport,Southport,1921-1977
+Stalybridge Celtic,Stalybridge,1921-1922
+Stevenage,Stevenage,2010-present
+Stockport County,Stockport,1900-1903; 1905-2010; 2022-present
+Stoke City,Stoke,1888-1889; 1891-1907; 1919-present
+Sunderland,Sunderland,1890-present
+Sutton United,Sutton,2021-2023
+Swansea City,Swansea,1920-present
+Swindon Town,Swindon,1920-present
+Thames,Thames,1930-1931
+Torquay United,Torquay,1927-2006; 2009-2013
+Tottenham Hotspur,Spurs,1908-present
+Tranmere Rovers,Tranmere,1921-2014; 2018-present
+Walsall,Walsall,1892-1894; 1896-1900; 1921-present
+Watford,Watford,1920-present
+West Bromwich Albion,WBA,1888-present
+West Ham United,West Ham,1919-present
+Wigan Athletic,Wigan,1978-present
+Wigan Borough,Wigan,1921-1931
+Wimbledon,Wimbledon,1977-2003
+Wolverhampton Wanderers,Wolves,1888-present
+Workington,Workington,1951-1976
+Wrexham,Wrexham,1921-2007; 2023-present
+Wycombe Wanderers,Wycombe,1993-present
+Yeovil Town,Yeovil,2003-2018
+York City,York,1929-2003; 2012-2015
