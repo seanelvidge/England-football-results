@@ -1,5 +1,5 @@
 # England League Results (EnglandLeagueResults.csv)
-This is a plain text database of all England football (soccer) league results from 1888 to 2025/12/15 (covering 211,073 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2025/12/21 (covering 211,118 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -106,7 +106,8 @@ It has the following columns:
 
 | Column | Details |
 | ------ | ------- |
-| Team Name | the English football league team name (matching the names in EnglandLeagueResults.csv) |
+| Team | the English football league team name (matching the names in EnglandLeagueResults.csv) |
+| ShortName | the short form name of the team (if they have one). E.g. "West Ham United" becomes "West Ham", "Manchester City" becomes "Man City" |
 | Years | semicolon delimited list of active years, e.g. of the form YYYY-YYYY; YYYY-YYYY; YYYY-present. YYYY represents the initial year of that season, e.g. a club appearing in the top 4 tiers in the 1991/1992 season, leaving in 1995/1996 and then coming back from 2004 to present day would be: 1991-1995; 2004-present |
 
 
