@@ -520,7 +520,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--root-dir", default=os.environ.get("FOOTBALL_RESULTS_ROOT_DIR", "."))
     parser.add_argument("--db-file", default="EnglandLeagueResults.csv")
     parser.add_argument("--ranked-file", default="EnglandLeagueResults_wRanks.csv")
-    parser.add_argument("--rankings-pickle", default=".github/workflows/rankings.p")
+    parser.add_argument("--rankings-pickle", default=".github/rankings.p")
     return parser.parse_args()
 
 
