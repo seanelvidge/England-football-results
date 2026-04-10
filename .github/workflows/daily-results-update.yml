@@ -30,14 +30,14 @@ jobs:
         run: pip install -r .github/workflows/requirements.txt
 
       - name: Update results database
-        run: python .github/workflows/football_results.py --root-dir "$GITHUB_WORKSPACE" --rankings-pickle ".github/workflows/rankings.p"
+        run: python .github/workflows/football_results.py --root-dir "$GITHUB_WORKSPACE" --rankings-pickle ".github/rankings.p"
 
       - name: Commit and push changed files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/workflows/rankings.p
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.p
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
