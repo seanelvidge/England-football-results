@@ -397,8 +397,12 @@ def process_match_rows(rows: Iterable[pd.Series], team_list: List[Team], nis_ewm
 
 def load_rankings_state(rankings_pickle: str) -> Tuple[List[Team], float, float]:
     if os.path.exists(rankings_pickle):
-        with open(rankings_pickle, "rb") as handle:
-            state = pickle.load(handle)
+        try:
+            with open(rankings_pickle, "rb") as handle:
+                state = pickle.load(handle)
+        except (pickle.UnpicklingError, EOFError, AttributeError, ValueError) as exc:
+            print(f"Could not load rankings state from {rankings_pickle}: {exc}. Rebuilding rankings from scratch.")
+            return [], NIS_EWMA_DEFAULT, PHI0_DEFAULT
         if isinstance(state, dict):
             return state.get("teams", []), state.get("nis_ewma", NIS_EWMA_DEFAULT), state.get("phi0", PHI0_DEFAULT)
         return state, NIS_EWMA_DEFAULT, PHI0_DEFAULT
