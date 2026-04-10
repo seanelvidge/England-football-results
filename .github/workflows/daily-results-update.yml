@@ -1,0 +1,49 @@
+name: Daily Football Results Update
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: daily-football-results-update
+  cancel-in-progress: false
+
+jobs:
+  update-results:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+
+      - name: Install dependencies
+        run: pip install -r .github/workflows/requirements.txt
+
+      - name: Update results database
+        run: python .github/workflows/football_results.py --root-dir "$GITHUB_WORKSPACE" --rankings-pickle ".github/workflows/rankings.p"
+
+      - name: Commit and push changed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/workflows/rankings.p
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          current_date="$(date +'%Y/%m/%d')"
+          git commit -m "Updated results on ${current_date}"
+          git push
