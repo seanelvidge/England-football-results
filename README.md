@@ -1,5 +1,5 @@
 # England League Results (EnglandLeagueResults.csv)
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/04/07 (covering 211,978 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026/04/12 (covering 212,021 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -59,3 +59,50 @@ The database is a comma (",") delimited csv file with the following columns:
 | AwayRank_before | the ranking of the away team before the fixture was played (integer) |
 | HomeRank_after | the ranking of the home team after the fixture was played (integer) |
 | AwayRank_after | the ranking of the away team after the fixture was played (integer) |
+
+
+# England League Names (EnglandLeagueNames.csv)
+A comma (",") delimited csv file of the names of the English football divisions and the years they were active. It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Name | the name of the division (string) |
+| Years Active | the seasons [inclusive - exclusive) that the name was/is active (string) |
+| Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (integer) |
+
+
+# English Team Point Deductions (EnglishTeamPointDeductions.csv)
+A comma (",") delimited csv file of all point deductions (and in two cases, additions), with reasoning, applied to English football league teams.
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Season | the season the deduction took place in (where, for example, 2025 refers to the 2024/2025 season) (integer) |
+| Team | the team who the deduction was applied to (string) |
+| Pts_deducted | the number of points deducted (a negative value means a point addition) (integer) |
+| Notes | the reasoning for the points deduction (string) |
+
+
+# English Team Logos (EnglishTeamLogos.csv)
+A comma (",") delimited csv file of all (known) English football league team logos.
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Team Name |the English football league team name (matching the names in EnglandLeagueResults.csv) |
+| URL | the link to image (png or svg), usually on Wikipedia |
+
+
+# English Team Active Years (EnglishTeamActivePeriods.csv)
+A comma (",") delimited csv file of the periods which each club, which appears at least once in the database, was active within the top four tiers of English football (Premier League and English Football League). Breaks in apperances in these divisions are separated by a semicolon (";").
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Team | the English football league team name (matching the names in EnglandLeagueResults.csv) |
+| ShortName | the short form name of the team (if they have one). E.g. "West Ham United" becomes "West Ham", "Manchester City" becomes "Man City" |
+| Years | semicolon delimited list of active years, e.g. of the form YYYY-YYYY; YYYY-YYYY; YYYY-present. YYYY represents the initial year of that season, e.g. a club appearing in the top 4 tiers in the 1991/1992 season, leaving in 1995/1996 and then coming back from 2004 to present day would be: 1991-1995; 2004-present |
+
