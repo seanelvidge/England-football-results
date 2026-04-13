@@ -1,10 +1,13 @@
 import argparse
+import csv
 import datetime as dt
 import os
 import pickle
+import zipfile
 from datetime import datetime
 from io import StringIO
-from typing import Dict, Iterable, List, Tuple
+from typing import Dict, Iterable, List, Optional, Tuple
+from xml.etree import ElementTree as ET
 
 import numpy as np
 import pandas as pd
@@ -17,6 +20,162 @@ PHI0_DEFAULT = 1.0
 DISPLAY_BASE = 1000.0
 DISPLAY_MULT = 2.0
 DISPLAY_OFFSET = 0.0
+RANKINGS_STATE_HEADER = ["RecordType", "Team", "Date", "Rank", "Var", "Tier", "NIS_EWMA", "PHI0"]
+EXCEL_EPOCH = datetime(1899, 12, 30)
+
+
+def season_start_year(match_date: datetime) -> int:
+    return match_date.year if match_date.month >= 8 else match_date.year - 1
+
+
+def determine_match_result(home_goals: int, away_goals: int) -> str:
+    if home_goals > away_goals:
+        return "H"
+    if home_goals < away_goals:
+        return "A"
+    return "D"
+
+
+def parse_score(score: str) -> Tuple[int, int]:
+    parts = [part.strip() for part in str(score).split("-", maxsplit=1)]
+    if len(parts) != 2:
+        raise ValueError(f"Could not parse score '{score}'")
+    return int(parts[0]), int(parts[1])
+
+
+def parse_years_active(years_active: str) -> Tuple[int, Optional[int]]:
+    start_text, end_text = [part.strip() for part in years_active.replace("—", "–").split("–", maxsplit=1)]
+    start_year = int(start_text)
+    end_year = None if end_text.lower() == "present" else int(end_text) + 1
+    return start_year, end_year
+
+
+def load_division_lookup(root_dir: str) -> List[Dict[str, Optional[int]]]:
+    lookup_path = os.path.join(root_dir, "EnglandLeagueNames.csv")
+    divisions: List[Dict[str, Optional[int]]] = []
+    with open(lookup_path, newline="", encoding="utf-8") as handle:
+        for row in csv.DictReader(handle):
+            start_year, end_year = parse_years_active(row["Years Active"])
+            divisions.append(
+                {
+                    "name": row["Name"],
+                    "tier": int(row["Tier"]),
+                    "start_year": start_year,
+                    "end_year": end_year,
+                }
+            )
+    return divisions
+
+
+def division_name_for_match(divisions: List[Dict[str, Optional[int]]], tier: int, match_date: datetime) -> str:
+    season_year = season_start_year(match_date)
+    for division in divisions:
+        if division["tier"] != tier:
+            continue
+        end_year = division["end_year"]
+        if season_year >= division["start_year"] and (end_year is None or season_year < end_year):
+            return str(division["name"])
+    raise ValueError(f"Could not determine division name for tier {tier} in season starting {season_year}")
+
+
+def _xlsx_cell_value(cell: ET.Element, shared_strings: List[str], namespace: Dict[str, str]) -> str:
+    value = cell.find("a:v", namespace)
+    if value is None or value.text is None:
+        return ""
+    if cell.attrib.get("t") == "s":
+        return shared_strings[int(value.text)]
+    return value.text
+
+
+def read_scores_sheet_rows(xlsx_path: str) -> List[Dict[str, str]]:
+    namespace = {"a": "http://schemas.openxmlformats.org/spreadsheetml/2006/main"}
+
+    with zipfile.ZipFile(xlsx_path) as workbook:
+        shared_strings_root = ET.fromstring(workbook.read("xl/sharedStrings.xml"))
+        shared_strings = []
+        for item in shared_strings_root.findall("a:si", namespace):
+            text_parts = [text_node.text or "" for text_node in item.iterfind(".//a:t", namespace)]
+            shared_strings.append("".join(text_parts))
+
+        sheet_root = ET.fromstring(workbook.read("xl/worksheets/sheet1.xml"))
+        rows = sheet_root.find("a:sheetData", namespace)
+        if rows is None:
+            return []
+
+        parsed_rows: List[Dict[str, str]] = []
+        headers: Dict[str, str] = {}
+
+        for row_index, row in enumerate(rows.findall("a:row", namespace)):
+            values: Dict[str, str] = {}
+            for cell in row.findall("a:c", namespace):
+                cell_ref = cell.attrib["r"]
+                column = "".join(character for character in cell_ref if character.isalpha())
+                values[column] = _xlsx_cell_value(cell, shared_strings, namespace)
+
+            if row_index == 0:
+                headers = values
+                continue
+
+            parsed_row: Dict[str, str] = {}
+            for column, header in headers.items():
+                parsed_row[header] = values.get(column, "")
+            parsed_rows.append(parsed_row)
+
+    return parsed_rows
+
+
+def load_tmp_results_matches(root_dir: str, existing_df: pd.DataFrame) -> pd.DataFrame:
+    xlsx_path = os.path.join(root_dir, ".github", "tmp_results.xlsx")
+    if not os.path.exists(xlsx_path):
+        return pd.DataFrame(columns=existing_df.columns)
+
+    divisions = load_division_lookup(root_dir)
+    existing_keys = {
+        (match_date.strftime("%Y-%m-%d"), row.HomeTeam, row.AwayTeam, str(row.Score))
+        for match_date, row in existing_df.iterrows()
+    }
+    rows_to_add: List[Dict[str, object]] = []
+
+    for row in read_scores_sheet_rows(xlsx_path):
+        score_text = row.get("Score") or row.get("Result")
+        if not row.get("Date") or not row.get("Home Team") or not row.get("Away Team") or not row.get("Tier") or not score_text:
+            continue
+
+        match_date = EXCEL_EPOCH + dt.timedelta(days=float(row["Date"]))
+        normalized_names = normalize_team_names(pd.DataFrame([{"HomeTeam": row["Home Team"], "AwayTeam": row["Away Team"]}]))
+        home_team = str(normalized_names.iloc[0]["HomeTeam"])
+        away_team = str(normalized_names.iloc[0]["AwayTeam"])
+        home_goals, away_goals = parse_score(score_text)
+        tier = int(float(row["Tier"]))
+        formatted_date = match_date.strftime("%Y-%m-%d")
+        season_year = season_start_year(match_date)
+        row_key = (formatted_date, home_team, away_team, f"{home_goals}-{away_goals}")
+        if row_key in existing_keys:
+            continue
+
+        rows_to_add.append(
+            {
+                "Date": formatted_date,
+                "Season": f"{season_year}/{season_year + 1}",
+                "HomeTeam": home_team,
+                "AwayTeam": away_team,
+                "Score": f"{home_goals}-{away_goals}",
+                "hGoal": home_goals,
+                "aGoal": away_goals,
+                "Division": division_name_for_match(divisions, tier, match_date),
+                "Tier": tier,
+                "Result": determine_match_result(home_goals, away_goals),
+            }
+        )
+        existing_keys.add(row_key)
+
+    if not rows_to_add:
+        return pd.DataFrame(columns=existing_df.columns)
+
+    fallback_df = pd.DataFrame(rows_to_add)
+    fallback_df = fallback_df.set_index(pd.to_datetime(fallback_df["Date"], format="%Y-%m-%d"))
+    fallback_df = fallback_df.drop("Date", axis=1)
+    return fallback_df[existing_df.columns]
 
 
 def add_current_season(root_dir: str, db_file_name: str, season: int) -> None:
@@ -25,7 +184,11 @@ def add_current_season(root_dir: str, db_file_name: str, season: int) -> None:
     df_db = df_db.set_index(pd.to_datetime(df_db.Date, format="%Y-%m-%d"))
     df_db = df_db.drop("Date", axis=1)
 
-    df_db = append_latest_matches(season, df_db)
+    df_db, new_primary_rows = append_latest_matches(season, df_db)
+    if new_primary_rows == 0:
+        fallback_rows = load_tmp_results_matches(root_dir, df_db)
+        if not fallback_rows.empty:
+            df_db = pd.concat([df_db, fallback_rows])
     df_db = df_db.reset_index().sort_values(by=["Date", "Division"]).set_index("Date")
     df_db = normalize_team_names(df_db)
 
@@ -38,7 +201,8 @@ def add_current_season(root_dir: str, db_file_name: str, season: int) -> None:
     write_readme(root_dir, df_db.index[-1].strftime("%Y/%m/%d"), f"{len(df_db):,}")
 
 
-def append_latest_matches(season: int, df_db: pd.DataFrame) -> pd.DataFrame:
+def append_latest_matches(season: int, df_db: pd.DataFrame) -> Tuple[pd.DataFrame, int]:
+    total_new_rows = 0
     two_year = season - 2000
     for div in [0, 1, 2, 3]:
         url = f"https://www.football-data.co.uk/mmz4281/{two_year}{two_year + 1}/E{div}.csv"
@@ -66,9 +230,10 @@ def append_latest_matches(season: int, df_db: pd.DataFrame) -> pd.DataFrame:
         existing_keys = df_db[key_cols].apply(tuple, axis=1)
         incoming_keys = df_year[key_cols].apply(tuple, axis=1)
         df_filtered = df_year[~incoming_keys.isin(existing_keys)]
+        total_new_rows += len(df_filtered)
         df_db = pd.concat([df_db, df_filtered])
 
-    return df_db.drop_duplicates()
+    return df_db.drop_duplicates(), total_new_rows
 
 
 def normalize_team_names(df: pd.DataFrame) -> pd.DataFrame:
@@ -395,7 +560,7 @@ def process_match_rows(rows: Iterable[pd.Series], team_list: List[Team], nis_ewm
     return processed_rows, nis_ewma, phi0
 
 
-def load_rankings_state(rankings_pickle: str) -> Tuple[List[Team], float, float]:
+def load_rankings_state_from_pickle(rankings_pickle: str) -> Tuple[List[Team], float, float]:
     if os.path.exists(rankings_pickle):
         try:
             with open(rankings_pickle, "rb") as handle:
@@ -409,15 +574,83 @@ def load_rankings_state(rankings_pickle: str) -> Tuple[List[Team], float, float]
     return [], NIS_EWMA_DEFAULT, PHI0_DEFAULT
 
 
-def save_rankings_state(rankings_pickle: str, team_list: List[Team], nis_ewma: float, phi0: float) -> None:
-    with open(rankings_pickle, "wb") as handle:
-        pickle.dump({"teams": team_list, "nis_ewma": nis_ewma, "phi0": phi0}, handle, protocol=pickle.HIGHEST_PROTOCOL)
+def load_rankings_state(rankings_state_path: str) -> Tuple[List[Team], float, float]:
+    if os.path.exists(rankings_state_path):
+        try:
+            teams_by_name: Dict[str, Team] = {}
+            nis_ewma = NIS_EWMA_DEFAULT
+            phi0 = PHI0_DEFAULT
+
+            with open(rankings_state_path, newline="", encoding="utf-8") as handle:
+                reader = csv.DictReader(handle)
+                if reader.fieldnames != RANKINGS_STATE_HEADER:
+                    raise ValueError(f"Unexpected rankings state header: {reader.fieldnames}")
+
+                for row in reader:
+                    record_type = row["RecordType"]
+                    if record_type == "META":
+                        nis_ewma = float(row["NIS_EWMA"]) if row["NIS_EWMA"] else NIS_EWMA_DEFAULT
+                        phi0 = float(row["PHI0"]) if row["PHI0"] else PHI0_DEFAULT
+                        continue
+                    if record_type != "TEAM":
+                        raise ValueError(f"Unexpected rankings state record type '{record_type}'")
+
+                    team_name = row["Team"]
+                    rank = float(row["Rank"])
+                    var = float(row["Var"])
+                    tier = int(float(row["Tier"]))
+                    date = row["Date"]
+
+                    if team_name not in teams_by_name:
+                        teams_by_name[team_name] = Team(team_name, rank=rank, var=var, initDate=date, tier=tier)
+                    else:
+                        teams_by_name[team_name].update(rank, var, date, tier)
+
+            return list(teams_by_name.values()), nis_ewma, phi0
+        except (OSError, KeyError, ValueError) as exc:
+            print(f"Could not load rankings state from {rankings_state_path}: {exc}. Rebuilding rankings from scratch.")
+            return [], NIS_EWMA_DEFAULT, PHI0_DEFAULT
+
+    legacy_pickle_path = os.path.splitext(rankings_state_path)[0] + ".p"
+    return load_rankings_state_from_pickle(legacy_pickle_path)
 
 
-def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings_pickle: str) -> None:
+def save_rankings_state(rankings_state_path: str, team_list: List[Team], nis_ewma: float, phi0: float) -> None:
+    with open(rankings_state_path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=RANKINGS_STATE_HEADER)
+        writer.writeheader()
+        writer.writerow(
+            {
+                "RecordType": "META",
+                "Team": "",
+                "Date": "",
+                "Rank": "",
+                "Var": "",
+                "Tier": "",
+                "NIS_EWMA": f"{nis_ewma:.17g}",
+                "PHI0": f"{phi0:.17g}",
+            }
+        )
+        for team in team_list:
+            for date, rank, var, tier in zip(team.date, team.rank, team.var, team.tier):
+                writer.writerow(
+                    {
+                        "RecordType": "TEAM",
+                        "Team": team.name,
+                        "Date": date,
+                        "Rank": f"{float(rank):.17g}",
+                        "Var": f"{float(var):.17g}",
+                        "Tier": int(round(float(tier))),
+                        "NIS_EWMA": "",
+                        "PHI0": "",
+                    }
+                )
+
+
+def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings_state: str) -> None:
     db_path = os.path.join(root_dir, db_file_name)
     ranked_path = os.path.join(root_dir, ranked_file)
-    rankings_pickle_path = os.path.join(root_dir, rankings_pickle)
+    rankings_state_path = os.path.join(root_dir, rankings_state)
 
     df_db = pd.read_csv(db_path)
     existing_ranked = pd.read_csv(ranked_path) if os.path.exists(ranked_path) else pd.DataFrame()
@@ -432,7 +665,7 @@ def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings
     if new_rows.empty:
         return
 
-    team_list, nis_ewma, phi0 = load_rankings_state(rankings_pickle_path)
+    team_list, nis_ewma, phi0 = load_rankings_state(rankings_state_path)
     rows_to_process = df_db.itertuples(index=False) if not team_list else new_rows.itertuples(index=False)
     if not team_list:
         existing_ranked = pd.DataFrame()
@@ -444,7 +677,7 @@ def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings
     ranked_combined[rank_cols] = ranked_combined[rank_cols].astype(int)
 
     ranked_combined.to_csv(ranked_path, index=False)
-    save_rankings_state(rankings_pickle_path, team_list, nis_ewma, phi0)
+    save_rankings_state(rankings_state_path, team_list, nis_ewma, phi0)
 
 
 def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
@@ -514,17 +747,17 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "\n"
             "\n"
             "# England League Names (EnglandLeagueNames.csv)\n"
-            "A comma (",") delimited csv file of the names of the English football divisions and the years they were active. It has the following columns:\n"
+            'A comma (",") delimited csv file of the names of the English football divisions and the years they were active. It has the following columns:\n'
             "\n"
             "| Column | Details |\n"
             "| ------ | ------- |\n"
             "| Name | the name of the division (string) |\n"
             "| Years Active | the seasons [inclusive - exclusive) that the name was/is active (string) |\n"
-            "| Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (integer) |\n"
+            '| Tier | numerical representation of the tier which the match was from: 1, 2, 3 or 4, where "1" is the top tier (integer) |\n'
             "\n"
             "\n"
             "# English Team Point Deductions (EnglishTeamPointDeductions.csv)\n"
-            "A comma (",") delimited csv file of all point deductions (and in two cases, additions), with reasoning, applied to English football league teams.\n"
+            'A comma (",") delimited csv file of all point deductions (and in two cases, additions), with reasoning, applied to English football league teams.\n'
             "\n"
             "It has the following columns:\n"
             "\n"
@@ -537,7 +770,7 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "\n"
             "\n"
             "# English Team Logos (EnglishTeamLogos.csv)\n"
-            "A comma (",") delimited csv file of all (known) English football league team logos.\n"
+            'A comma (",") delimited csv file of all (known) English football league team logos.\n'
             "\n"
             "It has the following columns:\n"
             "\n"
@@ -548,14 +781,14 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "\n"
             "\n"
             "# English Team Active Years (EnglishTeamActivePeriods.csv)\n"
-            "A comma (",") delimited csv file of the periods which each club, which appears at least once in the database, was active within the top four tiers of English football (Premier League and English Football League). Breaks in apperances in these divisions are separated by a semicolon (";").\n"
+            'A comma (",") delimited csv file of the periods which each club, which appears at least once in the database, was active within the top four tiers of English football (Premier League and English Football League). Breaks in apperances in these divisions are separated by a semicolon (";").\n'
             "\n"        
             "It has the following columns:\n"
             "\n"            
             "| Column | Details |\n"
             "| ------ | ------- |\n"
             "| Team | the English football league team name (matching the names in EnglandLeagueResults.csv) |\n"
-            "| ShortName | the short form name of the team (if they have one). E.g. "West Ham United" becomes "West Ham", "Manchester City" becomes "Man City" |\n"
+            '| ShortName | the short form name of the team (if they have one). E.g. "West Ham United" becomes "West Ham", "Manchester City" becomes "Man City" |\n'
             "| Years | semicolon delimited list of active years, e.g. of the form YYYY-YYYY; YYYY-YYYY; YYYY-present. YYYY represents the initial year of that season, e.g. a club appearing in the top 4 tiers in the 1991/1992 season, leaving in 1995/1996 and then coming back from 2004 to present day would be: 1991-1995; 2004-present |\n"
             "\n"
         )
@@ -571,7 +804,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--root-dir", default=os.environ.get("FOOTBALL_RESULTS_ROOT_DIR", "."))
     parser.add_argument("--db-file", default="EnglandLeagueResults.csv")
     parser.add_argument("--ranked-file", default="EnglandLeagueResults_wRanks.csv")
-    parser.add_argument("--rankings-pickle", default=".github/rankings.p")
+    parser.add_argument("--rankings-state", default=".github/rankings.csv")
+    parser.add_argument("--rankings-pickle", dest="rankings_state", help=argparse.SUPPRESS)
     return parser.parse_args()
 
 
@@ -581,4 +815,4 @@ if __name__ == "__main__":
     season = today.year if today.month >= 8 else today.year - 1
 
     add_current_season(args.root_dir, args.db_file, season)
-    update_rankings(args.root_dir, args.db_file, args.ranked_file, args.rankings_pickle)
+    update_rankings(args.root_dir, args.db_file, args.ranked_file, args.rankings_state)
