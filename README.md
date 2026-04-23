@@ -1,5 +1,5 @@
 # England League Results (EnglandLeagueResults.csv)
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/04/20 (covering 212,082 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026/04/22 (covering 212,105 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
