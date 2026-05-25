@@ -62,6 +62,7 @@ The database is a comma (",") delimited csv file with the following columns:
 
 
 # England League Names (EnglandLeagueNames.csv)
+
 A comma (",") delimited csv file of the names of the English football divisions and the years they were active. It has the following columns:
 
 | Column | Details |
@@ -72,6 +73,7 @@ A comma (",") delimited csv file of the names of the English football divisions 
 
 
 # English Team Point Deductions (EnglishTeamPointDeductions.csv)
+
 A comma (",") delimited csv file of all point deductions (and in two cases, additions), with reasoning, applied to English football league teams.
 
 It has the following columns:
@@ -85,6 +87,7 @@ It has the following columns:
 
 
 # English Team Logos (EnglishTeamLogos.csv)
+
 A comma (",") delimited csv file of all (known) English football league team logos.
 
 It has the following columns:
@@ -96,6 +99,7 @@ It has the following columns:
 
 
 # English Team Active Years (EnglishTeamActivePeriods.csv)
+
 A comma (",") delimited csv file of the periods which each club, which appears at least once in the database, was active within the top four tiers of English football (Premier League and English Football League). Breaks in apperances in these divisions are separated by a semicolon (";").
 
 It has the following columns:
@@ -105,4 +109,6 @@ It has the following columns:
 | Team | the English football league team name (matching the names in EnglandLeagueResults.csv) |
 | ShortName | the short form name of the team (if they have one). E.g. "West Ham United" becomes "West Ham", "Manchester City" becomes "Man City" |
 | Years | semicolon delimited list of active years, e.g. of the form YYYY-YYYY; YYYY-YYYY; YYYY-present. YYYY represents the initial year of that season, e.g. a club appearing in the top 4 tiers in the 1991/1992 season, leaving in 1995/1996 and then coming back from 2004 to present day would be: 1991-1995; 2004-present |
+
+
 
