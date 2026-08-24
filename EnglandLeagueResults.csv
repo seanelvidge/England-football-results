@@ -212227,3 +212227,85 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 2026-05-24,2025/2026,Sunderland,Chelsea,2-1,2,1,Premier League,1,H
 2026-05-24,2025/2026,Tottenham Hotspur,Everton,1-0,1,0,Premier League,1,H
 2026-05-24,2025/2026,West Ham United,Leeds United,3-0,3,0,Premier League,1,H
+2026-08-14,2026/2027,Wolverhampton Wanderers,Blackburn Rovers,2-2,2,2,EFL Championship,2,D
+2026-08-15,2026/2027,Bolton Wanderers,Preston North End,2-1,2,1,EFL Championship,2,H
+2026-08-15,2026/2027,Bristol City,Millwall,0-2,0,2,EFL Championship,2,A
+2026-08-15,2026/2027,Charlton Athletic,Derby County,2-1,2,1,EFL Championship,2,H
+2026-08-15,2026/2027,Middlesbrough,Lincoln City,2-1,2,1,EFL Championship,2,H
+2026-08-15,2026/2027,Norwich City,West Bromwich Albion,1-2,1,2,EFL Championship,2,A
+2026-08-15,2026/2027,Portsmouth,Queens Park Rangers,1-3,1,3,EFL Championship,2,A
+2026-08-15,2026/2027,Stoke City,Swansea City,1-2,1,2,EFL Championship,2,A
+2026-08-15,2026/2027,Sheffield United,Birmingham City,0-0,0,0,EFL Championship,2,D
+2026-08-15,2026/2027,Notts County,Leicester City,1-1,1,1,EFL League One,3,D
+2026-08-15,2026/2027,Oxford United,Milton Keynes Dons,2-2,2,2,EFL League One,3,D
+2026-08-15,2026/2027,Reading,Luton Town,3-4,3,4,EFL League One,3,A
+2026-08-15,2026/2027,Barnsley,Bromley,0-1,0,1,EFL League One,3,A
+2026-08-15,2026/2027,Blackpool,Wycombe Wanderers,1-1,1,1,EFL League One,3,D
+2026-08-15,2026/2027,Bradford City,Peterborough United,2-0,2,0,EFL League One,3,H
+2026-08-15,2026/2027,Burton Albion,Stevenage,1-1,1,1,EFL League One,3,D
+2026-08-15,2026/2027,Cambridge United,Wigan Athletic,3-2,3,2,EFL League One,3,H
+2026-08-15,2026/2027,Huddersfield Town,AFC Wimbledon,3-0,3,0,EFL League One,3,H
+2026-08-15,2026/2027,Leyton Orient,Sheffield Wednesday,1-2,1,2,EFL League One,3,A
+2026-08-15,2026/2027,Mansfield Town,Doncaster Rovers,2-1,2,1,EFL League One,3,H
+2026-08-15,2026/2027,Plymouth Argyle,Stockport County,1-3,1,3,EFL League One,3,A
+2026-08-15,2026/2027,Newport County,Rochdale,3-0,3,0,EFL League Two,4,H
+2026-08-15,2026/2027,Oldham Athletic,Port Vale,2-0,2,0,EFL League Two,4,H
+2026-08-15,2026/2027,Accrington Stanley,Colchester United,2-2,2,2,EFL League Two,4,D
+2026-08-15,2026/2027,Barnet,Salford City,3-1,3,1,EFL League Two,4,H
+2026-08-15,2026/2027,Cheltenham Town,Rotherham United,2-1,2,1,EFL League Two,4,H
+2026-08-15,2026/2027,Chesterfield,Fleetwood Town,0-1,0,1,EFL League Two,4,A
+2026-08-15,2026/2027,Crawley Town,Crewe Alexandra,0-1,0,1,EFL League Two,4,A
+2026-08-15,2026/2027,Gillingham,Walsall,0-3,0,3,EFL League Two,4,A
+2026-08-15,2026/2027,Grimsby Town,Exeter City,1-0,1,0,EFL League Two,4,H
+2026-08-15,2026/2027,Northampton Town,Swindon Town,0-0,0,0,EFL League Two,4,D
+2026-08-15,2026/2027,Tranmere Rovers,Shrewsbury Town,2-0,2,0,EFL League Two,4,H
+2026-08-15,2026/2027,York,Bristol Rovers,3-2,3,2,EFL League Two,4,H
+2026-08-16,2026/2027,Watford,Southampton,2-1,2,1,EFL Championship,2,H
+2026-08-16,2026/2027,Burnley,West Ham United,2-2,2,2,EFL Championship,2,D
+2026-08-17,2026/2027,Cardiff City,Wrexham,1-1,1,1,EFL Championship,2,D
+2026-08-20,2026/2027,Sheffield Wed,Bradford City,0-1,0,1,EFL League One,3,A
+2026-08-21,2026/2027,Arsenal,Coventry City,3-0,3,0,Premier League,1,H
+2026-08-22,2026/2027,Birmingham City,Bristol City,2-2,2,2,EFL Championship,2,D
+2026-08-22,2026/2027,Lincoln City,Portsmouth,1-3,1,3,EFL Championship,2,A
+2026-08-22,2026/2027,Millwall,Norwich City,3-0,3,0,EFL Championship,2,H
+2026-08-22,2026/2027,Blackburn Rovers,Middlesbrough,2-1,2,1,EFL Championship,2,H
+2026-08-22,2026/2027,Derby County,Cardiff City,2-2,2,2,EFL Championship,2,D
+2026-08-22,2026/2027,Preston North End,Wolverhampton Wanderers,1-3,1,3,EFL Championship,2,A
+2026-08-22,2026/2027,Queens Park Rangers,Bolton Wanderers,0-0,0,0,EFL Championship,2,D
+2026-08-22,2026/2027,Southampton,Stoke City,3-1,3,1,EFL Championship,2,H
+2026-08-22,2026/2027,Swansea City,Sheffield United,0-0,0,0,EFL Championship,2,D
+2026-08-22,2026/2027,West Ham United,Charlton Athletic,1-2,1,2,EFL Championship,2,A
+2026-08-22,2026/2027,Wrexham,Watford,1-1,1,1,EFL Championship,2,D
+2026-08-22,2026/2027,Doncaster Rovers,Barnsley,0-0,0,0,EFL League One,3,D
+2026-08-22,2026/2027,Luton Town,Notts County,2-2,2,2,EFL League One,3,D
+2026-08-22,2026/2027,AFC Wimbledon,Reading,0-0,0,0,EFL League One,3,D
+2026-08-22,2026/2027,Bromley,Cambridge United,1-1,1,1,EFL League One,3,D
+2026-08-22,2026/2027,Leicester City,Burton Albion,1-2,1,2,EFL League One,3,A
+2026-08-22,2026/2027,Milton Keynes Dons,Huddersfield Town,1-1,1,1,EFL League One,3,D
+2026-08-22,2026/2027,Peterborough United,Mansfield Town,2-1,2,1,EFL League One,3,H
+2026-08-22,2026/2027,Stevenage,Oxford United,1-2,1,2,EFL League One,3,A
+2026-08-22,2026/2027,Stockport County,Blackpool,1-2,1,2,EFL League One,3,A
+2026-08-22,2026/2027,Wigan Athletic,Leyton Orient,0-2,0,2,EFL League One,3,A
+2026-08-22,2026/2027,Wycombe Wanderers,Plymouth Argyle,1-1,1,1,EFL League One,3,D
+2026-08-22,2026/2027,Bristol Rovers,Newport County,5-3,5,3,EFL League Two,4,H
+2026-08-22,2026/2027,Salford City,Chesterfield,0-1,0,1,EFL League Two,4,A
+2026-08-22,2026/2027,Walsall,Grimsby Town,0-0,0,0,EFL League Two,4,D
+2026-08-22,2026/2027,Colchester United,Oldham Athletic,2-1,2,1,EFL League Two,4,H
+2026-08-22,2026/2027,Crewe Alexandra,Northampton Town,1-0,1,0,EFL League Two,4,H
+2026-08-22,2026/2027,Exeter City,Accrington Stanley,2-0,2,0,EFL League Two,4,H
+2026-08-22,2026/2027,Fleetwood Town,Gillingham,0-0,0,0,EFL League Two,4,D
+2026-08-22,2026/2027,Port Vale,Tranmere Rovers,1-1,1,1,EFL League Two,4,D
+2026-08-22,2026/2027,Rochdale,Crawley Town,1-2,1,2,EFL League Two,4,A
+2026-08-22,2026/2027,Rotherham United,York,1-1,1,1,EFL League Two,4,D
+2026-08-22,2026/2027,Shrewsbury Town,Barnet,1-3,1,3,EFL League Two,4,A
+2026-08-22,2026/2027,Swindon Town,Cheltenham Town,2-1,2,1,EFL League Two,4,H
+2026-08-22,2026/2027,Hull City,Manchester United,2-0,2,0,Premier League,1,H
+2026-08-22,2026/2027,Everton,Crystal Palace,2-0,2,0,Premier League,1,H
+2026-08-22,2026/2027,Ipswich Town,Sunderland,2-1,2,1,Premier League,1,H
+2026-08-22,2026/2027,Nottingham Forest,Leeds United,0-1,0,1,Premier League,1,A
+2026-08-22,2026/2027,Brentford,Tottenham Hotspur,3-0,3,0,Premier League,1,H
+2026-08-23,2026/2027,West Bromwich Albion,Burnley,3-1,3,1,EFL Championship,2,H
+2026-08-23,2026/2027,Brighton & Hove Albion,Aston Villa,4-0,4,0,Premier League,1,H
+2026-08-23,2026/2027,Manchester City,AFC Bournemouth,2-1,2,1,Premier League,1,H
+2026-08-23,2026/2027,Newcastle United,Liverpool,2-2,2,2,Premier League,1,D
+2026-08-24,2026/2027,Fulham,Chelsea,2-3,2,3,Premier League,1,A
