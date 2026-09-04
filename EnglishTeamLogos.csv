@@ -1,41 +1,41 @@
-Team,LogoURL
-Aberdare Athletic,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png
-AFC Bournemouth,https://upload.wikimedia.org/wikipedia/en/e/e5/AFC_Bournemouth_%282013%29.svg
-AFC Wimbledon,https://upload.wikimedia.org/wikipedia/en/1/1b/AFC_Wimbledon_%282020%29_logo.svg
-Accrington F.C.,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png
-Accrington Stanley,https://upload.wikimedia.org/wikipedia/en/b/ba/Accrington_Stanley_F.C._logo.svg
-Aldershot,https://upload.wikimedia.org/wikipedia/en/2/25/Aldershot_FC_crest.svg
-Aldershot Town,https://upload.wikimedia.org/wikipedia/en/3/30/Aldershot_Town_FC_crest.svg
-Arsenal,https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg
-Ashington,https://upload.wikimedia.org/wikipedia/en/6/61/Ashington_A.F.C._logo.png
-Aston Villa,https://upload.wikimedia.org/wikipedia/en/9/9a/Aston_Villa_FC_new_crest.svg
-Barnet,https://upload.wikimedia.org/wikipedia/en/a/a2/Barnet_FC.svg
-Barnsley,https://upload.wikimedia.org/wikipedia/en/c/c9/Barnsley_FC.svg
-Barrow,https://upload.wikimedia.org/wikipedia/en/2/28/Barrow_AFC_logo.svg
-Birmingham City,https://upload.wikimedia.org/wikipedia/en/6/68/Birmingham_City_FC_logo.svg
-Blackburn Rovers,https://upload.wikimedia.org/wikipedia/en/0/0f/Blackburn_Rovers.svg
-Blackpool,https://upload.wikimedia.org/wikipedia/en/d/df/Blackpool_FC_logo.svg
-Bolton Wanderers,https://upload.wikimedia.org/wikipedia/en/8/82/Bolton_Wanderers_FC_logo.svg
-Bootle,https://upload.wikimedia.org/wikipedia/en/6/6c/Bootle_FC_logo.png
-Boston United,https://upload.wikimedia.org/wikipedia/en/5/53/Boston_United_FC_logo.svg
-Bradford City,https://upload.wikimedia.org/wikipedia/en/0/04/Bradford_City_AFC_crest.svg
-Bradford Park Avenue,https://upload.wikimedia.org/wikipedia/en/6/62/Bradford_%28Park_Avenue%29_A.F.C._logo.png
-Brentford,https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg
-Brighton & Hove Albion,https://upload.wikimedia.org/wikipedia/en/d/d0/Brighton_and_Hove_Albion_FC_crest.svg
-Bristol City,https://upload.wikimedia.org/wikipedia/en/f/f5/Bristol_City_crest.svg
-Bristol Rovers,https://upload.wikimedia.org/wikipedia/en/4/47/Bristol_Rovers_F.C._logo.svg
-Bromley,https://upload.wikimedia.org/wikipedia/en/3/35/Bromley_FC_crest.svg
-Burnley,https://upload.wikimedia.org/wikipedia/en/6/6d/Burnley_FC_Logo.svg
-Burton Albion,https://upload.wikimedia.org/wikipedia/en/9/93/Burton_Albion_FC_crest.svg
-Burton Swifts,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png
-Burton United,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png
-Burton Wanderers,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png
-Bury,https://upload.wikimedia.org/wikipedia/en/6/65/Bury_FC_crest.svg
-Cambridge United,https://upload.wikimedia.org/wikipedia/en/8/8f/Cambridge_United_FC.svg
-Cardiff City,https://upload.wikimedia.org/wikipedia/en/3/3c/Cardiff_City_crest.svg
-Carlisle United,https://upload.wikimedia.org/wikipedia/en/6/6c/Carlisle_United_FC_crest.svg
-Charlton Athletic,https://upload.wikimedia.org/wikipedia/en/f/f5/Charlton_Athletic_FC_crest.svg
-Chelsea,https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg
+Team,LogoURL,PriColour,SecColour
+Aberdare Athletic,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png,#000000,#808080
+AFC Bournemouth,https://upload.wikimedia.org/wikipedia/en/e/e5/AFC_Bournemouth_%282013%29.svg,#BF0C10,#0C0D0F
+AFC Wimbledon,https://upload.wikimedia.org/wikipedia/en/1/1b/AFC_Wimbledon_%282020%29_logo.svg,#0000FF,#FFFF00
+Accrington F.C.,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png,#000000,#808080
+Accrington Stanley,https://upload.wikimedia.org/wikipedia/en/b/ba/Accrington_Stanley_F.C._logo.svg,#FF0000,#FAF9F6
+Aldershot,https://upload.wikimedia.org/wikipedia/en/2/25/Aldershot_FC_crest.svg,#000000,#808080
+Aldershot Town,https://upload.wikimedia.org/wikipedia/en/3/30/Aldershot_Town_FC_crest.svg,#FF0000,#0000FF
+Arsenal,https://upload.wikimedia.org/wikipedia/en/5/53/Arsenal_FC.svg,#EF0107,#9C824A
+Ashington,https://upload.wikimedia.org/wikipedia/en/6/61/Ashington_A.F.C._logo.png,#000000,#808080
+Aston Villa,https://upload.wikimedia.org/wikipedia/en/9/9a/Aston_Villa_FC_new_crest.svg,#670E36,#95BFE5
+Barnet,https://upload.wikimedia.org/wikipedia/en/a/a2/Barnet_FC.svg,#FF9900,#000000
+Barnsley,https://upload.wikimedia.org/wikipedia/en/c/c9/Barnsley_FC.svg,#D71921,#000000
+Barrow,https://upload.wikimedia.org/wikipedia/en/2/28/Barrow_AFC_logo.svg,#223D7D,#1B1918
+Birmingham City,https://upload.wikimedia.org/wikipedia/en/6/68/Birmingham_City_FC_logo.svg,#0000FF,#808080
+Blackburn Rovers,https://upload.wikimedia.org/wikipedia/en/0/0f/Blackburn_Rovers.svg,#009EE0,#808080
+Blackpool,https://upload.wikimedia.org/wikipedia/en/d/df/Blackpool_FC_logo.svg,#FF8C00,#808080
+Bolton Wanderers,https://upload.wikimedia.org/wikipedia/en/8/82/Bolton_Wanderers_FC_logo.svg,#263C7E,#DF0024
+Bootle,https://upload.wikimedia.org/wikipedia/en/6/6c/Bootle_FC_logo.png,#000000,#808080
+Boston United,https://upload.wikimedia.org/wikipedia/en/5/53/Boston_United_FC_logo.svg,#000000,#808080
+Bradford City,https://upload.wikimedia.org/wikipedia/en/0/04/Bradford_City_AFC_crest.svg,#990033,#FF9900
+Bradford Park Avenue,https://upload.wikimedia.org/wikipedia/en/6/62/Bradford_%28Park_Avenue%29_A.F.C._logo.png,#000000,#808080
+Brentford,https://upload.wikimedia.org/wikipedia/en/2/2a/Brentford_FC_crest.svg,#FF0000,#000000
+Brighton & Hove Albion,https://upload.wikimedia.org/wikipedia/en/d/d0/Brighton_and_Hove_Albion_FC_crest.svg,#0054A6,#808080
+Bristol City,https://upload.wikimedia.org/wikipedia/en/f/f5/Bristol_City_crest.svg,#E21A23,#808080
+Bristol Rovers,https://upload.wikimedia.org/wikipedia/en/4/47/Bristol_Rovers_F.C._logo.svg,#0000FF,#808080
+Bromley,https://upload.wikimedia.org/wikipedia/en/3/35/Bromley_FC_crest.svg,#CE132D,#B89765
+Burnley,https://upload.wikimedia.org/wikipedia/en/6/6d/Burnley_FC_Logo.svg,#660808,#73E8F0
+Burton Albion,https://upload.wikimedia.org/wikipedia/en/9/93/Burton_Albion_FC_crest.svg,#FFFF00,#000000
+Burton Swifts,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png,#000000,#808080
+Burton United,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png,#000000,#808080
+Burton Wanderers,https://raw.githubusercontent.com/seanelvidge/seanelvidge.github.io/refs/heads/master/assets/img/blank-crest.png,#000000,#808080
+Bury,https://upload.wikimedia.org/wikipedia/en/6/65/Bury_FC_crest.svg,#032AF0,#808080
+Cambridge United,https://upload.wikimedia.org/wikipedia/en/8/8f/Cambridge_United_FC.svg,#F0D313,#0F0303
+Cardiff City,https://upload.wikimedia.org/wikipedia/en/3/3c/Cardiff_City_crest.svg,#0070B5,#D11524
+Carlisle United,https://upload.wikimedia.org/wikipedia/en/6/6c/Carlisle_United_FC_crest.svg,#1F47BF,#FF0808
+Charlton Athletic,https://upload.wikimedia.org/wikipedia/en/f/f5/Charlton_Athletic_FC_crest.svg,#D6011D,#000000
+Chelsea,https://upload.wikimedia.org/wikipedia/en/c/cc/Chelsea_FC.svg,#004793,#808080
 Cheltenham Town,https://upload.wikimedia.org/wikipedia/en/c/c3/Cheltenham_Town_F.C._logo.svg
 Chester,https://upload.wikimedia.org/wikipedia/en/c/cb/Chester-fc.svg
 Chesterfield,https://upload.wikimedia.org/wikipedia/en/9/94/Chesterfield_FC_crest.svg
