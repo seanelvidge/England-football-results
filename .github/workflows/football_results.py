@@ -770,14 +770,16 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "\n"
             "\n"
             "# English Team Logos (EnglishTeamLogos.csv)\n"
-            'A comma (",") delimited csv file of all (known) English football league team logos.\n'
+            'A comma (",") delimited csv file of all (known) English football league team logos/crests. The primary and secondary club colours are also included, these are not necessarily the same colours as the logo/crest. Where this should be white, a slightly off white colour (#808080) is used.\n'
             "\n"
             "It has the following columns:\n"
             "\n"
             "| Column | Details |\n"
             "| ------ | ------- |\n"
-            "| Team Name |the English football league team name (matching the names in EnglandLeagueResults.csv) |\n"
+            "| Team Name | the English football league team name (matching the names in EnglandLeagueResults.csv) |\n"
             "| URL | the link to image (png or svg), usually on Wikipedia |\n"
+            "| PriColour | the primary club colour as a Hex colour code | \n"
+            "| SecColour | the secondary club colour as a Hex colour code | \n"
             "\n"
             "\n"
             "# English Team Active Years (EnglishTeamActivePeriods.csv)\n"
