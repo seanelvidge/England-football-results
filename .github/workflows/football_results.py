@@ -6,7 +6,7 @@ import pickle
 import zipfile
 from datetime import datetime
 from io import StringIO
-from typing import Dict, Iterable, List, Optional, Tuple
+from typing import Dict, List, Optional, Set, Tuple
 from xml.etree import ElementTree as ET
 
 import numpy as np
@@ -124,7 +124,11 @@ def read_scores_sheet_rows(xlsx_path: str) -> List[Dict[str, str]]:
     return parsed_rows
 
 
-def load_tmp_results_matches(root_dir: str, existing_df: pd.DataFrame) -> pd.DataFrame:
+def load_tmp_results_matches(
+    root_dir: str,
+    existing_df: pd.DataFrame,
+    tiers: Optional[Set[int]] = None,
+) -> pd.DataFrame:
     xlsx_path = os.path.join(root_dir, ".github", "tmp_results.xlsx")
     if not os.path.exists(xlsx_path):
         return pd.DataFrame(columns=existing_df.columns)
@@ -138,18 +142,45 @@ def load_tmp_results_matches(root_dir: str, existing_df: pd.DataFrame) -> pd.Dat
 
     for row in read_scores_sheet_rows(xlsx_path):
         score_text = row.get("Score") or row.get("Result")
-        if not row.get("Date") or not row.get("Home Team") or not row.get("Away Team") or not row.get("Tier") or not score_text:
+        if (
+            not row.get("Date")
+            or not row.get("Home Team")
+            or not row.get("Away Team")
+            or not row.get("Tier")
+            or not score_text
+        ):
+            continue
+
+        tier = int(float(row["Tier"]))
+
+        # If specific tiers were requested, ignore all others.
+        if tiers is not None and tier not in tiers:
             continue
 
         match_date = EXCEL_EPOCH + dt.timedelta(days=float(row["Date"]))
-        normalized_names = normalize_team_names(pd.DataFrame([{"HomeTeam": row["Home Team"], "AwayTeam": row["Away Team"]}]))
+        normalized_names = normalize_team_names(
+            pd.DataFrame(
+                [{
+                    "HomeTeam": row["Home Team"],
+                    "AwayTeam": row["Away Team"],
+                }]
+            )
+        )
+
         home_team = str(normalized_names.iloc[0]["HomeTeam"])
         away_team = str(normalized_names.iloc[0]["AwayTeam"])
         home_goals, away_goals = parse_score(score_text)
-        tier = int(float(row["Tier"]))
+
         formatted_date = match_date.strftime("%Y-%m-%d")
         season_year = season_start_year(match_date)
-        row_key = (formatted_date, home_team, away_team, f"{home_goals}-{away_goals}")
+
+        row_key = (
+            formatted_date,
+            home_team,
+            away_team,
+            f"{home_goals}-{away_goals}",
+        )
+
         if row_key in existing_keys:
             continue
 
@@ -162,9 +193,13 @@ def load_tmp_results_matches(root_dir: str, existing_df: pd.DataFrame) -> pd.Dat
                 "Score": f"{home_goals}-{away_goals}",
                 "hGoal": home_goals,
                 "aGoal": away_goals,
-                "Division": division_name_for_match(divisions, tier, match_date),
+                "Division": division_name_for_match(
+                    divisions, tier, match_date
+                ),
                 "Tier": tier,
-                "Result": determine_match_result(home_goals, away_goals),
+                "Result": determine_match_result(
+                    home_goals, away_goals
+                ),
             }
         )
         existing_keys.add(row_key)
@@ -173,67 +208,159 @@ def load_tmp_results_matches(root_dir: str, existing_df: pd.DataFrame) -> pd.Dat
         return pd.DataFrame(columns=existing_df.columns)
 
     fallback_df = pd.DataFrame(rows_to_add)
-    fallback_df = fallback_df.set_index(pd.to_datetime(fallback_df["Date"], format="%Y-%m-%d"))
+    fallback_df = fallback_df.set_index(
+        pd.to_datetime(fallback_df["Date"], format="%Y-%m-%d")
+    )
     fallback_df = fallback_df.drop("Date", axis=1)
+
     return fallback_df[existing_df.columns]
 
 
-def add_current_season(root_dir: str, db_file_name: str, season: int) -> None:
+def add_current_season(
+    root_dir: str,
+    db_file_name: str,
+    season: int,
+) -> None:
     db_file = os.path.join(root_dir, db_file_name)
+
     df_db = pd.read_csv(db_file)
-    df_db = df_db.set_index(pd.to_datetime(df_db.Date, format="%Y-%m-%d"))
+    df_db = df_db.set_index(
+        pd.to_datetime(df_db.Date, format="%Y-%m-%d")
+    )
     df_db = df_db.drop("Date", axis=1)
 
-    df_db, new_primary_rows = append_latest_matches(season, df_db)
-    if new_primary_rows == 0:
-        fallback_rows = load_tmp_results_matches(root_dir, df_db)
-        if not fallback_rows.empty:
-            df_db = pd.concat([df_db, fallback_rows])
-    df_db = df_db.reset_index().sort_values(by=["Date", "Division"]).set_index("Date")
+    df_db, new_primary_rows, failed_tiers = append_latest_matches(
+        season,
+        df_db,
+    )
+
+    # Use the temporary results for:
+    # 1. any divisions whose primary download failed, or
+    # 2. all divisions if the primary source returned no new rows at all.
+    if failed_tiers:
+        fallback_rows = load_tmp_results_matches(
+            root_dir,
+            df_db,
+            tiers=failed_tiers,
+        )
+    elif new_primary_rows == 0:
+        fallback_rows = load_tmp_results_matches(
+            root_dir,
+            df_db,
+        )
+    else:
+        fallback_rows = pd.DataFrame(columns=df_db.columns)
+
+    if not fallback_rows.empty:
+        df_db = pd.concat([df_db, fallback_rows])
+
+    df_db = (
+        df_db.reset_index()
+        .sort_values(by=["Date", "Division"])
+        .set_index("Date")
+    )
+
     df_db = normalize_team_names(df_db)
 
     pre_1992 = df_db.index <= "1992"
     df_db.loc[pre_1992, ["HomeTeam", "AwayTeam"]] = (
-        df_db.loc[pre_1992, ["HomeTeam", "AwayTeam"]].replace("Aldershot Town", "Aldershot")
+        df_db.loc[
+            pre_1992,
+            ["HomeTeam", "AwayTeam"],
+        ].replace("Aldershot Town", "Aldershot")
     )
 
     df_db.to_csv(db_file, index=True)
-    write_readme(root_dir, df_db.index[-1].strftime("%Y/%m/%d"), f"{len(df_db):,}")
+
+    write_readme(
+        root_dir,
+        df_db.index[-1].strftime("%Y/%m/%d"),
+        f"{len(df_db):,}",
+    )
 
 
-def append_latest_matches(season: int, df_db: pd.DataFrame) -> Tuple[pd.DataFrame, int]:
+def append_latest_matches(
+    season: int,
+    df_db: pd.DataFrame,
+) -> Tuple[pd.DataFrame, int, Set[int]]:
     total_new_rows = 0
+    failed_tiers: Set[int] = set()
+
     two_year = season - 2000
+
     for div in [0, 1, 2, 3]:
-        url = f"https://www.football-data.co.uk/mmz4281/{two_year}{two_year + 1}/E{div}.csv"
-        response = requests.get(url, timeout=30)
-        response.raise_for_status()
+        url = (
+            f"https://www.football-data.co.uk/mmz4281/"
+            f"{two_year}{two_year + 1}/E{div}.csv"
+        )
 
-        df_year = pd.read_csv(StringIO(response.text), delimiter=",", header=0)
-        df_year = df_year.set_index(pd.to_datetime(df_year.Date, format="%d/%m/%Y"))
-        df_year = df_year[["HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]]
-        df_year = df_year.rename(columns={"FTHG": "hGoal", "FTAG": "aGoal", "FTR": "Result"})
-        df_year["Score"] = df_year["hGoal"].astype(str) + "-" + df_year["aGoal"].astype(str)
-        df_year["Season"] = f"{season}/{season + 1}"
-        df_year["Tier"] = div + 1
-        df_year["Division"] = {
-            0: "Premier League",
-            1: "EFL Championship",
-            2: "EFL League One",
-            3: "EFL League Two",
-        }[div]
+        try:
+            response = requests.get(url, timeout=30)
+            response.raise_for_status()
 
-        df_year = df_year[df_db.columns]
-        df_year = normalize_team_names(df_year)
+            df_year = pd.read_csv(
+                StringIO(response.text),
+                delimiter=",",
+                header=0,
+            )
 
-        key_cols = ["Season", "HomeTeam", "AwayTeam"]
-        existing_keys = df_db[key_cols].apply(tuple, axis=1)
-        incoming_keys = df_year[key_cols].apply(tuple, axis=1)
-        df_filtered = df_year[~incoming_keys.isin(existing_keys)]
-        total_new_rows += len(df_filtered)
-        df_db = pd.concat([df_db, df_filtered])
+            df_year = df_year.set_index(
+                pd.to_datetime(df_year.Date, format="%d/%m/%Y")
+            )
 
-    return df_db.drop_duplicates(), total_new_rows
+            df_year = df_year[
+                ["HomeTeam", "AwayTeam", "FTHG", "FTAG", "FTR"]
+            ]
+
+            df_year = df_year.rename(
+                columns={
+                    "FTHG": "hGoal",
+                    "FTAG": "aGoal",
+                    "FTR": "Result",
+                }
+            )
+
+            df_year["Score"] = (
+                df_year["hGoal"].astype(str)
+                + "-"
+                + df_year["aGoal"].astype(str)
+            )
+            df_year["Season"] = f"{season}/{season + 1}"
+            df_year["Tier"] = div + 1
+
+            df_year["Division"] = {
+                0: "Premier League",
+                1: "EFL Championship",
+                2: "EFL League One",
+                3: "EFL League Two",
+            }[div]
+
+            df_year = df_year[df_db.columns]
+            df_year = normalize_team_names(df_year)
+
+            key_cols = ["Season", "HomeTeam", "AwayTeam"]
+
+            existing_keys = df_db[key_cols].apply(tuple, axis=1)
+            incoming_keys = df_year[key_cols].apply(tuple, axis=1)
+
+            df_filtered = df_year[
+                ~incoming_keys.isin(existing_keys)
+            ]
+
+            total_new_rows += len(df_filtered)
+            df_db = pd.concat([df_db, df_filtered])
+
+        except requests.RequestException as exc:
+            tier = div + 1
+            failed_tiers.add(tier)
+
+            print(
+                f"Could not download Tier {tier} "
+                f"({url}): {exc}. "
+                "Will use temporary results if available."
+            )
+
+    return df_db.drop_duplicates(), total_new_rows, failed_tiers
 
 
 def normalize_team_names(df: pd.DataFrame) -> pd.DataFrame:
