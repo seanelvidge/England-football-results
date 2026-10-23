@@ -15,7 +15,10 @@ import requests
 
 
 ELO_PER_NAT_LOGIT = 400.0 / np.log(10.0)
-NIS_EWMA_DEFAULT = 3.0
+# Three outcome probabilities sum to one, so their innovation has two
+# independent components. The numerical ridge does not add an observation.
+NIS_TARGET = 2.0
+NIS_EWMA_DEFAULT = NIS_TARGET
 PHI0_DEFAULT = 1.0
 DISPLAY_BASE = 1000.0
 DISPLAY_MULT = 2.0
@@ -559,7 +562,7 @@ def ekf_update_one_match(
     days_since_prev_home: int = 7,
     days_since_prev_away: int = 7,
     nis_ewma: float = NIS_EWMA_DEFAULT,
-    nis_target: float = 3.0,
+    nis_target: float = NIS_TARGET,
     phi0: float = PHI0_DEFAULT,
     alpha_nis: float = 0.02,
     k_phi: float = 0.25,
@@ -945,3 +948,4 @@ if __name__ == "__main__":
 
     add_current_season(args.root_dir, args.db_file, season)
     update_rankings(args.root_dir, args.db_file, args.ranked_file, args.rankings_state)
+
