@@ -29,6 +29,9 @@ jobs:
       - name: Install dependencies
         run: pip install -r .github/workflows/requirements.txt
 
+      - name: Check rating mathematics
+        run: python -m unittest discover -s tests -p 'test_rating_math.py'
+
       - name: Update results database
         run: python .github/workflows/football_results.py --root-dir "$GITHUB_WORKSPACE" --rankings-state ".github/rankings.csv"
 
@@ -47,3 +50,4 @@ jobs:
           current_date="$(date +'%Y/%m/%d')"
           git commit -m "Updated results on ${current_date}"
           git push
+
