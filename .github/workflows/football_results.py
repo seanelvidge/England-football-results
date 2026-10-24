@@ -794,8 +794,6 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "# England League Results with team strength rankings (EnglandLeagueResults_wRanks.csv)\n"
             "This file contains the same data as `EnglandLeagueResults.csv`, with chronological team-strength ratings and probabilities issued before each result. The `*_before` ratings are the previous posterior ratings; the probability columns also include the elapsed-time forecast step.\n"
             "\n"
-            "The current model is `davidson-margin-v3`. It learns from both match outcomes and winning margins. Its mathematics, historical validation, limitations and rebuild commands are documented in [validation/FOLLOWUP.md](validation/FOLLOWUP.md), [validation/REPORT.md](validation/REPORT.md) and [validation/README.md](validation/README.md).\n"
-            "\n"
             'The database is a comma (",") delimited csv file with the following columns:\n'
             "\n"
             "| Column | Details |\n"
@@ -817,8 +815,6 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "| HomeWinProbability | probability of a home win issued before the match |\n"
             "| DrawProbability | probability of a draw issued before the match |\n"
             "| AwayWinProbability | probability of an away win issued before the match |\n"
-            "\n"
-            "`football_model.json` supplies the versioned, full-precision latest skills, variances and per-tier home/draw/margin parameters used by the website. `.github/rankings.csv` stores the full filter history; its `.meta.json` manifest detects stale models, modified history and interrupted writes. Model changes or non-append-only data changes trigger a full chronological replay automatically.\n"
             "\n"
             "\n"
             "# England League Names (EnglandLeagueNames.csv)\n"
