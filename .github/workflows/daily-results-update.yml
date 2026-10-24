@@ -2,7 +2,10 @@ name: Daily Football Results Update
 
 on:
   schedule:
-    - cron: '0 0 * * *'
+    # Aim for just after midnight UK time, avoiding GitHub's busy top of the hour.
+    # Scheduled triggers are best effort and can still be delayed.
+    - cron: '17 0 * * *'
+      timezone: 'Europe/London'
   workflow_dispatch:
 
 permissions:
