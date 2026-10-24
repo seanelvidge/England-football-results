@@ -1,10 +1,10 @@
 {
   "model_version": "davidson-margin-v3",
-  "source_sha256": "0b954e14442216a2ac7ad762efa120608c7ff64209b000d9fede8469d7017637",
-  "results_sha256": "8b95d00266198d7c5da0ed5b37d119a7582a00a811b71db27b9b68ff38d0238a",
-  "ranked_sha256": "bbe7f47add1522ffa5f97237f06e637b21825dc4e190a73ab0494b27ef1867e0",
-  "state_sha256": "7b4196ab38e6e1e33dfb552155d56c41efb6a99d59e638a7b18fce2025d39e4f",
-  "snapshot_sha256": "a1f28cf9e6b87e27422bfe821dedf9cd9c12c1f64b8c1ad675245d1cf144a5fd",
-  "matches": 212694,
-  "last_result_date": "2026-10-21"
+  "source_sha256": "078e3164ffd0be4899dc7878906e552cceeffea866a7a626acfa7a2e1e771113",
+  "results_sha256": "4ab876c01e64aefb9c587347c196f67bbb5e9a6e9fd88c0def72e4772c52207d",
+  "ranked_sha256": "ac7fe9545ceaf5a486844bbdc0e689c4276d2b4a07e1516d12f36079bbc9e418",
+  "state_sha256": "6f0afff1bb371b5367c143a69f81ffabae6988efc5360e840244fcd078fcc32c",
+  "snapshot_sha256": "955ab5dba477e06a4a2a764cfead65db0e1a04906be2c21a5302cc28a4b3dd8b",
+  "matches": 212732,
+  "last_result_date": "2026-10-24"
 }
