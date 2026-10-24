@@ -1,5 +1,5 @@
 # England League Results (EnglandLeagueResults.csv)
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/10/21 (covering 212,697 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026-10-21 (covering 212,694 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -38,8 +38,10 @@ The 1888-2016 data is based on that from the [Rec.Sport.Soccer Statistics Founda
 A number of tools making use of the data, such as a [league table generator](https://seanelvidge.com/leaguetable) and [head-to-head statistics](https://seanelvidge.com/h2h) are available at [seanelvidge.com/tools](https://seanelvidge.com/tools/)
 
 
-# England League Results with team strength rankings (EnglandLeagueResults_wRank.csv)
-This file contains the same data as `EnglandLeagueResults.csv` but with a measure of the teams strength via a ranking scheme.
+# England League Results with team strength rankings (EnglandLeagueResults_wRanks.csv)
+This file contains the same data as `EnglandLeagueResults.csv`, with chronological team-strength ratings and probabilities issued before each result. The `*_before` ratings are the previous posterior ratings; the probability columns also include the elapsed-time forecast step.
+
+The current model is `davidson-margin-v3`. It learns from both match outcomes and winning margins. Its mathematics, historical validation, limitations and rebuild commands are documented in [validation/FOLLOWUP.md](validation/FOLLOWUP.md), [validation/REPORT.md](validation/REPORT.md) and [validation/README.md](validation/README.md).
 
 The database is a comma (",") delimited csv file with the following columns:
 
@@ -59,6 +61,11 @@ The database is a comma (",") delimited csv file with the following columns:
 | AwayRank_before | the ranking of the away team before the fixture was played (integer) |
 | HomeRank_after | the ranking of the home team after the fixture was played (integer) |
 | AwayRank_after | the ranking of the away team after the fixture was played (integer) |
+| HomeWinProbability | probability of a home win issued before the match |
+| DrawProbability | probability of a draw issued before the match |
+| AwayWinProbability | probability of an away win issued before the match |
+
+`football_model.json` supplies the versioned, full-precision latest skills, variances and per-tier home/draw/margin parameters used by the website. `.github/rankings.csv` stores the full filter history; its `.meta.json` manifest detects stale models, modified history and interrupted writes. Model changes or non-append-only data changes trigger a full chronological replay automatically.
 
 
 # England League Names (EnglandLeagueNames.csv)
@@ -78,7 +85,8 @@ It has the following columns:
 
 | Column | Details |
 | ------ | ------- |
-| Season | the season the deduction took place in (where, for example, 2025 refers to the 2024/2025 season) (integer) |
+| Season | season string, for example 2024/2025 |
+| Date | effective date of the adjustment (YYYY-MM-DD); historical forecasts must exclude later adjustments |
 | Team | the team who the deduction was applied to (string) |
 | Pts_deducted | the number of points deducted (a negative value means a point addition) (integer) |
 | Notes | the reasoning for the points deduction (string) |
