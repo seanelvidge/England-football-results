@@ -1,0 +1,926 @@
+{
+  "model_version": "davidson-margin-v3",
+  "as_of": "2026-10-21",
+  "matches": 212694,
+  "beta": 0.9,
+  "weekly_rho": 0.995,
+  "weekly_process_variance": 0.0017,
+  "initial_variance": 0.25,
+  "baseline_learning_rate": 0.001,
+  "margin_slope": 0.75,
+  "margin_distribution": "geometric_excess_conditional_on_result",
+  "tier_means": {
+    "1": 1.5,
+    "2": 0.3,
+    "3": -0.3,
+    "4": -0.6
+  },
+  "tiers": {
+    "1": {
+      "home_advantage": 0.17145441064690434,
+      "log_draw": -0.28118458617819087,
+      "log_excess_margin": -0.4150876161636925
+    },
+    "2": {
+      "home_advantage": 0.18545854777858972,
+      "log_draw": -0.23556442121677124,
+      "log_excess_margin": -0.5156044708255639
+    },
+    "3": {
+      "home_advantage": 0.17289927977678504,
+      "log_draw": -0.2887739641625529,
+      "log_excess_margin": -0.4613983996864665
+    },
+    "4": {
+      "home_advantage": 0.17124583329104848,
+      "log_draw": -0.239645277070966,
+      "log_excess_margin": -0.48077111222545155
+    }
+  },
+  "teams": {
+    "Bolton Wanderers": {
+      "skill": 0.14383418147300467,
+      "variance": 0.0580139775196761,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Derby County": {
+      "skill": 0.17575522402713092,
+      "variance": 0.0486935148275421,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Everton": {
+      "skill": 1.4322808337783377,
+      "variance": 0.05592163859536861,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Accrington F.C.": {
+      "skill": 1.0743020578830744,
+      "variance": 0.0490798397518461,
+      "date": "1893-04-15",
+      "tier": 1
+    },
+    "Preston North End": {
+      "skill": -0.07481970464516738,
+      "variance": 0.04822674126635189,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Burnley": {
+      "skill": 0.5593345106774783,
+      "variance": 0.058560738291607975,
+      "date": "2026-10-16",
+      "tier": 2
+    },
+    "Stoke City": {
+      "skill": 0.2955682166773328,
+      "variance": 0.04845619396132957,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "West Bromwich Albion": {
+      "skill": 0.41435506768793146,
+      "variance": 0.04972058105476917,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Wolverhampton Wanderers": {
+      "skill": 0.7953114768666565,
+      "variance": 0.05985296328788187,
+      "date": "2026-10-20",
+      "tier": 2
+    },
+    "Aston Villa": {
+      "skill": 1.5364428929898286,
+      "variance": 0.055108565195096694,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Blackburn Rovers": {
+      "skill": 0.30292836062147016,
+      "variance": 0.04985690362779033,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Notts County": {
+      "skill": -0.37702990163104905,
+      "variance": 0.0577466224382866,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Sunderland": {
+      "skill": 1.1656363604458704,
+      "variance": 0.055914871399878406,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Darwen": {
+      "skill": -0.7741586082280438,
+      "variance": 0.04095231206595425,
+      "date": "1899-04-22",
+      "tier": 2
+    },
+    "Sheffield Wednesday": {
+      "skill": -0.09684012776583881,
+      "variance": 0.057084409356461946,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Nottingham Forest": {
+      "skill": 1.4150161875148843,
+      "variance": 0.05564868387548056,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Manchester United": {
+      "skill": 1.664636263723572,
+      "variance": 0.05670277802102269,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Walsall": {
+      "skill": -0.5281908658728915,
+      "variance": 0.04961164772090299,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Sheffield United": {
+      "skill": 0.4177761711324291,
+      "variance": 0.04887498858011771,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Lincoln City": {
+      "skill": 0.22038111137493469,
+      "variance": 0.05473915044606741,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Manchester City": {
+      "skill": 2.2072059870954357,
+      "variance": 0.05640857156130078,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Bootle": {
+      "skill": 0.12674646480277116,
+      "variance": 0.06316162133142933,
+      "date": "1893-04-15",
+      "tier": 2
+    },
+    "Grimsby Town": {
+      "skill": -0.5504604218294021,
+      "variance": 0.048524916055365484,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Northwich Victoria": {
+      "skill": -0.5528809267823238,
+      "variance": 0.04975964347868135,
+      "date": "1894-04-07",
+      "tier": 2
+    },
+    "Burton Swifts": {
+      "skill": -0.08658946175152667,
+      "variance": 0.04709544548312819,
+      "date": "1901-04-27",
+      "tier": 2
+    },
+    "Crewe Alexandra": {
+      "skill": -0.5513184263138818,
+      "variance": 0.04861085184317402,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Birmingham City": {
+      "skill": 0.5982888070572154,
+      "variance": 0.049198446346897226,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Port Vale": {
+      "skill": -0.6215549157187302,
+      "variance": 0.057615716434738645,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Rotherham Town": {
+      "skill": -0.29849595574925664,
+      "variance": 0.043900176007475616,
+      "date": "1896-04-06",
+      "tier": 2
+    },
+    "Middlesbrough Ironopolis": {
+      "skill": -0.2401431627242598,
+      "variance": 0.057292769410885236,
+      "date": "1894-04-14",
+      "tier": 2
+    },
+    "Liverpool": {
+      "skill": 1.723914933540459,
+      "variance": 0.0555112723154084,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Arsenal": {
+      "skill": 2.1037433394928127,
+      "variance": 0.05655065349833275,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Newcastle United": {
+      "skill": 1.377685376934552,
+      "variance": 0.05437094556880069,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Burton Wanderers": {
+      "skill": 0.07995216004727423,
+      "variance": 0.04616042365434144,
+      "date": "1897-04-19",
+      "tier": 2
+    },
+    "Leicester City": {
+      "skill": 0.055310983890873106,
+      "variance": 0.0583161273732051,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Bury": {
+      "skill": -0.4308414379704376,
+      "variance": 0.0421029248220526,
+      "date": "2019-05-04",
+      "tier": 4
+    },
+    "Loughborough": {
+      "skill": -0.6104522933774871,
+      "variance": 0.043254564497831306,
+      "date": "1900-04-28",
+      "tier": 2
+    },
+    "Gainsborough Trinity": {
+      "skill": -0.05239968751333222,
+      "variance": 0.04231089529867166,
+      "date": "1912-04-27",
+      "tier": 2
+    },
+    "Blackpool": {
+      "skill": -0.28291955989389517,
+      "variance": 0.049426756812554935,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Luton Town": {
+      "skill": -0.0322584816729052,
+      "variance": 0.05039847861663228,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Barnsley": {
+      "skill": -0.473244910083985,
+      "variance": 0.0491314206946286,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Glossop North End": {
+      "skill": -0.28547264833647346,
+      "variance": 0.04193522223498704,
+      "date": "1915-04-24",
+      "tier": 2
+    },
+    "New Brighton Tower": {
+      "skill": 0.6650741258376112,
+      "variance": 0.04704639724819966,
+      "date": "1901-04-27",
+      "tier": 2
+    },
+    "Middlesbrough": {
+      "skill": 0.7029604768848593,
+      "variance": 0.05015909900974021,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Chesterfield": {
+      "skill": -0.4695228534415018,
+      "variance": 0.04898499384728723,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Stockport County": {
+      "skill": 0.1311345543763322,
+      "variance": 0.047980427477426306,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Doncaster Rovers": {
+      "skill": -0.4128144231146845,
+      "variance": 0.05039312373298028,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Bristol City": {
+      "skill": 0.26028108725604054,
+      "variance": 0.048908994298831,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Burton United": {
+      "skill": -0.07652239098987415,
+      "variance": 0.04470784349476547,
+      "date": "1907-04-27",
+      "tier": 2
+    },
+    "Bradford City": {
+      "skill": -0.06562302719748929,
+      "variance": 0.04940680361592275,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Leyton Orient": {
+      "skill": -0.2637366087540137,
+      "variance": 0.048270356511383485,
+      "date": "2026-10-21",
+      "tier": 3
+    },
+    "Hull City": {
+      "skill": 0.7732761609417864,
+      "variance": 0.0672926661933369,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Leeds City": {
+      "skill": 0.5474783835073748,
+      "variance": 0.09005877162243228,
+      "date": "1919-10-04",
+      "tier": 2
+    },
+    "Chelsea": {
+      "skill": 1.6381304322305463,
+      "variance": 0.0539517016989773,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Fulham": {
+      "skill": 1.3346179582165416,
+      "variance": 0.055741939207030404,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Oldham Athletic": {
+      "skill": -0.6623870217411277,
+      "variance": 0.04792978595982921,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Bradford Park Avenue": {
+      "skill": -1.441937148606384,
+      "variance": 0.03945792141438695,
+      "date": "1970-04-20",
+      "tier": 4
+    },
+    "Tottenham Hotspur": {
+      "skill": 1.2498947651873575,
+      "variance": 0.05554763929040901,
+      "date": "2026-10-19",
+      "tier": 1
+    },
+    "Huddersfield Town": {
+      "skill": 0.06246989716860959,
+      "variance": 0.048700375912188044,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Rotherham County": {
+      "skill": -0.7610811197799732,
+      "variance": 0.04097179509248843,
+      "date": "1925-05-02",
+      "tier": 3
+    },
+    "South Shields": {
+      "skill": -0.1483738924748273,
+      "variance": 0.042150430567991046,
+      "date": "1930-05-03",
+      "tier": 3
+    },
+    "Coventry City": {
+      "skill": 0.9651839663505157,
+      "variance": 0.06325531848374913,
+      "date": "2026-10-19",
+      "tier": 1
+    },
+    "West Ham United": {
+      "skill": 1.338431189106802,
+      "variance": 0.05796865540605755,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Cardiff City": {
+      "skill": 0.27175400722520626,
+      "variance": 0.055768854784995985,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Leeds United": {
+      "skill": 1.5366734596225178,
+      "variance": 0.056554019672884794,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Gillingham": {
+      "skill": -0.7870050185134043,
+      "variance": 0.04660555996002212,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Southampton": {
+      "skill": 0.8334025286730347,
+      "variance": 0.0497261597146385,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Exeter City": {
+      "skill": -0.47278766579685993,
+      "variance": 0.054754864859663896,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Brentford": {
+      "skill": 1.6270978040094584,
+      "variance": 0.05523024493148764,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Northampton Town": {
+      "skill": -0.8184787633902204,
+      "variance": 0.0584394640199549,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Portsmouth": {
+      "skill": 0.29636329783143067,
+      "variance": 0.04937427141552739,
+      "date": "2026-10-20",
+      "tier": 2
+    },
+    "Swansea City": {
+      "skill": 0.6017759757362018,
+      "variance": 0.04871592445140589,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Swindon Town": {
+      "skill": -0.6457716532197789,
+      "variance": 0.04746860551144696,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Newport County": {
+      "skill": -0.8422263880000247,
+      "variance": 0.0490906983654441,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Reading": {
+      "skill": -0.00663387475645404,
+      "variance": 0.047892844566128474,
+      "date": "2026-10-21",
+      "tier": 3
+    },
+    "Plymouth Argyle": {
+      "skill": -0.045195844535888284,
+      "variance": 0.046423510372329,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Norwich City": {
+      "skill": 0.35021905260117026,
+      "variance": 0.04865607984710132,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Queens Park Rangers": {
+      "skill": 0.31686307014880033,
+      "variance": 0.04913135987577758,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Watford": {
+      "skill": 0.00991926306696804,
+      "variance": 0.047716229836264015,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Southend United": {
+      "skill": -0.9525189516745713,
+      "variance": 0.04124892681527927,
+      "date": "2021-05-08",
+      "tier": 4
+    },
+    "Brighton & Hove Albion": {
+      "skill": 1.8986191111204596,
+      "variance": 0.05201514817599915,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Merthyr Town": {
+      "skill": -1.088287475005363,
+      "variance": 0.03784282389098419,
+      "date": "1930-05-03",
+      "tier": 3
+    },
+    "Crystal Palace": {
+      "skill": 1.2656086163415787,
+      "variance": 0.05375936408649549,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Millwall": {
+      "skill": 0.5230085625950989,
+      "variance": 0.048199825774572845,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Bristol Rovers": {
+      "skill": -0.7223070569391913,
+      "variance": 0.04647185086434577,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Ashington": {
+      "skill": -0.9803480617280103,
+      "variance": 0.041676097114699585,
+      "date": "1929-04-27",
+      "tier": 3
+    },
+    "Barrow": {
+      "skill": -1.1014930376662182,
+      "variance": 0.03999441147035564,
+      "date": "2026-05-02",
+      "tier": 4
+    },
+    "Darlington": {
+      "skill": -1.1311576099713996,
+      "variance": 0.03909942447438009,
+      "date": "2010-05-08",
+      "tier": 4
+    },
+    "Halifax Town": {
+      "skill": -1.1605735255704255,
+      "variance": 0.03873084310804362,
+      "date": "2002-04-20",
+      "tier": 4
+    },
+    "Nelson": {
+      "skill": -1.0427742513895315,
+      "variance": 0.04144478036907217,
+      "date": "1931-05-02",
+      "tier": 3
+    },
+    "Wigan Borough": {
+      "skill": -0.6472854063044816,
+      "variance": 0.047652701747910406,
+      "date": "1931-10-24",
+      "tier": 3
+    },
+    "Rochdale": {
+      "skill": -0.7956198090005435,
+      "variance": 0.07180474972012788,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Accrington Stanley": {
+      "skill": -0.7516544572576626,
+      "variance": 0.048618142116587285,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Southport": {
+      "skill": -1.1485084724428736,
+      "variance": 0.03981600340158935,
+      "date": "1978-04-29",
+      "tier": 4
+    },
+    "Durham City": {
+      "skill": -0.8181902888442338,
+      "variance": 0.04066637812628957,
+      "date": "1928-05-05",
+      "tier": 3
+    },
+    "Stalybridge Celtic": {
+      "skill": -0.4125551510760224,
+      "variance": 0.04257502482141227,
+      "date": "1923-05-05",
+      "tier": 3
+    },
+    "Tranmere Rovers": {
+      "skill": -0.8879802458378109,
+      "variance": 0.04854381861880038,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Wrexham": {
+      "skill": 0.4185271004107761,
+      "variance": 0.048943757775853164,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "Hartlepool United": {
+      "skill": -0.919899184769161,
+      "variance": 0.042134060857553814,
+      "date": "2023-05-08",
+      "tier": 4
+    },
+    "Aberdare Athletic": {
+      "skill": -0.7293241207624435,
+      "variance": 0.042948356242443725,
+      "date": "1927-05-07",
+      "tier": 3
+    },
+    "Charlton Athletic": {
+      "skill": 0.1038268427292439,
+      "variance": 0.050057983523393225,
+      "date": "2026-10-17",
+      "tier": 2
+    },
+    "New Brighton": {
+      "skill": -0.8327028950397448,
+      "variance": 0.03920262221896255,
+      "date": "1951-05-05",
+      "tier": 3
+    },
+    "AFC Bournemouth": {
+      "skill": 1.541863122588824,
+      "variance": 0.05544124550675783,
+      "date": "2026-10-18",
+      "tier": 1
+    },
+    "Rotherham United": {
+      "skill": -0.798748676769753,
+      "variance": 0.05405069195618693,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Torquay United": {
+      "skill": -0.9090145230647231,
+      "variance": 0.04000365368058818,
+      "date": "2014-05-03",
+      "tier": 4
+    },
+    "Carlisle United": {
+      "skill": -0.9388730878766595,
+      "variance": 0.041362571017676555,
+      "date": "2025-05-03",
+      "tier": 4
+    },
+    "York City": {
+      "skill": -0.45707807404557893,
+      "variance": 0.08048246812841775,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Gateshead": {
+      "skill": -0.9270764055668607,
+      "variance": 0.039705423422910245,
+      "date": "1960-04-30",
+      "tier": 4
+    },
+    "Thames": {
+      "skill": -0.8692035787407711,
+      "variance": 0.042478506350341096,
+      "date": "1932-05-07",
+      "tier": 3
+    },
+    "Chester": {
+      "skill": -1.166476061002307,
+      "variance": 0.04075749909612331,
+      "date": "2009-05-02",
+      "tier": 4
+    },
+    "Mansfield Town": {
+      "skill": -0.10758909996929338,
+      "variance": 0.049212521708789946,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Aldershot": {
+      "skill": -1.2122486711839524,
+      "variance": 0.03770949044898936,
+      "date": "1991-05-11",
+      "tier": 4
+    },
+    "Ipswich Town": {
+      "skill": 1.000275722937181,
+      "variance": 0.06524922287816094,
+      "date": "2026-10-17",
+      "tier": 1
+    },
+    "Scunthorpe United": {
+      "skill": -1.4450700121275848,
+      "variance": 0.04036966093930455,
+      "date": "2022-05-07",
+      "tier": 4
+    },
+    "Shrewsbury Town": {
+      "skill": -0.8819231722285015,
+      "variance": 0.048195555906891153,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Colchester United": {
+      "skill": -0.6439314234342071,
+      "variance": 0.04992587384747554,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Workington": {
+      "skill": -1.5045190039363594,
+      "variance": 0.04135263119015936,
+      "date": "1977-05-17",
+      "tier": 4
+    },
+    "Peterborough United": {
+      "skill": -0.4745096504203902,
+      "variance": 0.04835306054778625,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Oxford United": {
+      "skill": 0.22984171027602,
+      "variance": 0.06012733100901598,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Cambridge United": {
+      "skill": -0.10740411782909556,
+      "variance": 0.05787843908145255,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Hereford United": {
+      "skill": -0.8024204463377993,
+      "variance": 0.04193166341483168,
+      "date": "2012-05-05",
+      "tier": 4
+    },
+    "Wimbledon": {
+      "skill": -0.11348901318627325,
+      "variance": 0.04186142932883713,
+      "date": "2004-05-09",
+      "tier": 2
+    },
+    "Wigan Athletic": {
+      "skill": -0.4636341533816507,
+      "variance": 0.0498976391076738,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Scarborough": {
+      "skill": -0.9012575778504621,
+      "variance": 0.039252062456009484,
+      "date": "1999-05-08",
+      "tier": 4
+    },
+    "Maidstone United": {
+      "skill": -0.8084348536252679,
+      "variance": 0.04095222635012531,
+      "date": "1992-05-02",
+      "tier": 4
+    },
+    "Barnet": {
+      "skill": -0.3175064717897359,
+      "variance": 0.051738110074080405,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Wycombe Wanderers": {
+      "skill": -0.21134277359090706,
+      "variance": 0.04871992727677118,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Macclesfield Town": {
+      "skill": -0.9663549710734504,
+      "variance": 0.04175978413176457,
+      "date": "2020-03-07",
+      "tier": 4
+    },
+    "Cheltenham Town": {
+      "skill": -0.7984302100435771,
+      "variance": 0.04686071310277732,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Kidderminster Harriers": {
+      "skill": -1.1696467889926205,
+      "variance": 0.04156641033884802,
+      "date": "2005-05-07",
+      "tier": 4
+    },
+    "Rushden & Diamonds": {
+      "skill": -1.079231418152566,
+      "variance": 0.0415854493204536,
+      "date": "2006-05-06",
+      "tier": 4
+    },
+    "Boston United": {
+      "skill": -1.0132675375729931,
+      "variance": 0.041503178747385676,
+      "date": "2007-05-05",
+      "tier": 4
+    },
+    "Yeovil Town": {
+      "skill": -1.1076391523005544,
+      "variance": 0.04089250831586624,
+      "date": "2019-05-04",
+      "tier": 4
+    },
+    "Milton Keynes Dons": {
+      "skill": -0.4100827217591959,
+      "variance": 0.05790108300783337,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Morecambe": {
+      "skill": -1.0940377352296444,
+      "variance": 0.039500267328198176,
+      "date": "2025-05-03",
+      "tier": 4
+    },
+    "Dagenham and Redbridge": {
+      "skill": -1.028531442282917,
+      "variance": 0.04067472093208063,
+      "date": "2016-05-07",
+      "tier": 4
+    },
+    "Aldershot Town": {
+      "skill": -0.7926510510819875,
+      "variance": 0.04067342201999801,
+      "date": "2013-04-27",
+      "tier": 4
+    },
+    "Burton Albion": {
+      "skill": -0.3332476388119353,
+      "variance": 0.048258176465112865,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Stevenage": {
+      "skill": -0.11162171310203975,
+      "variance": 0.04931231525138971,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "AFC Wimbledon": {
+      "skill": -0.6454472357064293,
+      "variance": 0.04763386904083582,
+      "date": "2026-10-20",
+      "tier": 3
+    },
+    "Crawley Town": {
+      "skill": -1.0385682710587467,
+      "variance": 0.051474170219086124,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Fleetwood Town": {
+      "skill": -0.7206364902835224,
+      "variance": 0.04869329056450228,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Forest Green Rovers": {
+      "skill": -1.025912503408091,
+      "variance": 0.040301265642958946,
+      "date": "2024-04-27",
+      "tier": 4
+    },
+    "Salford City": {
+      "skill": -0.37093355077995027,
+      "variance": 0.0476795942482777,
+      "date": "2026-10-20",
+      "tier": 4
+    },
+    "Harrogate Town": {
+      "skill": -0.9799477985180522,
+      "variance": 0.040962602500792054,
+      "date": "2026-05-02",
+      "tier": 4
+    },
+    "Sutton United": {
+      "skill": -0.8546305667331625,
+      "variance": 0.041564845296440646,
+      "date": "2024-04-27",
+      "tier": 4
+    },
+    "Bromley": {
+      "skill": -0.6616570899225646,
+      "variance": 0.0567198594675364,
+      "date": "2026-10-20",
+      "tier": 3
+    }
+  },
+  "ranked_sha256": "bbe7f47add1522ffa5f97237f06e637b21825dc4e190a73ab0494b27ef1867e0",
+  "source_sha256": "0b954e14442216a2ac7ad762efa120608c7ff64209b000d9fede8469d7017637"
+}

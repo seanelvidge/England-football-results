@@ -1,9 +1,12 @@
 import argparse
 import csv
 import datetime as dt
+import hashlib
+import json
+import math
 import os
-import pickle
 import zipfile
+from pathlib import Path
 from datetime import datetime
 from io import StringIO
 from typing import Dict, List, Optional, Set, Tuple, Iterable
@@ -15,15 +18,18 @@ import requests
 
 
 ELO_PER_NAT_LOGIT = 400.0 / np.log(10.0)
-# Three outcome probabilities sum to one, so their innovation has two
-# independent components. The numerical ridge does not add an observation.
-NIS_TARGET = 2.0
-NIS_EWMA_DEFAULT = NIS_TARGET
-PHI0_DEFAULT = 1.0
+MODEL_VERSION = "davidson-margin-v3"
+BETA = 0.9
+WEEKLY_RHO = 0.995
+WEEKLY_PROCESS_VARIANCE = 0.0017
+INITIAL_VARIANCE = 0.25
+BASELINE_LEARNING_RATE = 0.001
+MARGIN_SLOPE = 0.75
+TIER_MEANS = {1: 1.5, 2: 0.3, 3: -0.3, 4: -0.6}
 DISPLAY_BASE = 1000.0
 DISPLAY_MULT = 2.0
 DISPLAY_OFFSET = 0.0
-RANKINGS_STATE_HEADER = ["RecordType", "Team", "Date", "Rank", "Var", "Tier", "NIS_EWMA", "PHI0"]
+RANKINGS_STATE_HEADER = ["RecordType", "Team", "Date", "Rank", "Var", "Tier", "HomeAdvantage", "LogDraw", "LogExcessMargin"]
 EXCEL_EPOCH = datetime(1899, 12, 30)
 
 
@@ -417,6 +423,7 @@ def normalize_team_names(df: pd.DataFrame) -> pd.DataFrame:
         "Rotherham": "Rotherham United",
         "Salford": "Salford City",
         "Sheffield Weds": "Sheffield Wednesday",
+        "Sheffield Wed": "Sheffield Wednesday",
         "Shrewsbury": "Shrewsbury Town",
         "Stockport": "Stockport County",
         "Stoke": "Stoke City",
@@ -430,8 +437,13 @@ def normalize_team_names(df: pd.DataFrame) -> pd.DataFrame:
         "Wigan": "Wigan Athletic",
         "Wolves": "Wolverhampton Wanderers",
         "Wycombe": "Wycombe Wanderers",
+        "York": "York City",
     }
-    return df.replace(names_to_change, regex=False)
+    df = df.copy()
+    for column in ["HomeTeam", "AwayTeam"]:
+        if column in df:
+            df[column] = df[column].replace(names_to_change, regex=False)
+    return df
 
 
 def skill_to_elo(skill: float, beta: float = 0.9) -> np.ndarray:
@@ -439,375 +451,301 @@ def skill_to_elo(skill: float, beta: float = 0.9) -> np.ndarray:
     return np.round(DISPLAY_BASE + scale * (skill - DISPLAY_OFFSET), 0)
 
 
-def era_probs_from_year(year: int) -> Tuple[float, float, float]:
-    home = (year - 1888) * (-0.141579) + 60.5636
-    away = (year - 1888) * (0.075714) + 19.4769
-    draw = (year - 1888) * (0.065851) + 19.9608
-    probs = np.clip(np.array([home, draw, away], dtype=float), 0.001, None)
-    probs /= probs.sum()
-    return float(probs[0]), float(probs[2]), float(probs[1])
+def initial_baselines() -> Dict[int, List[float]]:
+    # Weak starting values; subsequent estimates use completed earlier dates only.
+    return {tier: [0.5, math.log(0.7), math.log(0.8)] for tier in TIER_MEANS}
 
 
-def delta_base_and_kappa(year: int) -> Tuple[float, float]:
-    p_home, p_away, p_draw = era_probs_from_year(year)
-    delta_base = 0.5 * np.log(p_home / p_away)
-    kappa = (p_draw / (1.0 - p_draw)) * 2.0 * np.cosh(delta_base)
-    return delta_base, kappa
+def predict_probs(skill_home: float, skill_away: float, home_advantage: float, log_draw: float, beta: float = BETA) -> np.ndarray:
+    """Stable Davidson probabilities in home/draw/away order."""
+    delta = beta * (skill_home - skill_away) + home_advantage
+    logits = np.array([delta, log_draw, -delta])
+    weights = np.exp(logits - logits.max())
+    return weights / weights.sum()
 
 
-def result_vector(result: str) -> np.ndarray:
-    if result == "H":
-        return np.array([1.0, 0.0, 0.0])
+def forecast_team(skill: float, variance: float, previous_tier: int, tier: int, days: int) -> Tuple[float, float]:
+    """Exact calendar-time OU transition, with a promotion/relegation variance reset."""
+    if days < 0:
+        raise ValueError("Cannot forecast a team backwards in time")
+    persistence = WEEKLY_RHO ** (days / 7.0)
+    if previous_tier != tier:
+        variance *= 1.5
+    process = WEEKLY_PROCESS_VARIANCE * (1.0 - persistence**2) / (1.0 - WEEKLY_RHO**2)
+    return persistence * skill + (1.0 - persistence) * TIER_MEANS[tier], persistence**2 * variance + process
+
+
+def categorical_update(skill_home: float, var_home: float, skill_away: float, var_away: float,
+                       result: str, home_advantage: float, log_draw: float) -> Tuple[float, float, float, float, np.ndarray]:
+    """One Gaussian assumed-density / categorical EKF update in scalar form.
+
+    With a=(1,0,-1), z=a'y and m=pH-pA, the score is beta*(z-m)
+    and Fisher information is beta^2*(pH+pA-m^2). This is algebraically
+    the two-independent-residual EKF without a ridge, clipped innovations,
+    artificial observation dispersion, or confidence-dependent gain shrinkage.
+    Cross-team posterior covariance is discarded (a documented approximation).
+    """
+    probs = predict_probs(skill_home, skill_away, home_advantage, log_draw)
+    z = {"H": 1.0, "D": 0.0, "A": -1.0}[result]
+    mean = probs[0] - probs[2]
+    information = BETA**2 * (probs[0] + probs[2] - mean**2)
+    denominator = 1.0 + (var_home + var_away) * information
+    score = BETA * (z - mean)
+    return (
+        float(skill_home + var_home * score / denominator),
+        float(var_home - var_home**2 * information / denominator),
+        float(skill_away - var_away * score / denominator),
+        float(var_away - var_away**2 * information / denominator),
+        probs,
+    )
+
+
+def margin_terms(delta: float, result: str, goal_margin: int, log_excess: float) -> Tuple[float, float, float]:
+    """Score in delta, observed information, and score in log excess margin.
+
+    For a win with direction z, k=abs(goal_margin)-1 is geometric on 0,1,...
+    with mean exp(log_excess + MARGIN_SLOPE*z*delta). This is conditional on
+    the result, so it adds information without counting the win twice.
+    Draws contain no extra margin information in this one-strength model.
+    """
     if result == "D":
-        return np.array([0.0, 1.0, 0.0])
-    if result == "A":
-        return np.array([0.0, 0.0, 1.0])
-    raise ValueError(f"Unknown result {result}")
+        return 0.0, 0.0, 0.0
+    z = 1.0 if result == "H" else -1.0
+    excess = abs(goal_margin) - 1
+    eta = log_excess + MARGIN_SLOPE * z * delta
+    # t=lambda/(1+lambda), calculated without overflowing exp(eta).
+    t = 1.0 / (1.0 + math.exp(-eta)) if eta >= 0 else math.exp(eta) / (1.0 + math.exp(eta))
+    score = excess - (excess + 1) * t
+    information = (excess + 1) * t * (1.0 - t)
+    return MARGIN_SLOPE * z * score, MARGIN_SLOPE**2 * information, score
 
 
-def predict_probs(skill_home: float, skill_away: float, year: int, beta: float = 1.0) -> np.ndarray:
-    delta_base, kappa = delta_base_and_kappa(year)
-    delta = beta * (skill_home - skill_away) + delta_base
-    up = np.exp(delta)
-    down = np.exp(-delta)
-    denom = up + down + kappa
-    return np.array([up / denom, kappa / denom, down / denom])
+def scoreline_update(skill_home: float, var_home: float, skill_away: float, var_away: float,
+                     home_goals: int, away_goals: int, home_advantage: float, log_draw: float,
+                     log_excess: float) -> Tuple[float, float, float, float, np.ndarray, float, float]:
+    """One Gaussian update for Davidson(result) times geometric(winning margin).
 
-
-def jacobian(skill_home: float, skill_away: float, year: int, beta: float = 1.0) -> np.ndarray:
-    delta_base, kappa = delta_base_and_kappa(year)
-    delta = beta * (skill_home - skill_away) + delta_base
-    up = np.exp(delta)
-    down = np.exp(-delta)
-    denom = up + down + kappa
-    denom_sq = denom**2
-
-    dp_home = (up * (2.0 * down + kappa)) / denom_sq
-    dp_away = (-down * (2.0 * up + kappa)) / denom_sq
-    dp_draw = (-kappa * (up - down)) / denom_sq
-
-    return np.array(
-        [
-            [beta * dp_home, -beta * dp_home],
-            [beta * dp_draw, -beta * dp_draw],
-            [beta * dp_away, -beta * dp_away],
-        ]
+    The returned probabilities are issued before observing this match's score.
+    The last two values update home advantage and the margin intercept after
+    the whole date is processed. Cross-team covariance remains approximated
+    by zero, as in the results-only filter.
+    """
+    result = determine_match_result(home_goals, away_goals)
+    probs = predict_probs(skill_home, skill_away, home_advantage, log_draw)
+    z = {"H": 1.0, "D": 0.0, "A": -1.0}[result]
+    mean = probs[0] - probs[2]
+    delta = BETA * (skill_home - skill_away) + home_advantage
+    margin_score, margin_info, intercept_score = margin_terms(delta, result, home_goals-away_goals, log_excess)
+    score_delta = z - mean + margin_score
+    information = BETA**2 * (probs[0] + probs[2] - mean**2 + margin_info)
+    denominator = 1.0 + (var_home + var_away) * information
+    score = BETA * score_delta
+    return (
+        float(skill_home + var_home * score / denominator),
+        float(var_home - var_home**2 * information / denominator),
+        float(skill_away - var_away * score / denominator),
+        float(var_away - var_away**2 * information / denominator),
+        probs, score_delta, intercept_score,
     )
-
-
-def safe_probs(probs: np.ndarray, floor: float = 1e-3) -> np.ndarray:
-    probs = np.clip(probs, floor, 1.0 - floor)
-    probs /= probs.sum()
-    return probs
-
-
-def clip_innovation(innovation: np.ndarray, p_max: float, c_lo: float = 0.70, c_hi: float = 0.35, t: float = 0.90) -> Tuple[np.ndarray, float]:
-    cap = c_lo if p_max <= t else c_lo - (c_lo - c_hi) * (p_max - t) / (1.0 - t)
-    norm = np.linalg.norm(innovation)
-    clipped = float(norm > cap)
-    if norm <= cap:
-        return innovation, clipped
-    return innovation * (cap / norm), clipped
-
-
-def q_match_adaptive(days_since_prev: int, p_max: float, base: float = 0.003, per_day: float = 0.0003, cap: float = 0.01, t_hi: float = 0.88, min_frac: float = 0.1) -> float:
-    q_val = base + per_day * max(0, days_since_prev)
-    if p_max <= t_hi:
-        frac = 1.0
-    else:
-        frac = 1.0 - 0.97 * (p_max - t_hi) / (1.0 - t_hi)
-        frac = max(frac, min_frac)
-    return min(q_val * frac, cap)
-
-
-def certainty_phi_multiplier(p_max: float, t_hi: float = 0.88, a_hi: float = 10.0, lo: float = 1.0, hi: float = 5.0) -> float:
-    value = 1.0 + a_hi * max(0.0, float(p_max) - t_hi)
-    return float(np.clip(value, lo, hi))
-
-
-def damp_covariance(cov: np.ndarray, p_max: float, lo: float = 0.985, hi: float = 0.97, t: float = 0.88) -> np.ndarray:
-    if p_max <= t:
-        damping = lo
-    else:
-        damping = lo - (lo - hi) * (p_max - t) / (1.0 - t)
-    return damping * cov + (1 - damping) * np.diag(np.minimum(np.diag(cov), 1.0))
-
-
-def damp_pminus(p_minus: np.ndarray, p_max: float, lo: float = 0.992, hi: float = 0.965, t: float = 0.86) -> np.ndarray:
-    if p_max <= t:
-        damping = lo
-    else:
-        damping = lo - (lo - hi) * (p_max - t) / (1.0 - t)
-    return damping * p_minus + (1 - damping) * np.diag(np.minimum(np.diag(p_minus), 1.0))
-
-
-def gain_shrink(p_max: float, t: float = 0.86, g_min: float = 0.65) -> float:
-    if p_max <= t:
-        return 1.0
-    return 1.0 - (1.0 - g_min) * (p_max - t) / (1.0 - t)
-
-
-def ekf_update_one_match(
-    skill_home: float,
-    var_home: float,
-    tier_home: float,
-    skill_away: float,
-    var_away: float,
-    tier_away: float,
-    year: int,
-    result: str,
-    tier: int,
-    beta: float = 0.9,
-    eps: float = 1e-9,
-    days_since_prev_home: int = 7,
-    days_since_prev_away: int = 7,
-    nis_ewma: float = NIS_EWMA_DEFAULT,
-    nis_target: float = NIS_TARGET,
-    phi0: float = PHI0_DEFAULT,
-    alpha_nis: float = 0.02,
-    k_phi: float = 0.25,
-    phi0_min: float = 0.3,
-    phi0_max: float = 3.0,
-) -> Tuple[float, float, float, float, float, float]:
-    tier_means = {1: 1.5, 2: 0.3, 3: -0.3, 4: -0.6}
-    prior_state = np.array([skill_home, skill_away], dtype=float)
-
-    var_home = var_home if tier_home == tier else var_home * 1.5
-    var_away = var_away if tier_away == tier else var_away * 1.5
-    prior_cov = np.array([[var_home, 0.0], [0.0, var_away]], dtype=float)
-
-    rho = 0.997
-    transition = np.eye(2) * rho
-    state_minus = np.array(
-        [
-            rho * prior_state[0] + (1 - rho) * tier_means[tier],
-            rho * prior_state[1] + (1 - rho) * tier_means[tier],
-        ]
-    )
-
-    probs = safe_probs(predict_probs(state_minus[0], state_minus[1], year, beta=beta))
-    h_mat = jacobian(state_minus[0], state_minus[1], year, beta=beta)
-    certainty = float(probs.max())
-
-    q_home = q_match_adaptive(days_since_prev_home, certainty, base=0.002, per_day=0.0002, cap=0.008, t_hi=0.86, min_frac=0.03)
-    q_away = q_match_adaptive(days_since_prev_away, certainty, base=0.002, per_day=0.0002, cap=0.008, t_hi=0.86, min_frac=0.03)
-    process_cov = np.diag([q_home, q_away])
-
-    p_minus = transition @ prior_cov @ transition.T + process_cov
-    p_minus = damp_pminus(p_minus, certainty, t=0.86)
-
-    phi_eff = phi0 * certainty_phi_multiplier(certainty, t_hi=0.86, a_hi=10.0, lo=1.0, hi=3.0)
-    obs_cov = (np.diag(probs) - np.outer(probs, probs)) * phi_eff + np.eye(3) * eps
-
-    innovation = result_vector(result) - probs
-    innovation, _ = clip_innovation(innovation, certainty, c_lo=1.4, c_hi=0.8, t=0.92)
-
-    system_cov = h_mat @ p_minus @ h_mat.T + obs_cov + np.eye(3) * eps
-    kalman_gain = p_minus @ h_mat.T @ np.linalg.pinv(system_cov)
-    kalman_gain *= gain_shrink(certainty, t=0.86, g_min=0.65)
-
-    state_after = state_minus + kalman_gain @ innovation
-    identity = np.eye(2)
-    cov_after = (identity - kalman_gain @ h_mat) @ p_minus @ (identity - kalman_gain @ h_mat).T + kalman_gain @ obs_cov @ kalman_gain.T
-    cov_after = 0.5 * (cov_after + cov_after.T) + np.eye(2) * eps
-    cov_after = damp_covariance(cov_after, certainty)
-
-    nis = float(innovation.T @ np.linalg.pinv(system_cov) @ innovation)
-    nis_ewma = (1 - alpha_nis) * nis_ewma + alpha_nis * nis
-    phi0 *= np.exp(k_phi * (nis_ewma - nis_target) / nis_target)
-    phi0 = float(np.clip(phi0, phi0_min, phi0_max))
-
-    return float(state_after[0]), float(cov_after[0, 0]), float(state_after[1]), float(cov_after[1, 1]), float(nis_ewma), float(phi0)
 
 
 class Team:
-    def __init__(self, name: str, rank: float = 0, initDate: str = "1888-09-09", var: float = 0.5, tier: int = 1):
+    def __init__(self, name: str, rank: Optional[float] = None, initDate: str = "1888-09-08", var: float = INITIAL_VARIANCE, tier: int = 1):
         self.name = name
-        self.rank = np.array(rank, ndmin=1, dtype=float)
-        self.var = np.array(var, ndmin=1, dtype=float)
+        self.rank = [TIER_MEANS[tier] if rank is None else float(rank)]
+        self.var = [float(var)]
         self.date = [initDate]
-        self.tier = np.array(tier, ndmin=1, dtype=float)
-
-    def __eq__(self, other: object) -> bool:
-        return isinstance(other, Team) and self.name == other.name
+        self.tier = [int(tier)]
 
     def update(self, new_rank: float, new_var: float, date: str, tier: int) -> None:
-        self.rank = np.append(self.rank, new_rank)
-        self.var = np.append(self.var, new_var)
+        self.rank.append(new_rank)
+        self.var.append(new_var)
         self.date.append(date)
-        self.tier = np.append(self.tier, tier)
+        self.tier.append(tier)
 
 
-def get_team(team_list: List[Team], team_name: str, init_date: str, tier: int) -> Team:
-    try:
-        return team_list[team_list.index(Team(team_name))]
-    except ValueError:
-        team = Team(team_name, rank=0, var=0.0, initDate=init_date, tier=tier)
-        team_list.append(team)
-        return team
-
-
-def process_match_rows(rows: Iterable[pd.Series], team_list: List[Team], nis_ewma: float, phi0: float) -> Tuple[List[Dict], float, float]:
+def process_match_rows(rows: Iterable[pd.Series], team_list: List[Team], baselines: Dict[int, List[float]]) -> List[Dict]:
     processed_rows: List[Dict] = []
+    teams = {team.name: team for team in team_list}
+    pending = {tier: [0.0, 0.0, 0.0] for tier in TIER_MEANS}
+    current_day = None
+
+    def flush_baselines():
+        for tier in TIER_MEANS:
+            for j in range(3):
+                baselines[tier][j] += pending[tier][j]
+                pending[tier][j] = 0.0
 
     for row in rows:
-        home_team = get_team(team_list, row.HomeTeam, row.Date, row.Tier)
-        away_team = get_team(team_list, row.AwayTeam, row.Date, row.Tier)
-
-        current_date = datetime.strptime(row.Date, "%Y-%m-%d")
-        last_home = datetime.strptime(home_team.date[-1], "%Y-%m-%d")
-        last_away = datetime.strptime(away_team.date[-1], "%Y-%m-%d")
-
-        out_home_skill, out_home_var, out_away_skill, out_away_var, nis_ewma, phi0 = ekf_update_one_match(
-            home_team.rank[-1],
-            home_team.var[-1],
-            home_team.tier[-1],
-            away_team.rank[-1],
-            away_team.var[-1],
-            away_team.tier[-1],
-            int(row.Date.split("-")[0]),
-            row.Result,
-            row.Tier,
-            days_since_prev_home=(current_date - last_home).days,
-            days_since_prev_away=(current_date - last_away).days,
-            nis_ewma=nis_ewma,
-            phi0=phi0,
-        )
-
-        home_rank_before = skill_to_elo(home_team.rank[-1])
-        away_rank_before = skill_to_elo(away_team.rank[-1])
-
-        home_team.update(out_home_skill, out_home_var, row.Date, row.Tier)
-        away_team.update(out_away_skill, out_away_var, row.Date, row.Tier)
-
+        if current_day != row.Date:
+            flush_baselines()
+            current_day = row.Date
+        for name in [row.HomeTeam, row.AwayTeam]:
+            if name not in teams:
+                teams[name] = Team(name, initDate=row.Date, tier=row.Tier)
+                team_list.append(teams[name])
+        home, away = teams[row.HomeTeam], teams[row.AwayTeam]
+        date = dt.date.fromisoformat(row.Date)
+        sh, vh = forecast_team(home.rank[-1], home.var[-1], home.tier[-1], row.Tier, (date-dt.date.fromisoformat(home.date[-1])).days)
+        sa, va = forecast_team(away.rank[-1], away.var[-1], away.tier[-1], row.Tier, (date-dt.date.fromisoformat(away.date[-1])).days)
+        hb, lk, lm = baselines[row.Tier]
+        new_sh, new_vh, new_sa, new_va, probs, home_score, margin_score = scoreline_update(sh, vh, sa, va, row.hGoal, row.aGoal, hb, lk, lm)
+        pending[row.Tier][0] += BASELINE_LEARNING_RATE * home_score
+        pending[row.Tier][1] += BASELINE_LEARNING_RATE * ((row.Result == "D") - probs[1])
+        pending[row.Tier][2] += BASELINE_LEARNING_RATE * margin_score
         match_row = row._asdict() if hasattr(row, "_asdict") else dict(row)
-        match_row["HomeRank_before"] = home_rank_before
-        match_row["AwayRank_before"] = away_rank_before
-        match_row["HomeRank_after"] = skill_to_elo(home_team.rank[-1])
-        match_row["AwayRank_after"] = skill_to_elo(away_team.rank[-1])
+        match_row.update({
+            "HomeRank_before": skill_to_elo(home.rank[-1]), "AwayRank_before": skill_to_elo(away.rank[-1]),
+            "HomeRank_after": skill_to_elo(new_sh), "AwayRank_after": skill_to_elo(new_sa),
+            "HomeWinProbability": probs[0], "DrawProbability": probs[1], "AwayWinProbability": probs[2],
+        })
+        home.update(new_sh, new_vh, row.Date, row.Tier)
+        away.update(new_sa, new_va, row.Date, row.Tier)
         processed_rows.append(match_row)
-
-    return processed_rows, nis_ewma, phi0
-
-
-def load_rankings_state_from_pickle(rankings_pickle: str) -> Tuple[List[Team], float, float]:
-    if os.path.exists(rankings_pickle):
-        try:
-            with open(rankings_pickle, "rb") as handle:
-                state = pickle.load(handle)
-        except (pickle.UnpicklingError, EOFError, AttributeError, ValueError) as exc:
-            print(f"Could not load rankings state from {rankings_pickle}: {exc}. Rebuilding rankings from scratch.")
-            return [], NIS_EWMA_DEFAULT, PHI0_DEFAULT
-        if isinstance(state, dict):
-            return state.get("teams", []), state.get("nis_ewma", NIS_EWMA_DEFAULT), state.get("phi0", PHI0_DEFAULT)
-        return state, NIS_EWMA_DEFAULT, PHI0_DEFAULT
-    return [], NIS_EWMA_DEFAULT, PHI0_DEFAULT
+    flush_baselines()
+    return processed_rows
 
 
-def load_rankings_state(rankings_state_path: str) -> Tuple[List[Team], float, float]:
-    if os.path.exists(rankings_state_path):
-        try:
-            teams_by_name: Dict[str, Team] = {}
-            nis_ewma = NIS_EWMA_DEFAULT
-            phi0 = PHI0_DEFAULT
-
-            with open(rankings_state_path, newline="", encoding="utf-8") as handle:
-                reader = csv.DictReader(handle)
-                if reader.fieldnames != RANKINGS_STATE_HEADER:
-                    raise ValueError(f"Unexpected rankings state header: {reader.fieldnames}")
-
-                for row in reader:
-                    record_type = row["RecordType"]
-                    if record_type == "META":
-                        nis_ewma = float(row["NIS_EWMA"]) if row["NIS_EWMA"] else NIS_EWMA_DEFAULT
-                        phi0 = float(row["PHI0"]) if row["PHI0"] else PHI0_DEFAULT
-                        continue
-                    if record_type != "TEAM":
-                        raise ValueError(f"Unexpected rankings state record type '{record_type}'")
-
-                    team_name = row["Team"]
-                    rank = float(row["Rank"])
-                    var = float(row["Var"])
-                    tier = int(float(row["Tier"]))
-                    date = row["Date"]
-
-                    if team_name not in teams_by_name:
-                        teams_by_name[team_name] = Team(team_name, rank=rank, var=var, initDate=date, tier=tier)
-                    else:
-                        teams_by_name[team_name].update(rank, var, date, tier)
-
-            return list(teams_by_name.values()), nis_ewma, phi0
-        except (OSError, KeyError, ValueError) as exc:
-            print(f"Could not load rankings state from {rankings_state_path}: {exc}. Rebuilding rankings from scratch.")
-            return [], NIS_EWMA_DEFAULT, PHI0_DEFAULT
-
-    legacy_pickle_path = os.path.splitext(rankings_state_path)[0] + ".p"
-    return load_rankings_state_from_pickle(legacy_pickle_path)
+def load_rankings_state(path: str) -> Tuple[List[Team], Dict[int, List[float]]]:
+    teams: Dict[str, Team] = {}
+    baselines = {}
+    with open(path, newline="", encoding="utf-8") as handle:
+        reader = csv.DictReader(handle)
+        if reader.fieldnames != RANKINGS_STATE_HEADER:
+            raise ValueError("State schema does not match the current model")
+        for row in reader:
+            tier = int(row["Tier"])
+            if row["RecordType"] == "META":
+                baselines[tier] = [float(row["HomeAdvantage"]), float(row["LogDraw"]), float(row["LogExcessMargin"])]
+            elif row["RecordType"] == "TEAM":
+                name, rank, variance, date = row["Team"], float(row["Rank"]), float(row["Var"]), row["Date"]
+                if not math.isfinite(rank) or not math.isfinite(variance) or variance < 0:
+                    raise ValueError("Invalid team state")
+                if name not in teams:
+                    teams[name] = Team(name, rank=rank, var=variance, initDate=date, tier=tier)
+                else:
+                    teams[name].update(rank, variance, date, tier)
+            else:
+                raise ValueError("Invalid state record type")
+    if set(baselines) != set(TIER_MEANS) or not np.isfinite(list(baselines.values())).all():
+        raise ValueError("Missing or invalid baseline state")
+    return list(teams.values()), baselines
 
 
-def save_rankings_state(rankings_state_path: str, team_list: List[Team], nis_ewma: float, phi0: float) -> None:
-    with open(rankings_state_path, "w", newline="", encoding="utf-8") as handle:
-        writer = csv.DictWriter(handle, fieldnames=RANKINGS_STATE_HEADER)
+def save_rankings_state(path: str, teams: List[Team], baselines: Dict[int, List[float]]) -> None:
+    with open(path, "w", newline="", encoding="utf-8") as handle:
+        writer = csv.DictWriter(handle, fieldnames=RANKINGS_STATE_HEADER, lineterminator="\n")
         writer.writeheader()
-        writer.writerow(
-            {
-                "RecordType": "META",
-                "Team": "",
-                "Date": "",
-                "Rank": "",
-                "Var": "",
-                "Tier": "",
-                "NIS_EWMA": f"{nis_ewma:.17g}",
-                "PHI0": f"{phi0:.17g}",
-            }
+        for tier, (hb, lk, lm) in sorted(baselines.items()):
+            writer.writerow({"RecordType": "META", "Tier": tier, "HomeAdvantage": f"{hb:.17g}", "LogDraw": f"{lk:.17g}", "LogExcessMargin": f"{lm:.17g}"})
+        for team in teams:
+            for date, rank, variance, tier in zip(team.date, team.rank, team.var, team.tier):
+                writer.writerow({"RecordType": "TEAM", "Team": team.name, "Date": date, "Rank": f"{rank:.17g}", "Var": f"{variance:.17g}", "Tier": tier})
+
+
+def file_sha256(path: str) -> str:
+    digest = hashlib.sha256()
+    with open(path, "rb") as handle:
+        for chunk in iter(lambda: handle.read(1024 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
+def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings_state: str, rebuild: bool = False) -> None:
+    db_path, ranked_path, state_path = [os.path.join(root_dir, name) for name in [db_file_name, ranked_file, rankings_state]]
+    manifest_path = state_path + ".meta.json"
+    snapshot_path = os.path.join(root_dir, "football_model.json")
+    source_hash = file_sha256(__file__)
+    df_db = pd.read_csv(db_path).sort_values("Date", kind="stable").reset_index(drop=True)
+    if df_db.empty:
+        raise ValueError("Results database is empty")
+    if df_db.duplicated(["Date", "HomeTeam", "AwayTeam"]).any():
+        raise ValueError("Duplicate fixtures in results database")
+    appearances = pd.concat([
+        df_db[["Date", "HomeTeam"]].rename(columns={"HomeTeam": "Team"}),
+        df_db[["Date", "AwayTeam"]].rename(columns={"AwayTeam": "Team"}),
+    ])
+    if appearances.duplicated(["Date", "Team"]).any():
+        raise ValueError("A team appears more than once on the same date; resolve the source fixtures before rating them")
+    expected_result = np.where(df_db.hGoal > df_db.aGoal, "H", np.where(df_db.hGoal < df_db.aGoal, "A", "D"))
+    goals = df_db[["hGoal", "aGoal"]].to_numpy()
+    if not np.isfinite(goals).all() or (goals < 0).any() or (goals != np.floor(goals)).any():
+        raise ValueError("Goals must be nonnegative integers")
+    if not np.array_equal(df_db.Result, expected_result) or not df_db.Tier.isin(TIER_MEANS).all():
+        raise ValueError("Invalid results or tiers")
+    existing = pd.read_csv(ranked_path) if os.path.exists(ranked_path) else pd.DataFrame()
+    try:
+        with open(manifest_path, encoding="utf-8") as handle:
+            manifest = json.load(handle)
+        state_valid = (
+            manifest.get("source_sha256") == source_hash
+            and manifest.get("ranked_sha256") == file_sha256(ranked_path)
+            and manifest.get("state_sha256") == file_sha256(state_path)
+            and manifest.get("snapshot_sha256") == file_sha256(snapshot_path)
+            and manifest.get("matches") == len(existing)
         )
-        for team in team_list:
-            for date, rank, var, tier in zip(team.date, team.rank, team.var, team.tier):
-                writer.writerow(
-                    {
-                        "RecordType": "TEAM",
-                        "Team": team.name,
-                        "Date": date,
-                        "Rank": f"{float(rank):.17g}",
-                        "Var": f"{float(var):.17g}",
-                        "Tier": int(round(float(tier))),
-                        "NIS_EWMA": "",
-                        "PHI0": "",
-                    }
-                )
-
-
-def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings_state: str) -> None:
-    db_path = os.path.join(root_dir, db_file_name)
-    ranked_path = os.path.join(root_dir, ranked_file)
-    rankings_state_path = os.path.join(root_dir, rankings_state)
-
-    df_db = pd.read_csv(db_path)
-    existing_ranked = pd.read_csv(ranked_path) if os.path.exists(ranked_path) else pd.DataFrame()
-    key_cols = ["Date", "HomeTeam", "AwayTeam", "Score"]
-
-    if not existing_ranked.empty:
-        existing_keys = set(existing_ranked[key_cols].apply(tuple, axis=1))
-    else:
-        existing_keys = set()
-
-    new_rows = df_db[~df_db[key_cols].apply(tuple, axis=1).isin(existing_keys)]
-    if new_rows.empty:
-        return
-
-    team_list, nis_ewma, phi0 = load_rankings_state(rankings_state_path)
-    rows_to_process = df_db.itertuples(index=False) if not team_list else new_rows.itertuples(index=False)
-    if not team_list:
-        existing_ranked = pd.DataFrame()
-
-    processed_rows, nis_ewma, phi0 = process_match_rows(rows_to_process, team_list, nis_ewma, phi0)
-    ranked_updates = pd.DataFrame(processed_rows)
-    ranked_combined = pd.concat([existing_ranked, ranked_updates], ignore_index=True)
+    except (OSError, ValueError):
+        state_valid = False
+    # Only append to an unchanged chronological prefix. Same-date additions also
+    # require replay: home/draw parameters are updated after a complete date.
+    prefix_valid = (
+        not existing.empty and len(existing) <= len(df_db)
+        and set(df_db.columns).issubset(existing.columns)
+        and existing[df_db.columns].equals(df_db.iloc[:len(existing)])
+        and (len(existing) == len(df_db) or df_db.iloc[len(existing)].Date > existing.iloc[-1].Date)
+    )
+    teams, baselines = [], initial_baselines()
+    if not rebuild and state_valid and prefix_valid:
+        if len(existing) == len(df_db):
+            print("Rankings and model state are current.")
+            return
+        try:
+            teams, baselines = load_rankings_state(state_path)
+        except (OSError, ValueError, KeyError):
+            teams, baselines = [], initial_baselines()
+    if not teams:
+        print("Rebuilding rankings from the complete chronological results database.")
+        existing = pd.DataFrame()
+    processed = process_match_rows(df_db.iloc[len(existing):].itertuples(index=False), teams, baselines)
+    combined = pd.concat([existing, pd.DataFrame(processed)], ignore_index=True)
     rank_cols = ["HomeRank_before", "AwayRank_before", "HomeRank_after", "AwayRank_after"]
-    ranked_combined[rank_cols] = ranked_combined[rank_cols].astype(int)
-
-    ranked_combined.to_csv(ranked_path, index=False)
-    save_rankings_state(rankings_state_path, team_list, nis_ewma, phi0)
+    combined[rank_cols] = combined[rank_cols].astype(int)
+    # Canonical precision gives byte-identical full and incremental outputs.
+    for col in ["HomeWinProbability", "DrawProbability", "AwayWinProbability"]:
+        combined[col] = combined[col].round(12)
+    snapshot = {
+        "model_version": MODEL_VERSION, "as_of": str(df_db.Date.max()), "matches": len(df_db),
+        "beta": BETA, "weekly_rho": WEEKLY_RHO, "weekly_process_variance": WEEKLY_PROCESS_VARIANCE,
+        "initial_variance": INITIAL_VARIANCE, "baseline_learning_rate": BASELINE_LEARNING_RATE,
+        "margin_slope": MARGIN_SLOPE, "margin_distribution": "geometric_excess_conditional_on_result",
+        "tier_means": TIER_MEANS,
+        "tiers": {tier: {"home_advantage": values[0], "log_draw": values[1], "log_excess_margin": values[2]} for tier, values in baselines.items()},
+        "teams": {team.name: {"skill": team.rank[-1], "variance": team.var[-1], "date": team.date[-1], "tier": team.tier[-1]} for team in teams},
+    }
+    # Write the manifest last: a crash between replacements invalidates the saved
+    # hashes and automatically forces a full replay on the next invocation.
+    for destination in [ranked_path, state_path, snapshot_path]:
+        Path(destination).parent.mkdir(parents=True, exist_ok=True)
+    combined.to_csv(ranked_path + ".tmp", index=False)
+    snapshot["ranked_sha256"] = file_sha256(ranked_path + ".tmp")
+    snapshot["source_sha256"] = source_hash
+    save_rankings_state(state_path + ".tmp", teams, baselines)
+    with open(snapshot_path + ".tmp", "w", encoding="utf-8") as handle:
+        json.dump(snapshot, handle, indent=2, allow_nan=False)
+        handle.write("\n")
+    for destination in [ranked_path, state_path, snapshot_path]:
+        os.replace(destination + ".tmp", destination)
+    manifest = {
+        "model_version": MODEL_VERSION, "source_sha256": source_hash,
+        "results_sha256": file_sha256(db_path), "ranked_sha256": file_sha256(ranked_path),
+        "state_sha256": file_sha256(state_path), "snapshot_sha256": file_sha256(snapshot_path),
+        "matches": len(df_db), "last_result_date": str(df_db.Date.max()),
+    }
+    with open(manifest_path + ".tmp", "w", encoding="utf-8") as handle:
+        json.dump(manifest, handle, indent=2)
+        handle.write("\n")
+    os.replace(manifest_path + ".tmp", manifest_path)
+    print(f"Saved {len(combined):,} chronological matches using {MODEL_VERSION}.")
 
 
 def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
@@ -853,8 +791,10 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "A number of tools making use of the data, such as a [league table generator](https://seanelvidge.com/leaguetable) and [head-to-head statistics](https://seanelvidge.com/h2h) are available at [seanelvidge.com/tools](https://seanelvidge.com/tools/)\n"
             "\n"
             "\n"
-            "# England League Results with team strength rankings (EnglandLeagueResults_wRank.csv)\n"
-            "This file contains the same data as `EnglandLeagueResults.csv` but with a measure of the teams strength via a ranking scheme.\n"
+            "# England League Results with team strength rankings (EnglandLeagueResults_wRanks.csv)\n"
+            "This file contains the same data as `EnglandLeagueResults.csv`, with chronological team-strength ratings and probabilities issued before each result. The `*_before` ratings are the previous posterior ratings; the probability columns also include the elapsed-time forecast step.\n"
+            "\n"
+            "The current model is `davidson-margin-v3`. It learns from both match outcomes and winning margins. Its mathematics, historical validation, limitations and rebuild commands are documented in [validation/FOLLOWUP.md](validation/FOLLOWUP.md), [validation/REPORT.md](validation/REPORT.md) and [validation/README.md](validation/README.md).\n"
             "\n"
             'The database is a comma (",") delimited csv file with the following columns:\n'
             "\n"
@@ -874,6 +814,11 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "| AwayRank_before | the ranking of the away team before the fixture was played (integer) |\n"
             "| HomeRank_after | the ranking of the home team after the fixture was played (integer) |\n"
             "| AwayRank_after | the ranking of the away team after the fixture was played (integer) |\n"
+            "| HomeWinProbability | probability of a home win issued before the match |\n"
+            "| DrawProbability | probability of a draw issued before the match |\n"
+            "| AwayWinProbability | probability of an away win issued before the match |\n"
+            "\n"
+            "`football_model.json` supplies the versioned, full-precision latest skills, variances and per-tier home/draw/margin parameters used by the website. `.github/rankings.csv` stores the full filter history; its `.meta.json` manifest detects stale models, modified history and interrupted writes. Model changes or non-append-only data changes trigger a full chronological replay automatically.\n"
             "\n"
             "\n"
             "# England League Names (EnglandLeagueNames.csv)\n"
@@ -893,7 +838,8 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
             "\n"
             "| Column | Details |\n"
             "| ------ | ------- |\n"
-            "| Season | the season the deduction took place in (where, for example, 2025 refers to the 2024/2025 season) (integer) |\n"
+            "| Season | season string, for example 2024/2025 |\n"
+            "| Date | effective date of the adjustment (YYYY-MM-DD); historical forecasts must exclude later adjustments |\n"
             "| Team | the team who the deduction was applied to (string) |\n"
             "| Pts_deducted | the number of points deducted (a negative value means a point addition) (integer) |\n"
             "| Notes | the reasoning for the points deduction (string) |\n"
@@ -938,6 +884,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--ranked-file", default="EnglandLeagueResults_wRanks.csv")
     parser.add_argument("--rankings-state", default=".github/rankings.csv")
     parser.add_argument("--rankings-pickle", dest="rankings_state", help=argparse.SUPPRESS)
+    parser.add_argument("--rankings-only", action="store_true", help="Use local results without downloading matches.")
+    parser.add_argument("--rebuild-rankings", action="store_true", help="Replay the entire history, ignoring saved ratings.")
     return parser.parse_args()
 
 
@@ -946,6 +894,6 @@ if __name__ == "__main__":
     today = dt.date.today()
     season = today.year if today.month >= 8 else today.year - 1
 
-    add_current_season(args.root_dir, args.db_file, season)
-    update_rankings(args.root_dir, args.db_file, args.ranked_file, args.rankings_state)
-
+    if not args.rankings_only:
+        add_current_season(args.root_dir, args.db_file, season)
+    update_rankings(args.root_dir, args.db_file, args.ranked_file, args.rankings_state, rebuild=args.rebuild_rankings)

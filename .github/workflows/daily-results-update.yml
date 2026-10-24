@@ -30,7 +30,7 @@ jobs:
         run: pip install -r .github/workflows/requirements.txt
 
       - name: Check rating mathematics
-        run: python -m unittest discover -s tests -p 'test_rating_math.py'
+        run: python -m unittest discover -s tests
 
       - name: Update results database
         run: python .github/workflows/football_results.py --root-dir "$GITHUB_WORKSPACE" --rankings-state ".github/rankings.csv"
@@ -40,7 +40,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
-          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json football_model.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
@@ -50,4 +50,3 @@ jobs:
           current_date="$(date +'%Y/%m/%d')"
           git commit -m "Updated results on ${current_date}"
           git push
-
