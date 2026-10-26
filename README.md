@@ -7,6 +7,7 @@
 - [Detailed schemas](#detailed-schemas)
 - [Club naming conventions](#club-naming-conventions)
 - [Sources and tools](#sources-and-tools)
+- [Licence and attribution](#licence-and-attribution)
 - [Contact](#contact)
 
 ## Overview
@@ -162,6 +163,20 @@ The 1888-2016 data is based on that from the [Rec.Sport.Soccer Statistics Founda
 
 A number of tools making use of the data, such as a [league table generator](https://seanelvidge.com/leaguetable) and [head-to-head statistics](https://seanelvidge.com/h2h) are available at [seanelvidge.com/tools](https://seanelvidge.com/tools/)
 
+## Licence and attribution
+
+Prof. Sean Elvidge licenses his rights in the database and its accompanying documentation under the [Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). This permits copying, sharing and adapting the licensed material for any purpose, including commercial use, with attribution. See [LICENCE](LICENCE) for the full terms and the scope of this grant.
+
+Suggested attribution:
+
+> English Football League Data, constructed and updated by Prof. Sean Elvidge. [Source repository](https://github.com/seanelvidge/England-football-results). Sean Elvidge's contributions are licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); source material may have separate terms.
+
+When sharing the licensed material, retain the attribution and licence notice, link to the source and licence, and indicate any changes you have made. Existing source credits must also be retained where required.
+
+Third-party source data and linked club logos may have separate rights and usage terms. The [source notices in LICENCE](LICENCE.md) identify known licensing limitations; unrestricted commercial reuse of the complete dataset has not been established.
+
 ## Contact
 
-*Contact details to be added.*
+If you have any corrections, comments or additional information, please feel free to open an [issue](https://github.com/seanelvidge/England-football-results/issues) or a [pull request](https://github.com/seanelvidge/England-football-results/pulls), or email me at `seanelvidge[at]gmail.com`.
+
+Please also let me know if you use this data. I am interested in hearing how it is being used. This is a request, not a condition of the licence.
