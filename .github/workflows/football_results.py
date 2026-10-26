@@ -925,7 +925,7 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
         '\n'
         'When sharing the licensed material, retain the attribution and licence notice, link to the source and licence, and indicate any changes you have made. Existing source credits must also be retained where required.\n'
         '\n'
-        'Third-party source data and linked club logos may have separate rights and usage terms. The [source notices in LICENCE](LICENCE) identify known licensing limitations; unrestricted commercial reuse of the complete dataset has not been established.\n'
+        'Third-party source data and linked club logos may have separate rights and usage terms. The [source notices in LICENCE](LICENCE.md) identify known licensing limitations; unrestricted commercial reuse of the complete dataset has not been established.\n'
         '\n'
         '## Contact\n'
         '\n'
