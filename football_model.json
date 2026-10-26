@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-10-24",
-  "matches": 212734,
+  "as_of": "2026-10-25",
+  "matches": 212739,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -17,9 +17,9 @@
   },
   "tiers": {
     "1": {
-      "home_advantage": 0.17088147757178046,
-      "log_draw": -0.28145549030951755,
-      "log_excess_margin": -0.4155383038966525
+      "home_advantage": 0.16940024617260568,
+      "log_draw": -0.2807827092900608,
+      "log_excess_margin": -0.41415376629681827
     },
     "2": {
       "home_advantage": 0.18828072283994013,
@@ -111,9 +111,9 @@
       "tier": 3
     },
     "Sunderland": {
-      "skill": 1.1656363604458708,
-      "variance": 0.055914871399878406,
-      "date": "2026-10-18",
+      "skill": 1.1729213803229086,
+      "variance": 0.05528913736578238,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Darwen": {
@@ -135,9 +135,9 @@
       "tier": 1
     },
     "Manchester United": {
-      "skill": 1.6646362637235719,
-      "variance": 0.05670277802102269,
-      "date": "2026-10-18",
+      "skill": 1.5730825478596189,
+      "variance": 0.05518500597692878,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Walsall": {
@@ -219,9 +219,9 @@
       "tier": 2
     },
     "Liverpool": {
-      "skill": 1.723914933540459,
-      "variance": 0.0555112723154084,
-      "date": "2026-10-17",
+      "skill": 1.776152623994869,
+      "variance": 0.05442806966774688,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Arsenal": {
@@ -231,9 +231,9 @@
       "tier": 1
     },
     "Newcastle United": {
-      "skill": 1.377685376934552,
-      "variance": 0.05437094556880069,
-      "date": "2026-10-17",
+      "skill": 1.4347164692267815,
+      "variance": 0.05340779982154861,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Burton Wanderers": {
@@ -345,9 +345,9 @@
       "tier": 3
     },
     "Hull City": {
-      "skill": 0.7732761609417864,
-      "variance": 0.0672926661933369,
-      "date": "2026-10-17",
+      "skill": 0.8008675938712373,
+      "variance": 0.06633592984289251,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Leeds City": {
@@ -423,9 +423,9 @@
       "tier": 2
     },
     "Leeds United": {
-      "skill": 1.5366734596225173,
-      "variance": 0.056554019672884794,
-      "date": "2026-10-18",
+      "skill": 1.5308146393233966,
+      "variance": 0.055882478243815786,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Gillingham": {
@@ -447,9 +447,9 @@
       "tier": 4
     },
     "Brentford": {
-      "skill": 1.6270978040094584,
-      "variance": 0.05523024493148764,
-      "date": "2026-10-17",
+      "skill": 1.6070141667842872,
+      "variance": 0.055088787172914995,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Northampton Town": {
@@ -519,9 +519,9 @@
       "tier": 4
     },
     "Brighton & Hove Albion": {
-      "skill": 1.8986191111204596,
-      "variance": 0.05201514817599915,
-      "date": "2026-10-18",
+      "skill": 1.8465226280997533,
+      "variance": 0.05109943656243183,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Merthyr Town": {
@@ -531,9 +531,9 @@
       "tier": 3
     },
     "Crystal Palace": {
-      "skill": 1.2656086163415787,
-      "variance": 0.05375936408649549,
-      "date": "2026-10-18",
+      "skill": 1.2112269246871497,
+      "variance": 0.05270063207673202,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Millwall": {
@@ -651,9 +651,9 @@
       "tier": 3
     },
     "AFC Bournemouth": {
-      "skill": 1.541863122588824,
-      "variance": 0.05544124550675783,
-      "date": "2026-10-18",
+      "skill": 1.6304250860813283,
+      "variance": 0.05404936326931004,
+      "date": "2026-10-25",
       "tier": 1
     },
     "Rotherham United": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "c43ab2aba2124eef9bdc25ded370c64c1dfa6e857f4594a33139d093c82a530a",
+  "ranked_sha256": "266adb7c70e97d9dc9a0711967af521e99eef2270a55d6ce19ac983320dc683b",
   "source_sha256": "078e3164ffd0be4899dc7878906e552cceeffea866a7a626acfa7a2e1e771113"
 }
