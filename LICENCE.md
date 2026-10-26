@@ -2,78 +2,33 @@ English Football League Data
 Database constructed and updated by Prof. Sean Elvidge
 https://github.com/seanelvidge/England-football-results
 
-LICENCE AND SCOPE
+# LICENCE AND SCOPE
 
-Prof. Sean Elvidge licenses the copyright and database rights he holds in
-this database compilation, his original contributions to the CSV datasets,
-and the accompanying documentation under the Creative Commons Attribution
-4.0 International Public License (CC BY 4.0), reproduced below.
+Prof. Sean Elvidge licenses the copyright and database rights he holds in this database compilation, his original contributions to the CSV datasets, and the accompanying documentation under the Creative Commons Attribution 4.0 International Public License (CC BY 4.0), reproduced below.
 
 Copyright Prof. Sean Elvidge, for his original contributions.
 
-This grant permits copying, redistribution and adaptation, including for
-commercial purposes, subject to the CC BY 4.0 terms. It applies only to
-rights that Prof. Sean Elvidge has authority to license. It does not
-relicense third-party material or grant rights in linked club logos,
-trademarks or other externally hosted content. Software code is outside
-the scope of this database and documentation licence.
+This grant permits copying, redistribution and adaptation, including for commercial purposes, subject to the CC BY 4.0 terms. It applies only to rights that Prof. Sean Elvidge has authority to license. It does not relicense third-party material or grant rights in linked club logos, trademarks or other externally hosted content. Software code is outside the scope of this database and documentation licence.
 
-ATTRIBUTION
+# ATTRIBUTION
 
-When sharing the licensed material, retain the supplied creator credit,
-copyright and licence notices, and source link as required by CC BY 4.0.
-Identify any changes and retain notices of previous changes. Attribution
-may be provided in any reasonable manner appropriate to the medium.
+When sharing the licensed material, retain the supplied creator credit, copyright and licence notices, and source link as required by CC BY 4.0. Identify any changes and retain notices of previous changes. Attribution may be provided in any reasonable manner appropriate to the medium.
 
 Suggested credit:
 
-  English Football League Data, constructed and updated by Prof. Sean
-  Elvidge. Source: https://github.com/seanelvidge/England-football-results
-  Sean Elvidge's contributions: CC BY 4.0,
-  https://creativecommons.org/licenses/by/4.0/
+  English Football League Data, constructed and updated by Prof. Sean Elvidge. Source: https://github.com/seanelvidge/England-football-results
+  CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
   Source material may have separate terms.
 
-Please also retain applicable credits and notices for the original sources.
-Letting the maintainer know how you use the data is welcome but optional;
-it is not an additional licence condition.
+Letting the maintainer know how you use the data is welcome.
 
-THIRD-PARTY SOURCE NOTICES
+# THIRD-PARTY SOURCE NOTICES
 
-This repository incorporates data from other sources. This licence does
-not establish unrestricted commercial reuse rights for the complete
-combined dataset. Applicable source rights and permissions must be
-established separately. Known source information, checked on 26 October
-2026, includes:
+This repository incorporates data from other sources. This licence does not establish unrestricted commercial reuse rights for everything in the database. Club logo URLs point to third-party images. Those images and related trademarks are not licensed by this file; check their individual terms.
 
-* Historical results are credited in the README to RSSSF and James P.
-  Curley's engsoccerdata project. The engsoccerdata package currently
-  declares GPL (>= 2). That declaration is not evidence of permission to
-  relicense its material under CC BY 4.0; the terms applicable to the
-  particular data and version used here still need to be established.
-  https://zenodo.org/records/13158
-  https://github.com/jalapic/engsoccerdata/blob/master/DESCRIPTION
+These notices describe the scope of the grant and source limitations. They do not change the standard CC BY 4.0 legal text below. Uses that do not require permission under applicable law remain unaffected.
 
-* RSSSF publishes copyright and acknowledgement notices on its archive
-  documents. Preserve the applicable source credits and check the terms
-  of the particular documents used.
-  https://www.rsssf.org/archive.html
-
-* The updater downloads recent results from Football-Data.co.uk. Its
-  current fair data usage policy describes the free CSV/Excel data as
-  intended for personal betting and academic interest/research, and
-  directs other uses to a paid provider. This grant does not override
-  that policy or establish permission for commercial redistribution of
-  data obtained from that source.
-  https://football-data.co.uk/contact.php
-
-* Club logo URLs point to third-party images. Those images and related
-  trademarks are not licensed by this file; check their individual terms.
-
-These notices describe the scope of the grant and source limitations.
-They do not change the standard CC BY 4.0 legal text below. Uses that do
-not require permission under applicable law remain unaffected.
-
-OFFICIAL CC BY 4.0 LEGAL TEXT
+# OFFICIAL CC BY 4.0 LEGAL TEXT
 https://creativecommons.org/licenses/by/4.0/legalcode
 
 Attribution 4.0 International
