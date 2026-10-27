@@ -1,10 +1,10 @@
 {
   "model_version": "davidson-margin-v3",
-  "source_sha256": "d99d731ce117bb1bd681750b94a499e26d561f5a501f11eadf5f8bd748f8e392",
+  "source_sha256": "4a49d9f975d1c14a54d3cba953afc3df03341e592052d12da3db863db1ee2a77",
   "results_sha256": "950d47c517627ee12a6731022658cff76ac5fe45203649393bd08c958788597b",
-  "ranked_sha256": "9fbc3f613155557b9606488602d058f0c0f1bc5bdb68c67f2e4f9b974627aaac",
-  "state_sha256": "c15b0196c52f63996b4af6ae79d9e40a5089ae35b9e9b48ded6f256b7c3571e3",
-  "snapshot_sha256": "d2253c31f44142ac0e0a6ab1edb9be6a3843d003af80115b99285c56454a4e9e",
+  "ranked_sha256": "d7dcca5aa260832cfe94729575fb26ec8df22221bd3dd681391a0474193c92ae",
+  "state_sha256": "a790a3dc3b2f7226e06d1f789ef4a6b77d676eabc55e7bb7e57f9084bfbc6e03",
+  "snapshot_sha256": "4932a1d8a94d7cec46f9a7d8cba64445ac71aecc694df56244b27f35947aff2c",
   "matches": 212740,
   "last_result_date": "2026-10-26"
 }
