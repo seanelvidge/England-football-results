@@ -145,7 +145,7 @@ def load_tmp_results_matches(
     divisions = load_division_lookup(root_dir)
     existing_keys = {
         (match_date.strftime("%Y-%m-%d"), row.HomeTeam, row.AwayTeam, str(row.Score))
-        for match_date, row in existing_df.iterrows()
+        for match_date, row in normalize_team_names(existing_df).iterrows()
     }
     rows_to_add: List[Dict[str, object]] = []
 
@@ -263,12 +263,6 @@ def add_current_season(
     if not fallback_rows.empty:
         df_db = pd.concat([df_db, fallback_rows])
 
-    df_db = (
-        df_db.reset_index()
-        .sort_values(by=["Date", "Division"])
-        .set_index("Date")
-    )
-
     df_db = normalize_team_names(df_db)
 
     pre_1992 = df_db.index <= "1992"
@@ -277,6 +271,15 @@ def add_current_season(
             pre_1992,
             ["HomeTeam", "AwayTeam"],
         ].replace("Aldershot Town", "Aldershot")
+    )
+
+    # Aliases can become identical only after normalization. Include Date in
+    # deduplication so distinct matches with the same teams and score survive.
+    df_db = (
+        df_db.reset_index()
+        .drop_duplicates()
+        .sort_values(by=["Date", "Division"])
+        .set_index("Date")
     )
 
     df_db.to_csv(db_file, index=True)
@@ -292,6 +295,8 @@ def append_latest_matches(
     season: int,
     df_db: pd.DataFrame,
 ) -> Tuple[pd.DataFrame, int, Set[int]]:
+    # Compare incoming and stored fixtures using the same canonical names.
+    df_db = normalize_team_names(df_db)
     total_new_rows = 0
     failed_tiers: Set[int] = set()
 
@@ -354,10 +359,11 @@ def append_latest_matches(
 
             df_filtered = df_year[
                 ~incoming_keys.isin(existing_keys)
-            ]
+            ].reset_index().drop_duplicates().set_index("Date")
 
             total_new_rows += len(df_filtered)
-            df_db = pd.concat([df_db, df_filtered])
+            if not df_filtered.empty:
+                df_db = pd.concat([df_db, df_filtered])
 
         except requests.RequestException as exc:
             tier = div + 1
@@ -369,7 +375,7 @@ def append_latest_matches(
                 "Will use temporary results if available."
             )
 
-    return df_db.drop_duplicates(), total_new_rows, failed_tiers
+    return df_db.reset_index().drop_duplicates().set_index("Date"), total_new_rows, failed_tiers
 
 
 def normalize_team_names(df: pd.DataFrame) -> pd.DataFrame:
