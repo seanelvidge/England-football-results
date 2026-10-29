@@ -1,0 +1,280 @@
+Team,Name,StartDate,EndDate,EndReason,ContinuityBasis,Notes
+AFC Bournemouth,Boscombe,1899,1923,renamed,direct_rename,
+AFC Bournemouth,Bournemouth & Boscombe Athletic,1923,1971,renamed,direct_rename,
+AFC Bournemouth,AFC Bournemouth,1971,,current,direct_rename,
+AFC Wimbledon,AFC Wimbledon,2002,,current,unchanged_name,Founded 2002; distinct from Wimbledon FC/MK Dons. AFC is integral to the name.
+Aberdare Athletic,Aberdare Athletic,1893,1927,renamed,accepted_sporting_lineage,The 1926 combination retained Aberdare Athletic for its League first team; the combined title was used in the Southern League in 1927-28. The reserve team used the combined title earlier. Later Aberaman/Aberdare Town clubs are separate.
+Aberdare Athletic,Aberdare & Aberaman Athletic,1927,1928,ceased,accepted_sporting_lineage,The 1926 combination retained Aberdare Athletic for its League first team; the combined title was used in the Southern League in 1927-28. The reserve team used the combined title earlier. Later Aberaman/Aberdare Town clubs are separate.
+Accrington F.C.,Accrington,1878,1896,ceased,unchanged_name,The 1878-1896 club; never an earlier name of either Accrington Stanley club.
+Accrington Stanley,Stanley Villa,1891,1893,renamed,accepted_sporting_lineage,Original Stanley club; distinct from Accrington F.C. and from the club formed in 1968. Wartime suspension/revival is treated as accepted sporting lineage.
+Accrington Stanley,Accrington Stanley,1893,1966,ceased,accepted_sporting_lineage,Original Stanley club; distinct from Accrington F.C. and from the club formed in 1968. Wartime suspension/revival is treated as accepted sporting lineage.
+Accrington Stanley,Accrington Stanley,1968,,current,separate_entity_in_input,New club formed in 1968; do not attach Stanley Villa to this identity.
+Aldershot,Aldershot,1926,1992,ceased,unchanged_name,The 1926-1992 League club; Aldershot Town is separate.
+Aldershot Town,Aldershot Town,1992,,current,unchanged_name,New club founded 1992; not a rename of Aldershot FC.
+Arsenal,Dial Square,1886,1886,renamed,direct_rename,
+Arsenal,Royal Arsenal,1886,1893,renamed,direct_rename,
+Arsenal,Woolwich Arsenal,1893,1914,renamed,direct_rename,
+Arsenal,The Arsenal,1914,1919,renamed,direct_rename,
+Arsenal,Arsenal,1919,,current,direct_rename,
+Ashington,Ashington,1883,,current,unchanged_name,
+Aston Villa,Aston Villa,1874,,current,unchanged_name,
+Barnet,Alston Works,1901,1906,renamed,accepted_sporting_lineage,Follows the Alston branch used by the specialist club archive; Barnet Avenue joined it in 1912. Earlier Woodville/New Barnet/Barnet are separate clubs. The wartime transition to Barnet is conventionally dated 1919.
+Barnet,Barnet Alston,1906,1912,renamed,accepted_sporting_lineage,Follows the Alston branch used by the specialist club archive; Barnet Avenue joined it in 1912. Earlier Woodville/New Barnet/Barnet are separate clubs. The wartime transition to Barnet is conventionally dated 1919.
+Barnet,Barnet & Alston,1912,1919,renamed,accepted_sporting_lineage,Follows the Alston branch used by the specialist club archive; Barnet Avenue joined it in 1912. Earlier Woodville/New Barnet/Barnet are separate clubs. The wartime transition to Barnet is conventionally dated 1919.
+Barnet,Barnet,1919,,current,accepted_sporting_lineage,Follows the Alston branch used by the specialist club archive; Barnet Avenue joined it in 1912. Earlier Woodville/New Barnet/Barnet are separate clubs. The wartime transition to Barnet is conventionally dated 1919.
+Barnsley,Barnsley St Peter's,1887,1897,renamed,direct_rename,
+Barnsley,Barnsley,1897,,current,direct_rename,
+Barrow,Barrow,1901,,current,unchanged_name,
+Birmingham City,Small Heath Alliance,1875,1888,renamed,direct_rename,
+Birmingham City,Small Heath,1888,1905,renamed,direct_rename,
+Birmingham City,Birmingham,1905,1943,renamed,direct_rename,
+Birmingham City,Birmingham City,1943,,current,direct_rename,1943 is the commonly documented wartime adoption; some older summaries give 1944 or 1945.
+Blackburn Rovers,Blackburn Rovers,1875,,current,unchanged_name,
+Blackpool,Blackpool,1887,,current,unchanged_name,The 1887 club; absorbed South Shore in 1899. South Shore is not an alias.
+Bolton Wanderers,Christ Church,1874,1877,renamed,direct_rename,
+Bolton Wanderers,Bolton Wanderers,1877,,current,direct_rename,
+Bootle,Bootle,1879,1893,ceased,unchanged_name,Original 1879-1893 League club; distinct from the current club originally called Langton.
+Boston United,Boston United,1933,,current,unchanged_name,"Founded 1933; earlier Boston/Boston Town clubs are predecessors, not aliases."
+Bradford City,Bradford City,1903,,current,unchanged_name,"Association club from 1903; Manningham was the rugby club, not an earlier association name."
+Bradford Park Avenue,Bradford,1907,1974,ceased,same_name_variant,"Bradford was the League playing name; Park Avenue is a disambiguating description, not a distinct dated rename. Excludes the later re-formed clubs."
+Bradford Park Avenue,Bradford (Park Avenue),1907,1974,ceased,same_name_variant,"Bradford was the League playing name; Park Avenue is a disambiguating description, not a distinct dated rename. Excludes the later re-formed clubs."
+Bradford Park Avenue,Bradford Park Avenue,1907,1974,ceased,same_name_variant,"Bradford was the League playing name; Park Avenue is a disambiguating description, not a distinct dated rename. Excludes the later re-formed clubs."
+Brentford,Brentford,1889,,current,unchanged_name,
+Brighton & Hove Albion,Brighton & Hove Albion,1901,,current,direct_rename,
+Brighton & Hove Albion,Brighton & Hove United,1901,1901,renamed,direct_rename,United was the brief initial choice in June 1901; Brighton United and Brighton & Hove Rangers were separate earlier clubs.
+Bristol City,Bristol South End,1894,1897,renamed,accepted_sporting_lineage,
+Bristol City,Bristol City,1897,,current,accepted_sporting_lineage,Bristol City continued under its own name after the 1900 amalgamation; Bedminster/Southville are not aliases of the earlier City team.
+Bristol Rovers,Black Arabs,1883,1884-11,renamed,direct_rename,
+Bristol Rovers,Eastville Rovers,1884-11,1897,renamed,direct_rename,
+Bristol Rovers,Bristol Eastville Rovers,1897,1899-02,renamed,direct_rename,
+Bristol Rovers,Bristol Rovers,1899-02,,current,direct_rename,Uses the current club history: Bristol Rovers adopted in February 1899 and ratified in October. Other summaries give 1898.
+Bromley,Bromley,1892,,current,unchanged_name,
+Burnley,Burnley,1882-05,,current,direct_rename,
+Burnley,Burnley Rovers,1882-05-18,1882-05,renamed,direct_rename,Rovers was retained for only a few days after the switch from rugby to association football; no pre-switch rugby years are included.
+Burton Albion,Burton Albion,1950,,current,unchanged_name,Founded 1950; not a rename of the older Burton League clubs.
+Burton Swifts,Burton Swifts,1871,1901,ceased,unchanged_name,Distinct club until the 1901 combination with Burton Wanderers.
+Burton United,Burton United,1901,1910,ceased,unchanged_name,Combined club from 1901; constituent clubs were not its earlier playing names.
+Burton Wanderers,Burton Wanderers,1871,1901,ceased,unchanged_name,Distinct club until the 1901 combination with Burton Swifts.
+Bury,Bury,1885,2019,ceased,unchanged_name,
+Cambridge United,Abbey United,1912,1951,renamed,direct_rename,
+Cambridge United,Cambridge United,1951,,current,direct_rename,
+Cardiff City,Riverside,1899,1908,renamed,direct_rename,
+Cardiff City,Cardiff City,1908,,current,direct_rename,
+Carlisle United,Shaddongate United,1896,17/05/1904,renamed,direct_rename,"1896 is the earliest established evidence for Shaddongate, rather than necessarily a start date"
+Carlisle United,Carlisle United,17/05/1904,,current,direct_rename,
+Charlton Athletic,Charlton Athletic,1905,,current,unchanged_name,Club research rejects Charlton Reds/East Street Mission/Blundell Mission as its original names.
+Chelsea,Chelsea,1905,,current,unchanged_name,
+Cheltenham Town,Cheltenham Town,1887,,current,unchanged_name,
+Chester,Chester,1885,1983,renamed,accepted_sporting_lineage,League club dissolved in 2010; distinct from the supporter-founded Chester FC of 2010. Temporarily inactive 1899-1901.
+Chester,Chester City,1983,2010,ceased,accepted_sporting_lineage,League club dissolved in 2010; distinct from the supporter-founded Chester FC of 2010. Temporarily inactive 1899-1901.
+Chesterfield,Chesterfield Municipal,1919,1920-12,renamed,separate_entity_in_input,Council-founded 1919 club; source Team also groups an earlier League club.
+Chesterfield,Chesterfield,1920-12,,current,separate_entity_in_input,
+Chesterfield,Chesterfield Town,1884,1915,ceased,separate_entity_in_input,The 1899-1909 League club. Distinct from the first 1860s club and the council-founded 1919 club.
+Colchester United,Colchester United,1937,,current,unchanged_name,Founded 1937; Colchester Town was a separate club.
+Coventry City,Singers,1883,1898-08-12,renamed,direct_rename,
+Coventry City,Coventry City,1898-08-12,,current,direct_rename,
+Crawley Town,Crawley,1896,1935,renamed,accepted_sporting_lineage,
+Crawley Town,Crawley,1938,1958,renamed,accepted_sporting_lineage,
+Crawley Town,Crawley Town,1958,,current,accepted_sporting_lineage,
+Crewe Alexandra,Crewe Alexandra,1877,,current,unchanged_name,
+Crystal Palace,Crystal Palace,1905,,current,unchanged_name,1905 is the conventional professional club date; claimed continuity with the 1861 amateur club is disputed
+Dagenham and Redbridge,Dagenham and Redbridge,1992,,current,unchanged_name,
+Dagenham and Redbridge,Dagenham & Redbridge,1992,,current,same_name_variant,Ampersand display variant of the input name.
+Darlington,Darlington,1883,2012,ceased,unchanged_name,Original League playing identity through 2012. Darlington 1883/new Darlington continuity is disputed
+Darwen,Darwen,1875,2009,ceased,unchanged_name,Original club formed in 1870; association football from 1875. AFC Darwen/Darwen formed 2009 is separate.
+Derby County,Derby County,1884,,current,unchanged_name,
+Doncaster Rovers,Doncaster Rovers,1879,,current,unchanged_name,
+Durham City,Durham City,1918,1933,renamed,direct_rename,
+Durham City,City of Durham,1933,1938,ceased,direct_rename,"Original League club, dissolved 1938. The club established in 1949 is separate."
+Everton,St Domingo,1878,1879-11,renamed,direct_rename,
+Everton,Everton,1879-11,,current,direct_rename,
+Exeter City,St Sidwell's United,1901,31/05/1904,renamed,direct_rename,
+Exeter City,Exeter City,31/05/1904,,current,direct_rename,"Club historical research identifies a rename at the 1904 AGM, not a merger with Exeter United."
+Fleetwood Town,Fleetwood Wanderers,1997,1997-08,renamed,direct_rename,Current club formed in 1997; excludes earlier Fleetwood clubs.
+Fleetwood Town,Fleetwood Freeport,1997-08,2002,renamed,direct_rename,
+Fleetwood Town,Fleetwood Town,2002,,current,direct_rename,
+Forest Green Rovers,Forest Green Rovers,1919,1989,renamed,direct_rename,
+Forest Green Rovers,Stroud,1989,1992,renamed,direct_rename,
+Forest Green Rovers,Forest Green Rovers,1992,,current,direct_rename,
+Fulham,St Andrew's,1879,1886,renamed,direct_rename,Club sources disagree between December 1888 and January 1889 for the final shortening; January follows the current general history. 
+Fulham,Fulham St Andrew's,1886,1889-01,renamed,direct_rename,Club sources disagree between December 1888 and January 1889 for the final shortening; January follows the current general history. 
+Fulham,Fulham,1889-01,,current,direct_rename,Club sources disagree between December 1888 and January 1889 for the final shortening; January follows the current general history. 
+Gainsborough Trinity,Gainsborough Trinity,,,current,direct_rename,Current name in use by the 1880s; exact adoption date is not known.
+Gainsborough Trinity,Gainsborough Trinity Recreationists,,,unknown,direct_rename,Intermediate name reported in the 1880s.
+Gainsborough Trinity,Trinity Recreationists,1873,,unknown,direct_rename,
+Gateshead,South Shields Adelaide Athletic,1899,1905,renamed,administrative_continuation,
+Gateshead,South Shields Adelaide,1905,1910,renamed,administrative_continuation,
+Gateshead,South Shields,1910,1930,renamed,administrative_continuation,
+Gateshead,Gateshead,1930,1973,ceased,administrative_continuation,Same club relocated from South Shields to Gateshead in 1930. Repeated under both input Team keys for joins. Not the current Gateshead or South Shields clubs.
+Gillingham,New Brompton,1893,1912,renamed,direct_rename,
+Gillingham,Gillingham,1912,,current,direct_rename,Playing name used in 1912-13; shareholder ratification followed in 1913.
+Glossop North End,Glossop North End,1886,1899,renamed,direct_rename,
+Glossop North End,Glossop,1899,1992,renamed,direct_rename,
+Glossop North End,Glossop North End,1992,,current,direct_rename,
+Grimsby Town,Grimsby Pelham,1878,1879,renamed,direct_rename,
+Grimsby Town,Grimsby Town,1879,,current,direct_rename,
+Halifax Town,Halifax Town,1911,2008,ceased,unchanged_name,Original 1911-2008 League club; FC Halifax Town is separate.
+Harrogate Town,Harrogate Hotspurs,1935,1948,renamed,direct_rename,Club formed in 1935; Harrogate AFC of 1914-1932 is a different team.
+Harrogate Town,Harrogate Town,1948,,current,direct_rename,
+Hartlepool United,Hartlepools United,1908,1968,renamed,direct_rename,
+Hartlepool United,Hartlepool,1968,1977,renamed,direct_rename,
+Hartlepool United,Hartlepool United,1977,,current,direct_rename,
+Hereford United,Hereford United,1924,2014,ceased,unchanged_name,Original 1924-2014 club; Hereford FC formed 2015 is separate.
+Huddersfield Town,Huddersfield Town,1908,,current,unchanged_name,
+Hull City,Hull City,1904,,current,unchanged_name,
+Ipswich Town,Ipswich AFC,1878,1888,renamed,accepted_sporting_lineage,Association club continued through the 1888 combination with the rugby club.
+Ipswich Town,Ipswich Town,1888,,current,accepted_sporting_lineage,
+Kidderminster Harriers,Kidderminster Harriers,1886,,current,unchanged_name,Association football dates from 1886. Kidderminster Olympic was a separate team.
+Leeds City,Leeds City,1904,1919,ceased,unchanged_name,Separate from Leeds United; dissolved 1919.
+Leeds United,Leeds United,1919,,current,unchanged_name,Founded 1919; not a rename of Leeds City.
+Leicester City,Leicester Fosse,1884,1919,renamed,accepted_sporting_lineage,
+Leicester City,Leicester City,1919,,current,accepted_sporting_lineage,Post-war corporate reconstruction.
+Leyton Orient,Orient,1888,1898,renamed,direct_rename,
+Leyton Orient,Clapton Orient,1898,1946,renamed,direct_rename,
+Leyton Orient,Leyton Orient,1946,1966,renamed,direct_rename,
+Leyton Orient,Orient,1966,1987,renamed,direct_rename,
+Leyton Orient,Leyton Orient,1987,,current,direct_rename,
+Lincoln City,Lincoln City,1884,,current,unchanged_name,
+Liverpool,Liverpool,1892,,current,unchanged_name,Separate from Everton. Everton Athletic was the initial company title before Liverpool played.
+Loughborough,Loughborough,1886,1900,ceased,direct_rename,
+Loughborough,Loughborough Athletic and Football Club,1886,1900,ceased,same_name_variant,
+Luton Town,Luton Town,1885,,current,unchanged_name,Founded as Town in 1885; Luton Wanderers and Luton Excelsior were distinct local clubs.
+Macclesfield Town,Macclesfield,1874,1946,renamed,accepted_sporting_lineage,Traditional 1874 foundation; early dating is disputed (1876 also appears). Distinct from Macclesfield FC formed in 2020.
+Macclesfield Town,Macclesfield Town,1946,2020,ceased,accepted_sporting_lineage,Traditional 1874 foundation; early dating is disputed (1876 also appears). Distinct from Macclesfield FC formed in 2020.
+Maidstone United,Maidstone United,1897,1992,ceased,unchanged_name,Original 1897-1992 League club; Maidstone Invicta/new Maidstone United is separate.
+Manchester City,St Mark's (West Gorton),1880,1883-01,renamed,accepted_sporting_lineage,West Gorton is documented from January 1883; Gorton from late October 1884.
+Manchester City,West Gorton,1883-01,1884-10,renamed,accepted_sporting_lineage,West Gorton is documented from January 1883; Gorton from late October 1884.
+Manchester City,Gorton AFC,1884-10,1887,renamed,accepted_sporting_lineage,
+Manchester City,Ardwick,1887,1894,renamed,accepted_sporting_lineage,
+Manchester City,Manchester City,1894,,current,accepted_sporting_lineage,
+Manchester United,Newton Heath LYR,1878,1892,renamed,direct_rename,
+Manchester United,Newton Heath,1892,1902,renamed,direct_rename,
+Manchester United,Manchester United,1902,,current,direct_rename,
+Mansfield Town,Mansfield Wesleyans,1897,1906,renamed,direct_rename,Mansfield Mechanics was a separate club; Wesley was adopted in 1906.
+Mansfield Town,Mansfield Wesley,1906,1910,renamed,direct_rename,
+Mansfield Town,Mansfield Town,1910,,current,direct_rename,
+Merthyr Town,Merthyr Town,1908,1934,ceased,unchanged_name,Original 1908-1934 League club; Merthyr Tydfil and the 2010 Merthyr Town are separate.
+Middlesbrough,Middlesbrough,1876,,current,unchanged_name,Separate from Middlesbrough Ironopolis.
+Middlesbrough Ironopolis,Middlesbrough Ironopolis,1889,1894,ceased,unchanged_name,Separate from Middlesbrough; dissolved 1894.
+Millwall,Millwall Rovers,1885,1889-04,renamed,direct_rename,
+Millwall,Millwall Athletic,1889-04,1920,renamed,direct_rename,
+Millwall,Millwall,1920,,current,direct_rename,Athletic is normally recorded as dropped in 1920; abbreviated Millwall also appeared earlier.
+Milton Keynes Dons,Wimbledon Old Centrals,1889,01/05/1905,renamed,administrative_continuation,
+Milton Keynes Dons,Wimbledon,01/05/1905,2004-06,renamed,administrative_continuation,Wimbledon relocated and was renamed MK Dons in 2004: administrative/League-membership continuity. AFC Wimbledon is separate.
+Milton Keynes Dons,Milton Keynes Dons,2004-06,,current,administrative_continuation,
+Morecambe,Morecambe,1920,,current,unchanged_name,
+Nelson,Nelson,1882,,current,unchanged_name,
+New Brighton,New Brighton,1921,1983,ceased,unchanged_name,The 1921-1983 club; separate from New Brighton Tower and the 1993 club.
+New Brighton Tower,New Brighton Tower,1896,1901,ceased,unchanged_name,Separate from New Brighton AFC founded in 1921.
+Newcastle United,Stanley,1881,1882-10,renamed,accepted_sporting_lineage,
+Newcastle United,Newcastle East End,1882-10,1892,renamed,accepted_sporting_lineage,East End continued after taking over West End assets/players; Newcastle West End and Rosewood are not aliases.
+Newcastle United,Newcastle United,1892,,current,accepted_sporting_lineage,
+Newport County,Newport County,1912,1989,ceased,separate_entity_in_input,Original League club; wound up in 1989.
+Newport County,Newport AFC,1989,1999,renamed,separate_entity_in_input,New club formed in 1989. County AFC is the expanded modern title; do not transfer its Newport AFC alias to the 1912 identity.
+Newport County,Newport County,1999,,current,separate_entity_in_input,
+Northampton Town,Northampton Town,1897,,current,unchanged_name,
+Northwich Victoria,Northwich Victoria,1890,,current,unchanged_name,League identity from the 1890 combination; the pre-1890 club was declared defunct. 1874 Northwich is a separate 2012 breakaway.
+Norwich City,Norwich City,1902,,current,unchanged_name,
+Nottingham Forest,Nottingham Forest,1865,,current,unchanged_name,
+Notts County,Notts County,1862,,current,unchanged_name,
+Oldham Athletic,Pine Villa,1895,1899,renamed,direct_rename,1895 is the conventional foundation year; some early accounts differ. Oldham County was a separate team.
+Oldham Athletic,Oldham Athletic,1899,,current,direct_rename,
+Oxford United,Headington,1893,1911,renamed,accepted_sporting_lineage,"Follows the club history, which dates United to the 1911 combination with Headington Quarry. Other summaries retrospectively call the 1893 side Headington United."
+Oxford United,Headington United,1911,1960,renamed,accepted_sporting_lineage,"Follows the club history, which dates United to the 1911 combination with Headington Quarry. Other summaries retrospectively call the 1893 side Headington United."
+Oxford United,Oxford United,1960,,current,accepted_sporting_lineage,
+Peterborough United,Peterborough United,1934,,current,unchanged_name,Founded 1934; Peterborough & Fletton United was a different club.
+Plymouth Argyle,Argyle,1886,1903,renamed,accepted_sporting_lineage,
+Plymouth Argyle,Plymouth Argyle,1903,,current,accepted_sporting_lineage,
+Port Vale,Port Vale,1876,1884,renamed,separate_entity_in_input,Original League club; ceased playing in 1907 and eventually wound up. 1876 is the traditional date; 1879 is also argued.
+Port Vale,Burslem Port Vale,1884,1907,ceased,separate_entity_in_input,
+Port Vale,Cobridge Church,,1907,renamed,separate_entity_in_input,Cobridge Church adopted the Port Vale name in 1907.
+Port Vale,Port Vale,1907,,current,separate_entity_in_input,Cobridge Church adopted the Port Vale name in 1907.
+Portsmouth,Portsmouth,1898,,current,unchanged_name,1898 association club; earlier Portsmouth clubs and Royal Artillery Portsmouth are not aliases.
+Preston North End,Preston North End,1880,,current,unchanged_name,
+Queens Park Rangers,Queens Park Rangers,1886,,current,unchanged_name,Combined club from 1886; Christchurch Rangers and St Judes are constituent predecessors. Traditional foundation date 1882 refers to Christchurch.
+Reading,Reading,1871,,current,unchanged_name,
+Rochdale,Rochdale,1907,,current,unchanged_name,The 1907 club; earlier Rochdale clubs are separate.
+Rotherham County,Thornhill United,,1905,renamed,direct_rename,
+Rotherham County,Thornhill,1877,,unknown,direct_rename,
+Rotherham County,Rotherham County,1905,1925,ceased,direct_rename,
+Rotherham Town,Rotherham Town,1882,1896,ceased,direct_rename,Original League club created in the 1882 combination. Lunar Rovers is a predecessor; the Rotherham Town of 1900-1925 is a separate club.
+Rotherham Town,Rotherham,1882,,unknown,direct_rename,Early name reported before Town; exact date of change not established.
+Rotherham United,Rotherham United,1925,,current,unchanged_name,Combined club formed in 1925. Rotherham County and the second Rotherham Town are predecessors.
+Rushden & Diamonds,Rushden & Diamonds,1992,2011,ceased,unchanged_name,"1992-2011 combined club. Rushden Town, Irthlingborough Diamonds and AFC Rushden & Diamonds are separate."
+Salford City,Salford Central,1940,1963,renamed,direct_rename,
+Salford City,Salford Amateurs,1963,1978,renamed,direct_rename,
+Salford City,Salford,1978,1989,renamed,direct_rename,1978 is used for dropping Amateurs; some records give 1980.
+Salford City,Salford City,1989,,current,direct_rename,
+Scarborough,Scarborough,1879,2007,ceased,unchanged_name,Original 1879-2007 club; Scarborough Athletic is separate.
+Scunthorpe United,Scunthorpe United,1899,1910,renamed,accepted_sporting_lineage,
+Scunthorpe United,Scunthorpe & Lindsey United,1910,1958,renamed,accepted_sporting_lineage,
+Scunthorpe United,Scunthorpe United,1958,,current,accepted_sporting_lineage,
+Sheffield United,Sheffield United,1889,,current,unchanged_name,
+Sheffield Wednesday,The Wednesday,1867,1929,renamed,direct_rename,1929 is the formal adoption; Sheffield Wednesday was also used descriptively well before 1929.
+Sheffield Wednesday,Sheffield Wednesday,1929,,current,direct_rename,
+Shrewsbury Town,Shrewsbury Town,1886,,current,unchanged_name,1886 club; earlier Shrewsbury FC/Shrewsbury Castle are separate.
+South Shields,South Shields Adelaide Athletic,1899,1905,renamed,administrative_continuation,Same club relocated from South Shields to Gateshead in 1930. Repeated under both input Team keys for joins. Not the current Gateshead or South Shields clubs.
+South Shields,South Shields Adelaide,1905,1910,renamed,administrative_continuation,Same club relocated from South Shields to Gateshead in 1930. Repeated under both input Team keys for joins. Not the current Gateshead or South Shields clubs.
+South Shields,South Shields,1910,1930,renamed,administrative_continuation,Same club relocated from South Shields to Gateshead in 1930. Repeated under both input Team keys for joins. Not the current Gateshead or South Shields clubs.
+South Shields,Gateshead,1930,1973,ceased,administrative_continuation,Same club relocated from South Shields to Gateshead in 1930. Repeated under both input Team keys for joins. Not the current Gateshead or South Shields clubs.
+Southampton,St Mary's YMA,1885,1887,renamed,direct_rename,
+Southampton,St Mary's,1887,1894,renamed,direct_rename,
+Southampton,Southampton St Mary's,1894,1897,renamed,direct_rename,
+Southampton,Southampton,1897,,current,direct_rename,
+Southend United,Southend United,1906,,current,unchanged_name,
+Southport,Southport Central,1888,1918,renamed,direct_rename,Current club formed in 1888; earlier 1881-1888 Southport teams are different teams.
+Southport,Southport Vulcan,1918,1919,renamed,direct_rename,
+Southport,Southport,1919,,current,direct_rename,
+Stalybridge Celtic,Stalybridge Celtic,1909,,current,unchanged_name,1909 is conventional; 1905 is proposed in some histories.
+Stevenage,Stevenage Borough,1976,2010-06,renamed,direct_rename,
+Stevenage,Stevenage,2010-06,,current,direct_rename,
+Stockport County,Heaton Norris Rovers,1883,1890,renamed,direct_rename,
+Stockport County,Stockport County,1890,,current,direct_rename,
+Stoke City,Stoke Ramblers,1863,1878,renamed,accepted_sporting_lineage,1863 follows the club claim; historians also argue 1868 for the earliest documented team.
+Stoke City,Stoke,1878,1925,renamed,accepted_sporting_lineage,
+Stoke City,Stoke City,1925,,current,accepted_sporting_lineage,
+Sunderland,Sunderland and District Teachers,1879,1880,renamed,direct_rename,
+Sunderland,Sunderland,1880,,current,direct_rename,
+Sutton United,Sutton United,1898,,current,unchanged_name,Combined club from 1898; Sutton Association and Sutton Guild Rovers are separate clubs.
+Swansea City,Swansea Town,1912,1970-02,renamed,direct_rename,City status was announced in 1969; the club confirms its own name change in February 1970.
+Swansea City,Swansea City,1970-02,,current,direct_rename,
+Swindon Town,Swindon Town,1879,1880,renamed,direct_rename,First season of the Spartans name is approximate.
+Swindon Town,Spartans,1880,1883,renamed,direct_rename,
+Swindon Town,Swindon Town,1883,,current,direct_rename,
+Thames,Thames Association,1928,1930,renamed,direct_rename,"Distinct from Thames Ironworks, the West Ham predecessor."
+Thames,Thames,1930,1932,ceased,direct_rename,"Distinct from Thames Ironworks, the West Ham predecessor."
+Torquay United,Torquay United,1899,1910,renamed,accepted_sporting_lineage,
+Torquay United,Torquay Town,1910,1921,renamed,accepted_sporting_lineage,
+Torquay United,Torquay United,1921,,current,accepted_sporting_lineage,
+Tottenham Hotspur,Hotspur,1882,1884,renamed,direct_rename,
+Tottenham Hotspur,Tottenham Hotspur,1884,,current,direct_rename,
+Tranmere Rovers,Belmont,1884,1885,renamed,direct_rename,
+Tranmere Rovers,Tranmere Rovers,1885,,current,direct_rename,
+Walsall,Walsall Town Swifts,1888,1896,renamed,direct_rename,"The combined club began in 1888; Walsall Town and Walsall Swifts are predecessors, not earlier names of this club."
+Walsall,Walsall,1896,,current,direct_rename,
+Watford,Watford Rovers,1881,1893,renamed,accepted_sporting_lineage,Rovers became the West Herts football section in 1890; West Herts became its playing title in 1893. In 1898 West Herts absorbed St Marys and renamed; St Marys is not an alias.
+Watford,West Herts,1893,1898,renamed,accepted_sporting_lineage,
+Watford,Watford,1898,,current,accepted_sporting_lineage,
+West Bromwich Albion,West Bromwich Strollers,1878,1880,renamed,direct_rename,1880 is conventional; the adoption is also dated 1879 or 1881 in different histories.
+West Bromwich Albion,West Bromwich Albion,1880,,current,direct_rename,
+West Ham United,Thames Ironworks,1895,1900,renamed,accepted_sporting_lineage,
+West Ham United,West Ham United,1900,,current,accepted_sporting_lineage,
+Wigan Athletic,Wigan Athletic,1932,,current,unchanged_name,Founded 1932; not a rename of Wigan Borough or earlier Wigan clubs.
+Wigan Borough,Wigan United,1919,1920,renamed,direct_rename,"Wigan United here is the 1919 club, not the earlier 1900-1903 club; Wigan Athletic is separate."
+Wigan Borough,Wigan Association,1920,1920-12,renamed,direct_rename,"Wigan United here is the 1919 club, not the earlier 1900-1903 club; Wigan Athletic is separate."
+Wigan Borough,Wigan Borough,1920-12,1931,ceased,direct_rename,"Wigan United here is the 1919 club, not the earlier 1900-1903 club; Wigan Athletic is separate."
+Wimbledon,Wimbledon Old Centrals,1889,01/05/1905,renamed,administrative_continuation,Wimbledon relocated and was renamed MK Dons in 2004: administrative/League-membership continuity.
+Wimbledon,Wimbledon,01/05/1905,2004-06,renamed,administrative_continuation,Wimbledon relocated and was renamed MK Dons in 2004: administrative/League-membership continuity.
+Wimbledon,Milton Keynes Dons,2004-06,,current,administrative_continuation,Wimbledon relocated and was renamed MK Dons in 2004: administrative/League-membership continuity.
+Wolverhampton Wanderers,St Luke's,1877,1879,renamed,accepted_sporting_lineage,Recognised St Lukes sporting lineage through the 1879 combination with the cricket/football Wanderers.
+Wolverhampton Wanderers,Wolverhampton Wanderers,1879,,current,accepted_sporting_lineage,
+Workington,Workington,1921,,current,unchanged_name,Current club founded 1921; the earlier club that folded in 1910 is separate.
+Wrexham,Wrexham,1864,1884,renamed,accepted_sporting_lineage,
+Wrexham,Wrexham Olympic,1884,1888,renamed,accepted_sporting_lineage,
+Wrexham,Wrexham,1888,,current,accepted_sporting_lineage,
+Wycombe Wanderers,Wycombe Wanderers,1887,,current,unchanged_name,
+Yeovil Town,Yeovil Casuals,1895,1907,renamed,accepted_sporting_lineage,
+Yeovil Town,Yeovil Town,1907,1914,renamed,accepted_sporting_lineage,
+Yeovil Town,Yeovil & Petters United,1914,1946,renamed,accepted_sporting_lineage,
+Yeovil Town,Yeovil Town,1946,,current,accepted_sporting_lineage,
+York City,York City,1922,,current,unchanged_name,1922 club; the earlier 1908-1917 York City is separate.
