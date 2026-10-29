@@ -12,7 +12,7 @@
 
 ## Overview
 
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/10/26 (covering 212,740 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026/10/27 (covering 212,746 matches).
 
 The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -24,7 +24,7 @@ Each file link opens the CSV in this repository. The schema links jump to its do
 
 | Dataset file | Contents | Detailed schema |
 | --- | --- | --- |
-| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/10/26 (212,740 matches). | [View schema](#england-league-results) |
+| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/10/27 (212,746 matches). | [View schema](#england-league-results) |
 | [`EnglandLeagueResults_wRanks.csv`](EnglandLeagueResults_wRanks.csv) | Match results with chronological team-strength ratings and pre-match probabilities. | [View schema](#england-league-results-with-team-strength-rankings) |
 | [`EnglandLeagueNames.csv`](EnglandLeagueNames.csv) | Division names, their active seasons and their tiers. | [View schema](#england-league-names) |
 | [`EnglishTeamPointDeductions.csv`](EnglishTeamPointDeductions.csv) | Points deductions and additions, effective dates and reasons. | [View schema](#english-team-point-deductions) |
@@ -157,7 +157,8 @@ Team names can be confusing across such a long record. The notes below answer th
 
 ### Data sources
 
-The 1888-2016 data is based on that from the [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)).
+Historic results, upto 2016, are based on that from the [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)), however this database corrects some errors discovered in those databases.
+Many thanks to Jon Sinclair of [wfc.net](https://wfc.net/) for flagging a number of corrections/additions in the database.
 
 ### Tools
 
@@ -165,11 +166,11 @@ A number of tools making use of the data, such as a [league table generator](htt
 
 ## Licence and attribution
 
-Prof. Sean Elvidge licenses his rights in the database and its accompanying documentation under the [Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). This permits copying, sharing and adapting the licensed material for any purpose, including commercial use, with attribution. See [LICENCE](LICENCE.md) for the full terms and scope.
+Sean Elvidge licenses his rights in the database and its accompanying documentation under the [Creative Commons Attribution 4.0 International licence (CC BY 4.0)](https://creativecommons.org/licenses/by/4.0/). This permits copying, sharing and adapting the licensed material for any purpose, including commercial use, with attribution. See [LICENCE](LICENCE.md) for the full terms and scope.
 
 Suggested attribution:
 
-> English Football League Data, constructed and updated by Prof. Sean Elvidge. [Source repository](https://github.com/seanelvidge/England-football-results). The work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); other source material may have separate terms.
+> English Football League Data, constructed and updated by Sean Elvidge. [Source repository](https://github.com/seanelvidge/England-football-results). The work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); other source material may have separate terms.
 
 When sharing the licensed material, retain the attribution and licence notice, link to the source and licence, and indicate any changes you have made. Existing source credits must also be retained where required.
 
