@@ -1,4 +1,4 @@
-name: Daily Football Results Update
+name: Nightly Football-Data Consistency Check
 
 on:
   schedule:
@@ -9,47 +9,35 @@ on:
   workflow_dispatch:
 
 permissions:
-  contents: write
+  contents: read
 
 concurrency:
-  group: daily-football-results-update
+  group: football-results-database
   cancel-in-progress: false
 
 jobs:
-  update-results:
+  check-results:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
 
     steps:
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
 
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: '3.11'
           cache: 'pip'
+          cache-dependency-path: .github/workflows/requirements.txt
 
       - name: Install dependencies
         run: pip install -r .github/workflows/requirements.txt
 
-      - name: Check rating mathematics
+      - name: Check results import and rankings
         run: python -m unittest discover -s tests
 
-      - name: Update results database
-        run: python .github/workflows/football_results.py --root-dir "$GITHUB_WORKSPACE" --rankings-state ".github/rankings.csv"
-
-      - name: Commit and push changed files
-        run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-
-          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json football_model.json
-
-          if git diff --cached --quiet; then
-            echo "No changes to commit."
-            exit 0
-          fi
-
-          current_date="$(date +'%Y/%m/%d')"
-          git commit -m "Updated results on ${current_date}"
-          git push
+      - name: Verify published results against the database
+        run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE" --check-football-data

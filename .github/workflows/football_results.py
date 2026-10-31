@@ -415,6 +415,7 @@ def normalize_team_names(df: pd.DataFrame) -> pd.DataFrame:
         "Luton": "Luton Town",
         "Man City": "Manchester City",
         "Man United": "Manchester United",
+        "MK Dons": "Milton Keynes Dons",
         "Mansfield": "Mansfield Town",
         "Newcastle": "Newcastle United",
         "Northampton": "Northampton Town",
@@ -772,7 +773,7 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
         '\n'
         f'This is a plain text database of all England football (soccer) league results from 1888 to {update_date} (covering {num_matches} matches).\n'
         '\n'
-        'The database is updated roughly every two days for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.\n'
+        'The database is updated nightly at 22:30 UK time from BBC Sport for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two. Published football-data.co.uk results are checked independently each night.\n'
         '\n'
         'The six CSV files cover match results, team-strength ratings and probabilities, division names, points deductions and additions, club logos and colours, and periods of league participation.\n'
         '\n'
@@ -917,6 +918,25 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
         '\n'
         'Historic results, upto 2016, are based on that from the [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)), however this database corrects some errors discovered in those databases.\n'
         'Many thanks to Jon Sinclair of [wfc.net](https://wfc.net/) for flagging a number of corrections/additions in the database.\n'
+        '\n'
+        '### Automated updates\n'
+        '\n'
+        'The [BBC update workflow](.github/workflows/bbc-results-update.yml) imports completed matches from [BBC Sport](https://www.bbc.co.uk/sport/football/scores-fixtures) at 22:30 Europe/London, including the change between GMT and BST. Only Premier League, Championship, League One and League Two regular league results are included. Live, postponed, abandoned, cup and promotion play-off matches are excluded. GitHub scheduled runs are best effort and may start late.\n'
+        '\n'
+        'Each run revisits at least the previous seven calendar days (including today), and catches up from the latest stored result after a longer gap. Matching results are ignored; conflicting results fail the action with the fixture and differing values in the log. Rankings, saved rating state, football_model.json and this README are updated in the same run.\n'
+        '\n'
+        'The [football-data consistency workflow](.github/workflows/daily-results-update.yml) runs at 00:17 UK time. It compares every published result in the latest recorded season with the database, including dates, scores and divisions. A discrepancy, a published fixture missing from the database, or a download/parsing failure fails the action. Newer BBC results missing from the slower football-data feed are expected and do not fail the check. This workflow does not change any data. Enable email notifications for failed workflows in your [GitHub Actions notification settings](https://docs.github.com/en/actions/concepts/workflows-and-actions/notifications-for-workflow-runs).\n'
+        '\n'
+        'Both workflows can also be run manually from the Actions tab after the workflow files are on the default branch. To check a BBC date range locally without writing files:\n'
+        '\n'
+        '```bash\n'
+        'pip install -r .github/workflows/requirements.txt\n'
+        'python .github/workflows/bbc_results.py --dry-run --start-date 2026-10-24 --end-date 2026-10-31\n'
+        '```\n'
+        '\n'
+        'Omit `--dry-run` to import results and update rankings; omit the dates for the normal nightly catch-up. To run the independent check, use `python .github/workflows/bbc_results.py --check-football-data`, optionally with `--season 2025` to check 2025/2026.\n'
+        '\n'
+        'The older `football_results.py` importer and its `.github/tmp_results.xlsx` fallback remain available for deliberate manual imports. Scheduled workflows use the BBC importer and the independent check. After manually correcting a CSV result, run `python .github/workflows/football_results.py --rankings-only` to refresh the rankings and model state.\n'
         '\n'
         '### Tools\n'
         '\n'

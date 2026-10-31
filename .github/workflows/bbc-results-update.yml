@@ -1,0 +1,56 @@
+name: Nightly BBC Football Results Update
+
+on:
+  schedule:
+    # UK local time, including BST. GitHub scheduled runs are best effort.
+    - cron: '30 22 * * *'
+      timezone: 'Europe/London'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: football-results-database
+  cancel-in-progress: false
+
+jobs:
+  update-results:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.ref_name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+          cache: 'pip'
+          cache-dependency-path: .github/workflows/requirements.txt
+
+      - name: Install dependencies
+        run: pip install -r .github/workflows/requirements.txt
+
+      - name: Check results import and rankings
+        run: python -m unittest discover -s tests
+
+      - name: Import BBC results and update rankings
+        run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE"
+
+      - name: Commit and push changed files
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json football_model.json
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          current_date="$(TZ=Europe/London date +'%Y/%m/%d')"
+          git commit -m "Updated BBC results on ${current_date}"
+          git push
