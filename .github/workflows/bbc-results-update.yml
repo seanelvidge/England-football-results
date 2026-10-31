@@ -52,5 +52,5 @@ jobs:
           fi
 
           current_date="$(TZ=Europe/London date +'%Y/%m/%d')"
-          git commit -m "Updated BBC results on ${current_date}"
+          git commit -m "Updated results on ${current_date}"
           git push
