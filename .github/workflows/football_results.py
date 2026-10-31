@@ -773,7 +773,7 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
         '\n'
         f'This is a plain text database of all England football (soccer) league results from 1888 to {update_date} (covering {num_matches} matches).\n'
         '\n'
-        'The database is updated nightly at 22:30 UK time from BBC Sport for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two. Published football-data.co.uk results are checked independently each night.\n'
+        'The database is updated nightly at 22:30 UK time the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.\n'
         '\n'
         'The six CSV files cover match results, team-strength ratings and probabilities, division names, points deductions and additions, club logos and colours, and periods of league participation.\n'
         '\n'
