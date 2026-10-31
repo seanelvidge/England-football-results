@@ -1,14 +1,14 @@
 English Football League Data
-Database constructed and updated by Prof. Sean Elvidge
+Database constructed and updated by Sean Elvidge
 https://github.com/seanelvidge/England-football-results
 
 # LICENCE AND SCOPE
 
-Prof. Sean Elvidge licenses the copyright and database rights he holds in this database compilation, his original contributions to the CSV datasets, and the accompanying documentation under the Creative Commons Attribution 4.0 International Public License (CC BY 4.0), reproduced below.
+Sean Elvidge licenses the copyright and database rights he holds in this database compilation, his original contributions to the CSV datasets, and the accompanying documentation under the Creative Commons Attribution 4.0 International Public License (CC BY 4.0), reproduced below.
 
-Copyright Prof. Sean Elvidge, for his original contributions.
+Copyright Sean Elvidge, for his original contributions.
 
-This grant permits copying, redistribution and adaptation, including for commercial purposes, subject to the CC BY 4.0 terms. It applies only to rights that Prof. Sean Elvidge has authority to license. It does not relicense third-party material or grant rights in linked club logos, trademarks or other externally hosted content. Software code is outside the scope of this database and documentation licence.
+This grant permits copying, redistribution and adaptation, including for commercial purposes, subject to the CC BY 4.0 terms. It applies only to rights that Sean Elvidge has authority to license. It does not relicense third-party material or grant rights in linked club logos, trademarks or other externally hosted content. Software code is outside the scope of this database and documentation licence.
 
 # ATTRIBUTION
 
@@ -16,7 +16,7 @@ When sharing the licensed material, retain the supplied creator credit, copyrigh
 
 Suggested credit:
 
-  English Football League Data, constructed and updated by Prof. Sean Elvidge. Source: https://github.com/seanelvidge/England-football-results
+  English Football League Data, constructed and updated by Sean Elvidge. Source: https://github.com/seanelvidge/England-football-results
   CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
   Source material may have separate terms.
 
