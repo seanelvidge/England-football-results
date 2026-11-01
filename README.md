@@ -12,11 +12,11 @@
 
 ## Overview
 
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/10/31 (covering 212,789 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026/11/01 (covering 212,791 matches).
 
 The database is updated nightly at 22:30 UK time the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
-The six CSV files cover match results, team-strength ratings and probabilities, division names, points deductions and additions, club logos and colours, and periods of league participation.
+The seven CSV files cover match results, team-strength ratings, division names, points deductions and additions, club logos and colours, periods of league participation and historic name changes of clubs.
 
 ## Dataset index
 
@@ -24,12 +24,13 @@ Each file link opens the CSV in this repository. The schema links jump to its do
 
 | Dataset file | Contents | Detailed schema |
 | --- | --- | --- |
-| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/10/31 (212,789 matches). | [View schema](#england-league-results) |
+| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/11/01 (212,791 matches). | [View schema](#england-league-results) |
 | [`EnglandLeagueResults_wRanks.csv`](EnglandLeagueResults_wRanks.csv) | Match results with chronological team-strength ratings and pre-match probabilities. | [View schema](#england-league-results-with-team-strength-rankings) |
 | [`EnglandLeagueNames.csv`](EnglandLeagueNames.csv) | Division names, their active seasons and their tiers. | [View schema](#england-league-names) |
 | [`EnglishTeamPointDeductions.csv`](EnglishTeamPointDeductions.csv) | Points deductions and additions, effective dates and reasons. | [View schema](#english-team-point-deductions) |
 | [`EnglishTeamLogos.csv`](EnglishTeamLogos.csv) | Club logos/crests and primary and secondary club colours. | [View schema](#english-team-logos) |
 | [`EnglishTeamActivePeriods.csv`](EnglishTeamActivePeriods.csv) | Club participation periods in the top four tiers, with short team names. | [View schema](#english-team-active-years) |
+| [`EnglishTeamNamePeriods.csv`](EnglishTeamNamePeriods.csv) | Historical club name changes with dates and notes. | [View schema](#english-team-names) |
 
 ## Detailed schemas
 
@@ -108,6 +109,8 @@ It has the following columns:
 | Pts_deducted | the number of points deducted (a negative value means a point addition) (integer) |
 | Notes | the reasoning for the points deduction (string) |
 
+This information is nicely presented by Jon Sinclair on [wfc.net](https://wfc.net/AllLeagues/Points_Deductions.php).
+
 ### English Team Logos
 
 **File:** [`EnglishTeamLogos.csv`](EnglishTeamLogos.csv)
@@ -137,6 +140,22 @@ It has the following columns:
 | ShortName | the short form name of the team (if they have one). E.g. "West Ham United" becomes "West Ham", "Manchester City" becomes "Man City" |
 | Years | semicolon delimited list of active years, e.g. of the form YYYY-YYYY; YYYY-YYYY; YYYY-present. YYYY represents the initial year of that season, e.g. a club appearing in the top 4 tiers in the 1991/1992 season, leaving in 1995/1996 and then coming back from 2004 to present day would be: 1991-1995; 2004-present |
 
+### English Team Names
+
+**File:** [`EnglishTeamNamePeriods.csv`](EnglishTeamNamePeriods.csv)
+
+A comma (",") delimited csv file of the changing names of Football League clubs.
+
+It has the following columns:
+
+| Column | Details |
+| ------ | ------- |
+| Team | the English football league team name used throughout the database (e.g. matching the names in EnglandLeagueResults.csv) |
+| Name | a historic version of the team name (if they have one), e.g. "Arsenal" have been "Dial Square", "Royal Arsneal", "Woolwich Arsneal" and "The Arsenal". |
+| StartDate | the date that the `Name` was used from, if the exact month and year are unknown it is set to Jan 1st of the year, format is YYYY-MM-DD |
+| EndDate | the date that the `Name` was no longer used, if the exact month and year are unknown it is set to Dec 31st of the year, format is YYYY-MM-DD, if this is blank then the name is still used |
+| Notes | any additional information about the name change |
+
 ## Club naming conventions
 
 Team names can be confusing across such a long record. The notes below answer the most common questions I have received about the names used in the database:
@@ -157,27 +176,8 @@ Team names can be confusing across such a long record. The notes below answer th
 
 ### Data sources
 
-Historic results, upto 2016, are based on that from the [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)), however this database corrects some errors discovered in those databases.
+Historic results are based on that from the [English National Football Archive](https://www.enfa.co.uk/), [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)), however this database corrects some errors discovered in the latter two databases.
 Many thanks to Jon Sinclair of [wfc.net](https://wfc.net/) for flagging a number of corrections/additions in the database.
-
-### Automated updates
-
-The [BBC update workflow](.github/workflows/bbc-results-update.yml) imports completed matches from [BBC Sport](https://www.bbc.co.uk/sport/football/scores-fixtures) at 22:30 Europe/London, including the change between GMT and BST. Only Premier League, Championship, League One and League Two regular league results are included. Live, postponed, abandoned, cup and promotion play-off matches are excluded. GitHub scheduled runs are best effort and may start late.
-
-Each run revisits at least the previous seven calendar days (including today), and catches up from the latest stored result after a longer gap. Matching results are ignored; conflicting results fail the action with the fixture and differing values in the log. Rankings, saved rating state, football_model.json and this README are updated in the same run.
-
-The [football-data consistency workflow](.github/workflows/daily-results-update.yml) runs at 00:17 UK time. It compares every published result in the latest recorded season with the database, including dates, scores and divisions. A discrepancy, a published fixture missing from the database, or a download/parsing failure fails the action. Newer BBC results missing from the slower football-data feed are expected and do not fail the check. This workflow does not change any data. Enable email notifications for failed workflows in your [GitHub Actions notification settings](https://docs.github.com/en/actions/concepts/workflows-and-actions/notifications-for-workflow-runs).
-
-Both workflows can also be run manually from the Actions tab after the workflow files are on the default branch. To check a BBC date range locally without writing files:
-
-```bash
-pip install -r .github/workflows/requirements.txt
-python .github/workflows/bbc_results.py --dry-run --start-date 2026-10-24 --end-date 2026-10-31
-```
-
-Omit `--dry-run` to import results and update rankings; omit the dates for the normal nightly catch-up. To run the independent check, use `python .github/workflows/bbc_results.py --check-football-data`, optionally with `--season 2025` to check 2025/2026.
-
-The older `football_results.py` importer and its `.github/tmp_results.xlsx` fallback remain available for deliberate manual imports. Scheduled workflows use the BBC importer and the independent check. After manually correcting a CSV result, run `python .github/workflows/football_results.py --rankings-only` to refresh the rankings and model state.
 
 ### Tools
 
