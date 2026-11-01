@@ -176,7 +176,7 @@ Team names can be confusing across such a long record. The notes below answer th
 
 ### Data sources
 
-Historic results are based on that from the [English National Football Archive](https://www.enfa.co.uk/), [Rec.Sport.Soccer Statistics Foundation](https://www.rsssf.org/) and James P. Curley ([2016](http://dx.doi.org/10.5281/zenodo.13158)), however this database corrects some errors discovered in the latter two databases.
+The results in the database are based on those from a wide variety of sources, these sources have been used to both build the database, keep it updated and cross-check for accuracy. For a full description see the appropriate section in the [LICENCE](LICENCE.md).
 Many thanks to Jon Sinclair of [wfc.net](https://wfc.net/) for flagging a number of corrections/additions in the database.
 
 ### Tools
