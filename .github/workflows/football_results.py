@@ -948,7 +948,7 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
         '\n'
         'Suggested attribution:\n'
         '\n'
-        '> English Football League Data, constructed and updated by Sean Elvidge. [Source repository](https://github.com/seanelvidge/England-football-results). The work is licensed under [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/); other source material may have separate terms.\n'
+        '> English Football League Data, compiled and maintained by Sean Elvidge, drawing on data from the Rec.Sport.Soccer Statistics Foundation (RSSSF), Curley & Malmedal (2014), and references therein. Source: [https://github.com/seanelvidge/England-football-results](https://github.com/seanelvidge/England-football-results). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (original contributions only; third-party rights reserved).\n'
         '\n'
         'When sharing the licensed material, retain the attribution and licence notice, link to the source and licence, and indicate any changes you have made. Existing source credits must also be retained where required.\n'
         '\n'
