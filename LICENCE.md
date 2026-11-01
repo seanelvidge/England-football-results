@@ -15,8 +15,7 @@ When sharing the licensed material, retain the supplied creator credit, copyrigh
 
 Suggested credit:
 
-  English Football League Data, compiled and maintained by Sean Elvidge, drawing on data from the Rec.Sport.Soccer Statistics Foundation (RSSSF), Curley & Malmedal (2014), and references therein. Source: https://github.com/seanelvidge/England-football-results  
-Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (original contributions only; third-party rights reserved).
+  English Football League Data, compiled and maintained by Sean Elvidge, drawing on data from the Rec.Sport.Soccer Statistics Foundation (RSSSF), Curley & Malmedal (2014), and references therein. Source: [https://github.com/seanelvidge/England-football-results](https://github.com/seanelvidge/England-football-results). Licence: [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) (original contributions only; third-party rights reserved).
 
 Letting the maintainer know how you use the data is welcome.
 
