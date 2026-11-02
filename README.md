@@ -22,6 +22,8 @@ The seven CSV files cover match results, team-strength ratings, division names, 
 
 Each file link opens the CSV in this repository. The schema links jump to its documentation below.
 
+The same seven datasets are also available as [SQLite](sqlite/README.md) and [Parquet](parquet/README.md), with usage examples in each folder. All three formats are generated and committed together by the nightly update.
+
 | Dataset file | Contents | Detailed schema |
 | --- | --- | --- |
 | [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/11/01 (212,791 matches). | [View schema](#england-league-results) |

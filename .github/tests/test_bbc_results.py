@@ -5,6 +5,7 @@ from datetime import date
 import io
 import json
 from pathlib import Path
+import shutil
 import sys
 import tempfile
 import unittest
@@ -196,6 +197,9 @@ class BBCUpdateTests(unittest.TestCase):
         self.addCleanup(self.directory.cleanup)
         self.root = Path(self.directory.name)
         stored_results().to_csv(self.root / updater.RESULTS_FILE, index=False)
+        for source in ROOT.glob("*.csv"):
+            if source.name not in {updater.RESULTS_FILE, updater.RANKED_FILE}:
+                shutil.copyfile(source, self.root / source.name)
         self.output = io.StringIO()
         self.quiet = contextlib.redirect_stdout(self.output)
         self.quiet.__enter__()
@@ -242,7 +246,13 @@ class BBCUpdateTests(unittest.TestCase):
         with patch.object(updater.model, "update_rankings", side_effect=ValueError("Invalid database")), self.assertRaisesRegex(ValueError, "Invalid database"):
             self.update()
         self.assertEqual(self.contents(), before)
-        self.assertFalse(list(self.root.glob(".bbc-results-*")))
+        self.assertFalse(list((self.root / ".github").glob(".update-*")))
+
+    def test_export_failure_does_not_publish_results_or_rankings(self):
+        before = self.contents()
+        with patch("export_formats.write_sqlite", side_effect=OSError("Export failed")), self.assertRaisesRegex(OSError, "Export failed"):
+            self.update()
+        self.assertEqual(self.contents(), before)
 
     def test_later_download_failure_does_not_save_earlier_results(self):
         before = self.contents()

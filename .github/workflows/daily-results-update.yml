@@ -41,3 +41,6 @@ jobs:
 
       - name: Verify published results against the database
         run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE" --check-football-data
+
+      - name: Verify SQLite and Parquet against the CSV datasets
+        run: python .github/workflows/export_formats.py --root-dir "$GITHUB_WORKSPACE" --check

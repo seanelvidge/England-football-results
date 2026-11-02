@@ -8,11 +8,8 @@ import argparse
 from datetime import date, datetime, timedelta
 from io import StringIO
 import json
-import os
 from pathlib import Path
 import re
-import shutil
-import tempfile
 from zoneinfo import ZoneInfo
 
 import pandas as pd
@@ -21,6 +18,7 @@ from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
 import football_results as model
+from export_formats import EXPORT_FILES, staged_update
 
 
 BBC_URL = "https://www.bbc.co.uk/sport/football/scores-fixtures"
@@ -32,7 +30,7 @@ RESULTS_FILE = "EnglandLeagueResults.csv"
 RANKED_FILE = "EnglandLeagueResults_wRanks.csv"
 STATE_FILE = ".github/rankings.csv"
 # Publish the state manifest last, matching the ranking writer's crash recovery.
-ARTIFACTS = [RESULTS_FILE, RANKED_FILE, STATE_FILE, ".github/football_model.json", "README.md", STATE_FILE + ".meta.json"]
+ARTIFACTS = [RESULTS_FILE, RANKED_FILE, STATE_FILE, ".github/football_model.json", "README.md", *EXPORT_FILES, STATE_FILE + ".meta.json"]
 
 
 def download_session():
@@ -190,20 +188,11 @@ def bbc_date_range(existing, start_date, end_date):
 
 
 def save_bbc_update(root, updated, added):
-    # Build and validate the rankings before replacing any repository file.
-    with tempfile.TemporaryDirectory(prefix=".bbc-results-", dir=root) as temp:
-        stage = Path(temp)
-        for name in ARTIFACTS:
-            if (root / name).exists():
-                (stage / name).parent.mkdir(parents=True, exist_ok=True)
-                shutil.copyfile(root / name, stage / name)
+    with staged_update(root, ARTIFACTS) as stage:
         if added:
             updated.to_csv(stage / RESULTS_FILE, index=False)
         model.update_rankings(str(stage), RESULTS_FILE, RANKED_FILE, STATE_FILE)
         model.write_readme(str(stage), updated.Date.max().replace("-", "/"), f"{len(updated):,}")
-        for name in ARTIFACTS:
-            (root / name).parent.mkdir(parents=True, exist_ok=True)
-            os.replace(stage / name, root / name)
 
 
 def update_bbc_results(root, start_date=None, end_date=None, dry_run=False):

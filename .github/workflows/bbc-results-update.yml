@@ -37,14 +37,14 @@ jobs:
       - name: Check results import and rankings
         run: python -m unittest discover -s .github/tests
 
-      - name: Import BBC results and update rankings
+      - name: Import BBC results, update rankings and export all formats
         run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE"
 
       - name: Commit and push changed files
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json .github/football_model.json
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json .github/football_model.json sqlite/EnglandFootball.sqlite parquet/*.parquet
 
           if git diff --cached --quiet; then
             echo "No changes to commit."

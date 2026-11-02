@@ -781,6 +781,8 @@ def write_readme(root_dir: str, update_date: str, num_matches: str) -> None:
         '\n'
         'Each file link opens the CSV in this repository. The schema links jump to its documentation below.\n'
         '\n'
+        'The same seven datasets are also available as [SQLite](sqlite/README.md) and [Parquet](parquet/README.md), with usage examples in each folder. All three formats are generated and committed together by the nightly update.\n'
+        '\n'
         '| Dataset file | Contents | Detailed schema |\n'
         '| --- | --- | --- |\n'
         f'| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to {update_date} ({num_matches} matches). | [View schema](#england-league-results) |\n'
@@ -977,11 +979,24 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
-if __name__ == "__main__":
+def main() -> None:
+    from export_formats import EXPORT_FILES, staged_update
+
     args = parse_args()
     today = dt.date.today()
     season = today.year if today.month >= 8 else today.year - 1
 
-    if not args.rankings_only:
-        add_current_season(args.root_dir, args.db_file, season)
-    update_rankings(args.root_dir, args.db_file, args.ranked_file, args.rankings_state, rebuild=args.rebuild_rankings)
+    artifacts = [args.db_file, args.ranked_file, args.rankings_state,
+                 ".github/football_model.json", "README.md", *EXPORT_FILES,
+                 args.rankings_state + ".meta.json"]
+    overrides = {"EnglandLeagueResults": args.db_file, "EnglandLeagueResults_wRanks": args.ranked_file}
+    with staged_update(args.root_dir, artifacts, overrides) as stage:
+        if not args.rankings_only:
+            add_current_season(str(stage), args.db_file, season)
+        update_rankings(str(stage), args.db_file, args.ranked_file, args.rankings_state, rebuild=args.rebuild_rankings)
+        dates = pd.read_csv(stage / args.db_file, usecols=["Date"])
+        write_readme(str(stage), dates.Date.max().replace("-", "/"), f"{len(dates):,}")
+
+
+if __name__ == "__main__":
+    main()

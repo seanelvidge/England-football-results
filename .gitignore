@@ -3,6 +3,8 @@ football_results.out
 football_results.stats
 rankings.p
 __pycache__/
+.github/.exports-*/
+.github/.update-*/
 .github/validation/results/*.npz
 .github/validation/results/league_cases.json
 .github/validation/results/league_predictions.json
