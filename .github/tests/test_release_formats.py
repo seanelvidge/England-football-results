@@ -154,6 +154,19 @@ class ReleaseTests(unittest.TestCase):
         with patch.object(releases.subprocess, "run", return_value=subprocess.CompletedProcess([], 1, "", "HTTP 404")):
             self.assertIsNone(releases.release_info("example/repo"))
 
+    def test_draft_is_found_in_release_list_when_tag_endpoint_returns_404(self):
+        draft = self.info(draft=True)
+        responses = [subprocess.CompletedProcess([], 1, "", "HTTP 404"),
+                     subprocess.CompletedProcess([], 0, json.dumps([[], [draft]]), "")]
+        with patch.object(releases.subprocess, "run", side_effect=responses):
+            self.assertEqual(releases.release_info("example/repo", draft["tag_name"]), draft)
+
+    def test_missing_tag_is_absent_from_published_and_draft_releases(self):
+        responses = [subprocess.CompletedProcess([], 1, "", "HTTP 404"),
+                     subprocess.CompletedProcess([], 0, json.dumps([[self.info(draft=True)]]), "")]
+        with patch.object(releases.subprocess, "run", side_effect=responses):
+            self.assertIsNone(releases.release_info("example/repo", "data-" + "0" * 40))
+
 
 if __name__ == "__main__":
     unittest.main()

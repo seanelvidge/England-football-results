@@ -24,6 +24,13 @@ def release_info(repository, tag=None):
     result = subprocess.run(["gh", "api", endpoint], capture_output=True, text=True)
     if result.returncode:
         if "HTTP 404" in result.stderr:
+            if tag:
+                # GitHub's tag endpoint returns published releases only. Drafts
+                # are visible to the workflow token through the release list.
+                pages = json.loads(run("gh", "api", "--paginate", "--slurp",
+                                       f"repos/{repository}/releases?per_page=100"))
+                return next((release for page in pages for release in page
+                             if release["tag_name"] == tag), None)
             return None
         raise RuntimeError(f"Could not read GitHub release: {result.stderr.strip()}")
     return json.loads(result.stdout)
