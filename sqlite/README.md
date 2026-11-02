@@ -106,35 +106,4 @@ for match in matches[:10]:
 
 ## Updating and checking the files
 
-The [Nightly BBC Football Results Update](../.github/workflows/bbc-results-update.yml) runs at **22:30 UK time**. To run it manually, open the repository's **Actions** tab, select **Nightly BBC Football Results Update**, then choose **Run workflow** on `main`. The publishing step calls `.github/workflows/release_formats.py publish`.
-
-The **Nightly BBC Football Results Update** generates SQLite and Parquet after updating the CSVs and rankings. Every exported row, column type and source checksum is checked before the CSV commit. The workflow uploads the exports to a draft release, downloads and checks them again, then publishes the complete release against that commit. A failed upload or check fails the action and leaves the draft unpublished; rerunning the workflow can retry it.
-
-Only the latest data release is retained. After successful publication, the same script deletes previous `data-<commit SHA>` releases, their assets and their Git tags, including abandoned data drafts. Other release names are unaffected. A rerun verifies the existing release and retries cleanup if needed. Use the latest-release download links above; older release URLs stop working after cleanup.
-
-The overnight consistency workflow also downloads the latest published release and checks it against the current CSVs. Generated files and the rebuildable rankings cache are ignored by Git, so nightly binary versions do not accumulate in repository history.
-
-To rebuild both export formats from the current CSVs without downloading results:
-
-```sh
-python -m pip install -r .github/workflows/requirements.txt
-python .github/workflows/export_formats.py
-```
-
-To check the existing exports without changing them:
-
-```sh
-python .github/workflows/export_formats.py --check
-```
-
-If you have edited match results, first update the rankings and all formats together:
-
-```sh
-python .github/workflows/football_results.py --rankings-only
-```
-
-Edit the source CSVs when making corrections; rebuilding replaces the SQLite database. The older results importer also regenerates both exports when run normally. Optional `--db-file`, `--ranked-file` and `--rankings-state` paths are relative to `--root-dir`.
-
-## Licence and attribution
-
-The same [licence and source attribution](../LICENCE.md) apply as for the CSV datasets. See the main [README](../README.md#licence-and-attribution) for the suggested attribution and third-party source notes.
+The database is updated and checked each night. Only the latest data release is retained.
