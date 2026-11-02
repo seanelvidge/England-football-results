@@ -43,4 +43,7 @@ jobs:
         run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE" --check-football-data
 
       - name: Verify SQLite and Parquet against the CSV datasets
-        run: python .github/workflows/export_formats.py --root-dir "$GITHUB_WORKSPACE" --check
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python .github/workflows/release_formats.py check --root-dir "$GITHUB_WORKSPACE"

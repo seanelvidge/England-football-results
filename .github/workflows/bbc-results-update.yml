@@ -16,6 +16,7 @@ concurrency:
 
 jobs:
   update-results:
+    if: github.ref_name == github.event.repository.default_branch
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
@@ -23,6 +24,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           ref: ${{ github.ref_name }}
+          fetch-depth: 1
 
       - name: Set up Python
         uses: actions/setup-python@v5
@@ -37,6 +39,17 @@ jobs:
       - name: Check results import and rankings
         run: python -m unittest discover -s .github/tests
 
+      - name: Restore optional rankings cache
+        id: rankings-cache
+        uses: actions/cache/restore@v4
+        with:
+          path: |
+            .github/rankings.csv
+            .github/rankings.csv.meta.json
+          key: rankings-v1-${{ runner.os }}-${{ hashFiles('.github/workflows/football_results.py', '.github/workflows/requirements.txt') }}-${{ hashFiles('EnglandLeagueResults_wRanks.csv', '.github/football_model.json') }}
+          restore-keys: |
+            rankings-v1-${{ runner.os }}-${{ hashFiles('.github/workflows/football_results.py', '.github/workflows/requirements.txt') }}-
+
       - name: Import BBC results, update rankings and export all formats
         run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE"
 
@@ -44,7 +57,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json .github/football_model.json sqlite/EnglandFootball.sqlite parquet/*.parquet
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/football_model.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."
@@ -54,3 +67,18 @@ jobs:
           current_date="$(TZ=Europe/London date +'%Y/%m/%d')"
           git commit -m "Updated results on ${current_date}"
           git push
+
+      - name: Publish verified SQLite and Parquet release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: python .github/workflows/release_formats.py publish --root-dir "$GITHUB_WORKSPACE"
+
+      - name: Save optional rankings cache
+        if: steps.rankings-cache.outputs.cache-matched-key != format('rankings-v1-{0}-{1}-{2}', runner.os, hashFiles('.github/workflows/football_results.py', '.github/workflows/requirements.txt'), hashFiles('EnglandLeagueResults_wRanks.csv', '.github/football_model.json'))
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            .github/rankings.csv
+            .github/rankings.csv.meta.json
+          key: rankings-v1-${{ runner.os }}-${{ hashFiles('.github/workflows/football_results.py', '.github/workflows/requirements.txt') }}-${{ hashFiles('EnglandLeagueResults_wRanks.csv', '.github/football_model.json') }}

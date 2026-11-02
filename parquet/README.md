@@ -1,20 +1,31 @@
 # English Football League Data — Parquet
 
-This folder contains one Apache Parquet file for each of the seven CSV datasets. Parquet stores data by column, allowing tools to read selected columns and filter rows without loading the whole dataset into a dataframe.
+One Apache Parquet file is available for each of the seven CSV datasets. Parquet stores data by column, allowing tools to read selected columns and filter rows without loading the whole dataset into a dataframe.
 
-The CSV files in the [main repository](../README.md) are the source data. The SQLite and Parquet copies are regenerated in the same update as the results and rankings, and committed together.
+The CSV files in the [main repository](../README.md) are the source data. SQLite and Parquet are built and checked during the same nightly update, then published as release downloads. The Parquet files are not included in a Git clone.
+
+## Download
+
+Download the files from the [latest data release](https://github.com/seanelvidge/England-football-results/releases/latest) and save them in this folder. Alternatively, use the [GitHub CLI](https://cli.github.com/) from the repository root to download all seven files from one release:
+
+```sh
+gh release download --repo seanelvidge/England-football-results \
+  --pattern '*.parquet' --dir parquet --clobber
+```
+
+The release's `data-manifest.json` records the exact CSV commit and SHA-256 checksums. When combining formats, use files from that same commit or release. To match an older checkout exactly, build the exports locally using the commands below.
 
 ## Files
 
 | File | Contents |
 | --- | --- |
-| [`EnglandLeagueResults.parquet`](EnglandLeagueResults.parquet) | Match dates, teams, scores, divisions and results. |
-| [`EnglandLeagueResults_wRanks.parquet`](EnglandLeagueResults_wRanks.parquet) | The same matches with team-strength ratings and pre-match probabilities. |
-| [`EnglandLeagueNames.parquet`](EnglandLeagueNames.parquet) | Division names, their active seasons and tiers. |
-| [`EnglishTeamPointDeductions.parquet`](EnglishTeamPointDeductions.parquet) | Points deductions and additions, effective dates and notes. |
-| [`EnglishTeamLogos.parquet`](EnglishTeamLogos.parquet) | Club names, logo URLs and colours. |
-| [`EnglishTeamActivePeriods.parquet`](EnglishTeamActivePeriods.parquet) | Club names, short names and periods of league participation. |
-| [`EnglishTeamNamePeriods.parquet`](EnglishTeamNamePeriods.parquet) | Historic club names, start and end dates, and notes. |
+| [`EnglandLeagueResults.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglandLeagueResults.parquet) | Match dates, teams, scores, divisions and results. |
+| [`EnglandLeagueResults_wRanks.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglandLeagueResults_wRanks.parquet) | The same matches with team-strength ratings and pre-match probabilities. |
+| [`EnglandLeagueNames.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglandLeagueNames.parquet) | Division names, their active seasons and tiers. |
+| [`EnglishTeamPointDeductions.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglishTeamPointDeductions.parquet) | Points deductions and additions, effective dates and notes. |
+| [`EnglishTeamLogos.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglishTeamLogos.parquet) | Club names, logo URLs and colours. |
+| [`EnglishTeamActivePeriods.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglishTeamActivePeriods.parquet) | Club names, short names and periods of league participation. |
+| [`EnglishTeamNamePeriods.parquet`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglishTeamNamePeriods.parquet) | Historic club names, start and end dates, and notes. |
 
 Column names and row order match the CSVs. Goals, tiers, rankings and points adjustments use 64-bit integers; probabilities use 64-bit floating-point numbers. Other columns are UTF-8 strings, including dates (`YYYY-MM-DD`), seasons (`YYYY/YYYY`) and scores. Empty CSV fields become null values. No dataframe index column is added.
 
@@ -22,7 +33,7 @@ Files use Parquet format version 2.6 and Zstandard compression. The file metadat
 
 ## Examples
 
-Run these examples from the repository root, after cloning or downloading the repository.
+Run these examples from the repository root, after downloading or building the Parquet files.
 
 ### Python and pandas
 
@@ -95,7 +106,9 @@ print(total_goals)
 
 ## Updating and checking the files
 
-The nightly **BBC Football Results Update** generates SQLite and Parquet after updating the CSVs and rankings. Every exported row, column type and source checksum is checked before the files are published. A conversion or validation error fails the workflow before its commit step.
+The **Nightly BBC Football Results Update** generates SQLite and Parquet after updating the CSVs and rankings. Every exported row, column type and source checksum is checked before the CSV commit. The workflow uploads the exports to a draft release, downloads and checks them again, then publishes the complete release against that commit. A failed upload or check fails the action and leaves the draft unpublished; rerunning the workflow can retry it.
+
+The overnight consistency workflow also downloads the latest published release and checks it against the current CSVs. Generated files and the rebuildable rankings cache are ignored by Git, so nightly binary versions do not accumulate in repository history.
 
 To rebuild both export formats from the current CSVs without downloading results:
 

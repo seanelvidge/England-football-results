@@ -139,7 +139,7 @@ def verify_exports(root, tables=None, overrides=None):
 
 
 def publish_files(stage, root, files):
-    # GitHub publishes these files in one commit after this step succeeds.
+    # The workflow commits CSVs and publishes a release after this step succeeds.
     # Each file replacement is atomic; all conversion/validation happens first.
     for name in files:
         destination = Path(root) / name

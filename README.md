@@ -3,6 +3,7 @@
 ## Contents
 
 - [Overview](#overview)
+- [Getting the data](#getting-the-data)
 - [Dataset index](#dataset-index)
 - [Detailed schemas](#detailed-schemas)
 - [Club naming conventions](#club-naming-conventions)
@@ -18,11 +19,27 @@ The database is updated nightly at 22:30 UK time the top four tiers in English f
 
 The seven CSV files cover match results, team-strength ratings, division names, points deductions and additions, club logos and colours, periods of league participation and historic name changes of clubs.
 
+## Getting the data
+
+If you only need the current data, use a shallow clone to avoid downloading older versions of the files:
+
+```sh
+git clone --depth 1 https://github.com/seanelvidge/England-football-results.git
+```
+
+This downloads the latest commit and all seven current CSV files. It does not remove any historical football results from the datasets. A normal clone also downloads the available Git history; later pulls can add more history to a shallow clone.
+
+SQLite and Parquet files are separate downloads from the [latest data release](https://github.com/seanelvidge/England-football-results/releases/latest). See the [SQLite README](sqlite/README.md) and [Parquet README](parquet/README.md) for download instructions and examples.
+
+The nightly workflow builds and checks all three formats together, commits the CSVs, then publishes the exports in a release tied to that commit. Each release includes a `data-manifest.json` with the commit and file checksums. Use one release when combining formats; a checkout of a different commit may contain different CSV data.
+
+Generated SQLite and Parquet files are kept out of Git history. The internal rankings state is an optional Actions cache and is rebuilt from the CSVs if missing or invalid.
+
 ## Dataset index
 
 Each file link opens the CSV in this repository. The schema links jump to its documentation below.
 
-The same seven datasets are also available as [SQLite](sqlite/README.md) and [Parquet](parquet/README.md), with usage examples in each folder. All three formats are generated and committed together by the nightly update.
+The same seven datasets are also available as [SQLite](sqlite/README.md) and [Parquet](parquet/README.md) release downloads, with usage examples in each folder.
 
 | Dataset file | Contents | Detailed schema |
 | --- | --- | --- |

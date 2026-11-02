@@ -1,8 +1,20 @@
 # English Football League Data — SQLite
 
-[`EnglandFootball.sqlite`](EnglandFootball.sqlite) contains all seven CSV datasets in one SQLite database. It can be used directly without running a database server.
+[`EnglandFootball.sqlite`](https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglandFootball.sqlite) contains all seven CSV datasets in one SQLite database. It can be used directly without running a database server.
 
-The CSV files in the [main repository](../README.md) are the source data. The SQLite and Parquet copies are regenerated in the same update as the results and rankings, and committed together.
+The CSV files in the [main repository](../README.md) are the source data. SQLite and Parquet are built and checked during the same nightly update, then published as release downloads. The database is not included in a Git clone.
+
+## Download
+
+Download the database from the [latest data release](https://github.com/seanelvidge/England-football-results/releases/latest) and save it in this folder. From the repository root:
+
+```sh
+curl --fail --location \
+  https://github.com/seanelvidge/England-football-results/releases/latest/download/EnglandFootball.sqlite \
+  --output sqlite/EnglandFootball.sqlite
+```
+
+The release's `data-manifest.json` records the exact CSV commit and SHA-256 checksums. When combining this database with CSV or Parquet data, use files from that same commit or release. To match an older checkout exactly, build the exports locally using the commands below.
 
 ## Tables
 
@@ -26,7 +38,7 @@ The additional `_csv_sources` table records each source filename, row count and 
 
 ## Examples
 
-Run these examples from the repository root, after cloning or downloading the repository.
+Run these examples from the repository root, after downloading or building the database.
 
 ### SQLite command line
 
@@ -94,7 +106,9 @@ for match in matches[:10]:
 
 ## Updating and checking the files
 
-The nightly **BBC Football Results Update** generates SQLite and Parquet after updating the CSVs and rankings. Every exported row, column type and source checksum is checked before the files are published. A conversion or validation error fails the workflow before its commit step.
+The **Nightly BBC Football Results Update** generates SQLite and Parquet after updating the CSVs and rankings. Every exported row, column type and source checksum is checked before the CSV commit. The workflow uploads the exports to a draft release, downloads and checks them again, then publishes the complete release against that commit. A failed upload or check fails the action and leaves the draft unpublished; rerunning the workflow can retry it.
+
+The overnight consistency workflow also downloads the latest published release and checks it against the current CSVs. Generated files and the rebuildable rankings cache are ignored by Git, so nightly binary versions do not accumulate in repository history.
 
 To rebuild both export formats from the current CSVs without downloading results:
 

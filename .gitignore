@@ -3,11 +3,13 @@ football_results.out
 football_results.stats
 rankings.p
 __pycache__/
+# Generated downloads and rebuildable model cache are kept outside Git history.
+sqlite/*.sqlite
+parquet/*.parquet
+.github/rankings.csv
+.github/rankings.csv.meta.json
 .github/.exports-*/
 .github/.update-*/
-.github/validation/results/*.npz
-.github/validation/results/league_cases.json
-.github/validation/results/league_predictions.json
-.github/validation/results/followup/*.npz
-.github/validation/results/followup/*_cases.json
-.github/validation/results/followup/*_predictions.json
+# Local analysis stays out of commits and releases.
+/.github/audit/
+/.github/validation/
