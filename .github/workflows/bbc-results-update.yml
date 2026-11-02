@@ -68,7 +68,7 @@ jobs:
           git commit -m "Updated results on ${current_date}"
           git push
 
-      - name: Publish verified SQLite and Parquet release
+      - name: Publish verified exports and remove older data releases
         env:
           GH_TOKEN: ${{ github.token }}
           GH_REPO: ${{ github.repository }}

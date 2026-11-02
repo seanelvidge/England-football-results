@@ -49,6 +49,10 @@ Existing clones keep their old objects and branches. After the rewrite, collabor
 
 The nightly workflow builds and verifies CSV, SQLite and Parquet together, commits the CSVs and small model snapshot, then publishes the exports in a release tagged `data-<commit SHA>`. The release stays private as a draft until every uploaded file has been downloaded and verified. Its `data-manifest.json` records the commit and checksums. A failed upload or validation fails the action, and a rerun can resume an unpublished draft.
 
+The **Nightly BBC Football Results Update** runs at 22:30 UK time and can also be started using **Actions → Nightly BBC Football Results Update → Run workflow** on `main`. Its `.github/workflows/release_formats.py publish` step keeps only the latest verified data release, deleting older `data-<commit SHA>` releases, assets and tags after the replacement is published. This also clears abandoned data drafts and tags left by interrupted cleanup. Releases with other names are left alone. Cleanup failures fail the action; rerunning the workflow checks the published release and retries cleanup. When retrying an already-published release, cleanup refuses to run if another release has become latest.
+
+Use the stable `releases/latest/download/…` links to fetch current exports. Older release URLs are removed by cleanup. Where a historical CSV snapshot is still available in Git, its exports can be rebuilt locally with `.github/workflows/export_formats.py`.
+
 The internal rankings state and manifest use an optional Actions cache. A missing, expired or invalid cache triggers a rebuild from the CSVs. Generated exports and cache files remain available locally when built, but are ignored by Git.
 
 The release uploader runs only on the default branch. The overnight consistency workflow checks football-data.co.uk and downloads the latest published data release to verify it against the CSVs. This also detects a failed or missing publication after a CSV update.

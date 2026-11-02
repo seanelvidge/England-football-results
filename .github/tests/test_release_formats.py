@@ -1,4 +1,4 @@
-"""Release snapshot identity, download integrity and interrupted publication."""
+"""Release snapshot identity, download integrity, publication and retention."""
 from contextlib import redirect_stdout
 import csv
 import io
@@ -53,6 +53,13 @@ class ReleaseTests(unittest.TestCase):
         if args[0] != "gh":
             return self.real_run(*args, **kwargs)
         self.commands.append(args)
+        if args[1] == "api":
+            if args[2:4] == ("--method", "DELETE"):
+                return ""
+            if "/git/matching-refs/" in args[-1]:
+                return json.dumps([[{"ref": f"refs/tags/data-{sha}"}
+                                    for sha in (self.commit, "0" * 40)]])
+            return json.dumps([[self.info()], [{"tag_name": "data-" + "0" * 40}]])
         operation = args[2]
         if operation == "download":
             target = Path(args[args.index("--dir") + 1])
@@ -61,9 +68,14 @@ class ReleaseTests(unittest.TestCase):
         elif operation == "upload":
             for filename in args[args.index("--clobber") + 1:]:
                 shutil.copyfile(filename, self.remote / Path(filename).name)
-        elif operation not in {"create", "edit"}:
+        elif operation not in {"create", "edit", "delete"}:
             self.fail(f"Unexpected GitHub command: {args}")
         return ""
+
+    def operations(self):
+        return [args[2] if args[1] == "release" else
+                "delete-tag" if args[2:4] == ("--method", "DELETE") else "list"
+                for args in self.commands]
 
     def edit_manifest(self, transform):
         path = self.remote / releases.MANIFEST
@@ -126,27 +138,50 @@ class ReleaseTests(unittest.TestCase):
             releases.check_release(self.root, "example/repo", self.info())
 
     def test_new_release_is_checked_before_becoming_public(self):
-        with patch.object(releases, "release_info", side_effect=[None, self.info(draft=True)]), patch.object(releases, "run", side_effect=self.gh):
+        with patch.object(releases, "release_info", side_effect=[None, self.info(draft=True), self.info()]), patch.object(releases, "run", side_effect=self.gh):
             releases.publish_release(self.root, "example/repo")
-        self.assertEqual([c[2] for c in self.commands], ["create", "upload", "download", "edit"])
+        self.assertEqual(self.operations(), ["create", "upload", "download", "edit", "list", "list", "delete", "delete-tag"])
         self.assertIn("--draft", self.commands[0])
-        self.assertIn("--draft=false", self.commands[-1])
+        self.assertIn("--draft=false", self.commands[3])
         self.assertIn(self.commit, self.commands[0])
 
     def test_interrupted_draft_can_be_retried(self):
-        with patch.object(releases, "release_info", return_value=self.info(draft=True)), patch.object(releases, "run", side_effect=self.gh):
+        with patch.object(releases, "release_info", side_effect=[self.info(draft=True), self.info(draft=True), self.info()]), patch.object(releases, "run", side_effect=self.gh):
             releases.publish_release(self.root, "example/repo")
-        self.assertEqual([c[2] for c in self.commands], ["upload", "download", "edit"])
+        self.assertEqual(self.operations(), ["upload", "download", "edit", "list", "list", "delete", "delete-tag"])
 
-    def test_published_rerun_checks_without_overwriting(self):
+    def test_published_rerun_checks_and_retries_cleanup_without_overwriting(self):
         with patch.object(releases, "release_info", return_value=self.info()), patch.object(releases, "run", side_effect=self.gh):
             releases.publish_release(self.root, "example/repo")
-        self.assertEqual([c[2] for c in self.commands], ["download"])
+        self.assertEqual(self.operations(), ["download", "list", "list", "delete", "delete-tag"])
 
     def test_failed_verification_keeps_release_unpublished(self):
         with patch.object(releases, "release_info", return_value=self.info(draft=True)), patch.object(releases, "run", side_effect=self.gh), patch.object(releases, "check_release", side_effect=ValueError("Failed verification")), self.assertRaisesRegex(ValueError, "Failed verification"):
             releases.publish_release(self.root, "example/repo")
-        self.assertEqual([c[2] for c in self.commands], ["upload"])
+        self.assertEqual(self.operations(), ["upload"])
+
+    def test_failed_upload_or_publication_never_removes_previous_release(self):
+        for failure in ("upload", "edit"):
+            with self.subTest(failure=failure):
+                self.commands.clear()
+
+                def failing_gh(*args, **kwargs):
+                    result = self.gh(*args, **kwargs)
+                    if args[:3] == ("gh", "release", failure):
+                        raise subprocess.CalledProcessError(1, args, stderr="HTTP 500")
+                    return result
+
+                with patch.object(releases, "release_info", return_value=self.info(draft=True)), patch.object(releases, "run", side_effect=failing_gh), self.assertRaises(subprocess.CalledProcessError):
+                    releases.publish_release(self.root, "example/repo")
+                self.assertNotIn("delete", self.operations())
+                self.assertNotIn("delete-tag", self.operations())
+
+    def test_failed_verification_of_published_rerun_never_removes_previous_release(self):
+        path = self.remote / "EnglandFootball.sqlite"
+        path.write_bytes(path.read_bytes() + b"corrupt")
+        with patch.object(releases, "release_info", return_value=self.info()), patch.object(releases, "run", side_effect=self.gh), self.assertRaisesRegex(ValueError, "checksum"):
+            releases.publish_release(self.root, "example/repo")
+        self.assertEqual(self.operations(), ["download"])
 
     def test_api_errors_are_not_mistaken_for_a_missing_release(self):
         with patch.object(releases.subprocess, "run", return_value=subprocess.CompletedProcess([], 1, "", "HTTP 500")), self.assertRaises(RuntimeError):
@@ -166,6 +201,82 @@ class ReleaseTests(unittest.TestCase):
                      subprocess.CompletedProcess([], 0, json.dumps([[self.info(draft=True)]]), "")]
         with patch.object(releases.subprocess, "run", side_effect=responses):
             self.assertIsNone(releases.release_info("example/repo", "data-" + "0" * 40))
+
+
+class ReleaseRetentionTests(unittest.TestCase):
+    def setUp(self):
+        self.keep = "data-" + "a" * 40
+        self.old = "data-" + "b" * 40
+        self.draft = "data-" + "c" * 40
+        self.latest = {"tag_name": self.keep, "draft": False}
+        self.quiet = redirect_stdout(io.StringIO())
+        self.quiet.__enter__()
+        self.addCleanup(self.quiet.__exit__, None, None, None)
+
+    def test_removes_old_data_releases_and_drafts_across_all_pages(self):
+        pages = [[self.latest, {"tag_name": "v1.0"}, {"tag_name": self.old, "draft": False}],
+                 [{"tag_name": "data-example"}, {"tag_name": self.draft, "draft": True},
+                  {"tag_name": self.keep + "-notes"}]]
+        # The draft has no Git tag. Prefix matches that are not exact data tags
+        # must be preserved even when GitHub returns them from matching-refs.
+        refs = [[{"ref": f"refs/tags/{self.keep}"}],
+                [{"ref": f"refs/tags/{self.old}"}, {"ref": "refs/tags/data-example"},
+                 {"ref": f"refs/tags/{self.keep}-notes"}]]
+        with patch.object(releases, "run", side_effect=[json.dumps(pages), json.dumps(refs), "", "", ""]) as command, patch.object(releases, "release_info", return_value=self.latest):
+            releases.prune_old_releases("example/repo", self.keep)
+        self.assertIn("--paginate", command.call_args_list[0].args)
+        self.assertIn("--paginate", command.call_args_list[1].args)
+        self.assertEqual([call.args for call in command.call_args_list[2:4]], [
+            ("gh", "release", "delete", tag, "--repo", "example/repo", "--yes")
+            for tag in (self.old, self.draft)
+        ])
+        self.assertEqual(command.call_args_list[-1].args, (
+            "gh", "api", "--method", "DELETE", f"repos/example/repo/git/refs/tags/{self.old}"))
+
+    def test_missing_draft_or_superseded_replacement_prevents_all_deletions(self):
+        for latest in (None, {"tag_name": self.keep, "draft": True},
+                       {"tag_name": self.old, "draft": False}):
+            with self.subTest(latest=latest), patch.object(releases, "list_releases", return_value=[{"tag_name": self.old}]), patch.object(releases, "list_data_tags", return_value=[self.keep, self.old]), patch.object(releases, "release_info", return_value=latest), patch.object(releases, "run") as command, self.assertRaisesRegex(ValueError, "Refusing cleanup"):
+                releases.prune_old_releases("example/repo", self.keep)
+            command.assert_not_called()
+
+    def test_unexpected_retained_tag_prevents_all_api_calls(self):
+        with patch.object(releases, "run") as command, self.assertRaisesRegex(ValueError, "Unexpected"):
+            releases.prune_old_releases("example/repo", "v1.0")
+        command.assert_not_called()
+
+    def test_cleanup_failure_fails_action_and_never_deletes_retained_release(self):
+        pages = [[self.latest, {"tag_name": self.old}, {"tag_name": self.draft}]]
+        failure = subprocess.CalledProcessError(1, ["gh", "release", "delete"], stderr="HTTP 500")
+        with patch.object(releases, "run", side_effect=[json.dumps(pages), failure]) as command, patch.object(releases, "list_data_tags", return_value=[self.keep, self.old]), patch.object(releases, "release_info", return_value=self.latest), self.assertRaises(subprocess.CalledProcessError):
+            releases.prune_old_releases("example/repo", self.keep)
+        self.assertEqual(len(command.call_args_list), 2)
+        self.assertEqual(command.call_args_list[-1].args[3], self.old)
+
+    def test_latest_release_lookup_failure_prevents_all_deletions(self):
+        with patch.object(releases, "list_releases", return_value=[{"tag_name": self.old}]), patch.object(releases, "list_data_tags", return_value=[self.keep, self.old]), patch.object(releases, "release_info", side_effect=RuntimeError("HTTP 500")), patch.object(releases, "run") as command, self.assertRaises(RuntimeError):
+            releases.prune_old_releases("example/repo", self.keep)
+        command.assert_not_called()
+
+    def test_tag_deletion_failure_can_be_retried_after_release_was_removed(self):
+        remote_releases = [self.latest, {"tag_name": self.old}]
+        remote_tags = [self.keep, self.old]
+
+        def delete(*args):
+            if args[:3] == ("gh", "release", "delete"):
+                remote_releases[:] = [release for release in remote_releases
+                                      if release["tag_name"] != args[3]]
+            else:
+                raise subprocess.CalledProcessError(1, args, stderr="HTTP 500")
+
+        with patch.object(releases, "list_releases", side_effect=lambda _: list(remote_releases)), patch.object(releases, "list_data_tags", return_value=remote_tags), patch.object(releases, "release_info", return_value=self.latest):
+            with patch.object(releases, "run", side_effect=delete), self.assertRaises(subprocess.CalledProcessError):
+                releases.prune_old_releases("example/repo", self.keep)
+            self.assertEqual(remote_releases, [self.latest])
+            with patch.object(releases, "run") as command:
+                releases.prune_old_releases("example/repo", self.keep)
+            command.assert_called_once_with("gh", "api", "--method", "DELETE",
+                                            f"repos/example/repo/git/refs/tags/{self.old}")
 
 
 if __name__ == "__main__":

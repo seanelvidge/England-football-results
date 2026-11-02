@@ -106,7 +106,11 @@ for match in matches[:10]:
 
 ## Updating and checking the files
 
+The [Nightly BBC Football Results Update](../.github/workflows/bbc-results-update.yml) runs at **22:30 UK time**. To run it manually, open the repository's **Actions** tab, select **Nightly BBC Football Results Update**, then choose **Run workflow** on `main`. The publishing step calls `.github/workflows/release_formats.py publish`.
+
 The **Nightly BBC Football Results Update** generates SQLite and Parquet after updating the CSVs and rankings. Every exported row, column type and source checksum is checked before the CSV commit. The workflow uploads the exports to a draft release, downloads and checks them again, then publishes the complete release against that commit. A failed upload or check fails the action and leaves the draft unpublished; rerunning the workflow can retry it.
+
+Only the latest data release is retained. After successful publication, the same script deletes previous `data-<commit SHA>` releases, their assets and their Git tags, including abandoned data drafts. Other release names are unaffected. A rerun verifies the existing release and retries cleanup if needed. Use the latest-release download links above; older release URLs stop working after cleanup.
 
 The overnight consistency workflow also downloads the latest published release and checks it against the current CSVs. Generated files and the rebuildable rankings cache are ignored by Git, so nightly binary versions do not accumulate in repository history.
 

@@ -13,10 +13,25 @@ from export_formats import DATASETS, EXPORT_FILES, sha256, verify_exports
 
 MANIFEST = "data-manifest.json"
 ASSETS = {Path(filename).name: filename for filename in EXPORT_FILES}
+DATA_TAG = re.compile(r"data-[0-9a-f]{40}")
 
 
 def run(*args, cwd=None):
     return subprocess.run(args, cwd=cwd, check=True, capture_output=True, text=True).stdout.strip()
+
+
+def list_releases(repository):
+    """Include every page and unpublished drafts visible to the workflow token."""
+    pages = json.loads(run("gh", "api", "--paginate", "--slurp",
+                           f"repos/{repository}/releases?per_page=100"))
+    return [release for page in pages for release in page]
+
+
+def list_data_tags(repository):
+    pages = json.loads(run("gh", "api", "--paginate", "--slurp",
+                           f"repos/{repository}/git/matching-refs/tags/data-"))
+    tags = [reference["ref"].removeprefix("refs/tags/") for page in pages for reference in page]
+    return [tag for tag in tags if DATA_TAG.fullmatch(tag)]
 
 
 def release_info(repository, tag=None):
@@ -27,9 +42,7 @@ def release_info(repository, tag=None):
             if tag:
                 # GitHub's tag endpoint returns published releases only. Drafts
                 # are visible to the workflow token through the release list.
-                pages = json.loads(run("gh", "api", "--paginate", "--slurp",
-                                       f"repos/{repository}/releases?per_page=100"))
-                return next((release for page in pages for release in page
+                return next((release for release in list_releases(repository)
                              if release["tag_name"] == tag), None)
             return None
         raise RuntimeError(f"Could not read GitHub release: {result.stderr.strip()}")
@@ -74,7 +87,7 @@ def check_release(root, repository, info, expected_commit=None):
     if info is None:
         raise ValueError("No data release exists; run the Nightly BBC Football Results Update first")
     tag = info["tag_name"]
-    if not re.fullmatch(r"data-[0-9a-f]{40}", tag):
+    if not DATA_TAG.fullmatch(tag):
         raise ValueError(f"Unexpected data release tag: {tag}")
     asset_names = [asset["name"] for asset in info["assets"]]
     expected_assets = set(ASSETS) | {MANIFEST}
@@ -104,6 +117,32 @@ def check_release(root, repository, info, expected_commit=None):
     print(f"Verified {tag}: all SQLite and Parquet values match the CSVs.")
 
 
+def prune_old_releases(repository, keep_tag):
+    """Keep the verified latest data release; remove other data releases and tags."""
+    if not DATA_TAG.fullmatch(keep_tag):
+        raise ValueError(f"Unexpected data release tag: {keep_tag}")
+    # Take the deletion candidates first, then confirm the retained release is
+    # still latest. Retrying an older publication must not remove a newer one.
+    # The workflow concurrency group serializes scheduled and manual runs.
+    releases = list_releases(repository)
+    tags = list_data_tags(repository)
+    latest = release_info(repository)
+    if latest is None or latest["draft"] or latest["tag_name"] != keep_tag:
+        raise ValueError("Refusing cleanup: the verified data release is not the latest published release")
+    for release in releases:
+        tag = release["tag_name"]
+        if tag != keep_tag and DATA_TAG.fullmatch(tag):
+            run("gh", "release", "delete", tag, "--repo", repository, "--yes")
+            print(f"Deleted superseded data release {tag}.")
+    # Drafts may have no tag. Listing tags separately also lets a rerun finish
+    # cleanup if a previous attempt deleted a release but failed on its tag.
+    for tag in tags:
+        if tag != keep_tag:
+            run("gh", "api", "--method", "DELETE", f"repos/{repository}/git/refs/tags/{tag}")
+            print(f"Deleted superseded data tag {tag}.")
+    print(f"Retained latest data release: {keep_tag}")
+
+
 def publish_release(root, repository):
     with tempfile.TemporaryDirectory(prefix="football-release-") as temporary:
         directory = Path(temporary)
@@ -114,6 +153,7 @@ def publish_release(root, repository):
             # A rerun checks the existing publication instead of overwriting it.
             check_release(root, repository, info, expected_commit=commit)
             print("This commit's data release is already published.")
+            prune_old_releases(repository, tag)
             return
         if info is None:
             run("gh", "release", "create", tag, "--repo", repository,
@@ -126,6 +166,7 @@ def publish_release(root, repository):
         check_release(root, repository, release_info(repository, tag), expected_commit=commit)
         run("gh", "release", "edit", tag, "--repo", repository, "--draft=false", "--latest")
         print(f"Published https://github.com/{repository}/releases/tag/{tag}")
+        prune_old_releases(repository, tag)
 
 
 def main():
