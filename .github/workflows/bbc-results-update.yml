@@ -35,7 +35,7 @@ jobs:
         run: pip install -r .github/workflows/requirements.txt
 
       - name: Check results import and rankings
-        run: python -m unittest discover -s tests
+        run: python -m unittest discover -s .github/tests
 
       - name: Import BBC results and update rankings
         run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE"
@@ -44,7 +44,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json football_model.json
+          git add README.md EnglandLeagueResults.csv EnglandLeagueResults_wRanks.csv .github/rankings.csv .github/rankings.csv.meta.json .github/football_model.json
 
           if git diff --cached --quiet; then
             echo "No changes to commit."

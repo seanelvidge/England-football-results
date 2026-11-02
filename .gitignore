@@ -3,9 +3,9 @@ football_results.out
 football_results.stats
 rankings.p
 __pycache__/
-validation/results/*.npz
-validation/results/league_cases.json
-validation/results/league_predictions.json
-validation/results/followup/*.npz
-validation/results/followup/*_cases.json
-validation/results/followup/*_predictions.json
+.github/validation/results/*.npz
+.github/validation/results/league_cases.json
+.github/validation/results/league_predictions.json
+.github/validation/results/followup/*.npz
+.github/validation/results/followup/*_cases.json
+.github/validation/results/followup/*_predictions.json

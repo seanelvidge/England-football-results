@@ -32,7 +32,7 @@ RESULTS_FILE = "EnglandLeagueResults.csv"
 RANKED_FILE = "EnglandLeagueResults_wRanks.csv"
 STATE_FILE = ".github/rankings.csv"
 # Publish the state manifest last, matching the ranking writer's crash recovery.
-ARTIFACTS = [RESULTS_FILE, RANKED_FILE, STATE_FILE, "football_model.json", "README.md", STATE_FILE + ".meta.json"]
+ARTIFACTS = [RESULTS_FILE, RANKED_FILE, STATE_FILE, ".github/football_model.json", "README.md", STATE_FILE + ".meta.json"]
 
 
 def download_session():

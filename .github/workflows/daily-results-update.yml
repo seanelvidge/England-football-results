@@ -37,7 +37,7 @@ jobs:
         run: pip install -r .github/workflows/requirements.txt
 
       - name: Check results import and rankings
-        run: python -m unittest discover -s tests
+        run: python -m unittest discover -s .github/tests
 
       - name: Verify published results against the database
         run: python .github/workflows/bbc_results.py --root-dir "$GITHUB_WORKSPACE" --check-football-data

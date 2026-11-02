@@ -661,7 +661,7 @@ def file_sha256(path: str) -> str:
 def update_rankings(root_dir: str, db_file_name: str, ranked_file: str, rankings_state: str, rebuild: bool = False) -> None:
     db_path, ranked_path, state_path = [os.path.join(root_dir, name) for name in [db_file_name, ranked_file, rankings_state]]
     manifest_path = state_path + ".meta.json"
-    snapshot_path = os.path.join(root_dir, "football_model.json")
+    snapshot_path = os.path.join(root_dir, ".github", "football_model.json")
     source_hash = file_sha256(__file__)
     df_db = pd.read_csv(db_path).sort_values("Date", kind="stable").reset_index(drop=True)
     if df_db.empty:

@@ -13,13 +13,13 @@ from unittest.mock import Mock, patch
 import pandas as pd
 import requests
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT / ".github/workflows"))
 import bbc_results as updater
 
 
 DAY = date(2026, 10, 31)
-LIVE_HTML = (ROOT / "tests/fixtures/bbc_scores_2026-10-31.html").read_text()
+LIVE_HTML = (Path(__file__).resolve().parent / "fixtures/bbc_scores_2026-10-31.html").read_text()
 payload, _ = json.JSONDecoder().raw_decode(LIVE_HTML.split("window.__INITIAL_DATA__=", 1)[1])
 LIVE_STATE = json.loads(payload)
 

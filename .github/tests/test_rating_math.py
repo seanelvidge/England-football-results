@@ -5,7 +5,7 @@ import unittest
 
 import numpy as np
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 SOURCE = ROOT / '.github' / 'workflows' / 'football_results.py'
 spec = importlib.util.spec_from_file_location('football_rating_model', SOURCE)
 model = importlib.util.module_from_spec(spec)
