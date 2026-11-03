@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-01",
-  "matches": 212791,
+  "as_of": "2026-11-02",
+  "matches": 212792,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -17,9 +17,9 @@
   },
   "tiers": {
     "1": {
-      "home_advantage": 0.17227846206615516,
-      "log_draw": -0.2811880374414825,
-      "log_excess_margin": -0.4142424374654182
+      "home_advantage": 0.17141247001165089,
+      "log_draw": -0.2814584000595687,
+      "log_excess_margin": -0.4146062742644339
     },
     "2": {
       "home_advantage": 0.19136921219082365,
@@ -51,9 +51,9 @@
       "tier": 2
     },
     "Everton": {
-      "skill": 1.411858954206721,
-      "variance": 0.05509480205032424,
-      "date": "2026-10-24",
+      "skill": 1.4534106834444895,
+      "variance": 0.05454636091181972,
+      "date": "2026-11-02",
       "tier": 1
     },
     "Accrington F.C.": {
@@ -231,9 +231,9 @@
       "tier": 1
     },
     "Newcastle United": {
-      "skill": 1.4347166095323645,
-      "variance": 0.05340779882468855,
-      "date": "2026-10-25",
+      "skill": 1.3954305155552178,
+      "variance": 0.05284438873904123,
+      "date": "2026-11-02",
       "tier": 1
     },
     "Burton Wanderers": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "eb3bf133a7a80dfebe57bcb3089e60df04ab4e063f14a54f69198e8f94cae7e9",
+  "ranked_sha256": "fe3e5d145c60ee47410d9115f86e5cb91c216c5294d8551d239dad99c391c60c",
   "source_sha256": "45a956c32920202aceaa2eae7ab86e0e96a395f448e7583d81c38c7d447c0ef3"
 }
