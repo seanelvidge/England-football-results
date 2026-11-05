@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-03",
-  "matches": 212804,
+  "as_of": "2026-11-04",
+  "matches": 212808,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -22,14 +22,14 @@
       "log_excess_margin": -0.4146062742644339
     },
     "2": {
-      "home_advantage": 0.1904584367671318,
-      "log_draw": -0.23843594804399748,
-      "log_excess_margin": -0.5083119384440986
+      "home_advantage": 0.19180253087372856,
+      "log_draw": -0.2382350811959189,
+      "log_excess_margin": -0.508417590534534
     },
     "3": {
-      "home_advantage": 0.17609732594036137,
-      "log_draw": -0.2858504288518383,
-      "log_excess_margin": -0.4588765348568433
+      "home_advantage": 0.17690582727469634,
+      "log_draw": -0.28611062155380146,
+      "log_excess_margin": -0.45878506832865573
     },
     "4": {
       "home_advantage": 0.1738100334853214,
@@ -87,9 +87,9 @@
       "tier": 2
     },
     "Wolverhampton Wanderers": {
-      "skill": 0.8419799423545281,
-      "variance": 0.05721844908591228,
-      "date": "2026-10-31",
+      "skill": 0.8631706800021013,
+      "variance": 0.05578919655016671,
+      "date": "2026-11-04",
       "tier": 2
     },
     "Aston Villa": {
@@ -297,9 +297,9 @@
       "tier": 2
     },
     "Middlesbrough": {
-      "skill": 0.8035806249451551,
-      "variance": 0.04847920966038728,
-      "date": "2026-10-31",
+      "skill": 0.7446253434311494,
+      "variance": 0.04744525622190162,
+      "date": "2026-11-04",
       "tier": 2
     },
     "Chesterfield": {
@@ -321,9 +321,9 @@
       "tier": 3
     },
     "Bristol City": {
-      "skill": 0.2974853058637656,
-      "variance": 0.048390110472429464,
-      "date": "2026-10-31",
+      "skill": 0.2782012901764775,
+      "variance": 0.04759333530043133,
+      "date": "2026-11-04",
       "tier": 2
     },
     "Burton United": {
@@ -411,15 +411,15 @@
       "tier": 1
     },
     "West Ham United": {
-      "skill": 1.1675478534938082,
-      "variance": 0.05672233902884808,
-      "date": "2026-10-31",
+      "skill": 1.1447385456773178,
+      "variance": 0.05590060150668724,
+      "date": "2026-11-04",
       "tier": 2
     },
     "Cardiff City": {
-      "skill": 0.26523301124714815,
-      "variance": 0.0536851168553324,
-      "date": "2026-10-31",
+      "skill": 0.28459039122736496,
+      "variance": 0.053031535348792944,
+      "date": "2026-11-04",
       "tier": 2
     },
     "Leeds United": {
@@ -483,9 +483,9 @@
       "tier": 4
     },
     "Reading": {
-      "skill": 0.005300999719520583,
-      "variance": 0.04704220637410075,
-      "date": "2026-10-31",
+      "skill": -0.027725364112671656,
+      "variance": 0.04612169552891466,
+      "date": "2026-11-04",
       "tier": 3
     },
     "Plymouth Argyle": {
@@ -621,9 +621,9 @@
       "tier": 4
     },
     "Wrexham": {
-      "skill": 0.3490060770366585,
-      "variance": 0.047807673975169045,
-      "date": "2026-10-30",
+      "skill": 0.40576900608940836,
+      "variance": 0.04698657657115111,
+      "date": "2026-11-04",
       "tier": 2
     },
     "Hartlepool United": {
@@ -747,9 +747,9 @@
       "tier": 3
     },
     "Oxford United": {
-      "skill": 0.21829206714509414,
-      "variance": 0.05616647404806244,
-      "date": "2026-10-31",
+      "skill": 0.2550720229554413,
+      "variance": 0.05451753441873925,
+      "date": "2026-11-04",
       "tier": 3
     },
     "Cambridge United": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "28e992364f49b461ba01bf0a5c02fa66c4b7089a300f54976d785fa06e2e811a",
-  "source_sha256": "45a956c32920202aceaa2eae7ab86e0e96a395f448e7583d81c38c7d447c0ef3"
+  "ranked_sha256": "2c8c44a8568bb198976dbd76b8665ee1a0a91e2ff866294ef058d9684380740e",
+  "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }

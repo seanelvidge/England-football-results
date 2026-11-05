@@ -13,27 +13,11 @@
 
 ## Overview
 
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/11/03 (covering 212,804 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026/11/04 (covering 212,808 matches).
 
-The database is updated nightly at 22:30 UK time the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
+The database is updated nightly for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
 The seven CSV files cover match results, team-strength ratings, division names, points deductions and additions, club logos and colours, periods of league participation and historic name changes of clubs.
-
-## Getting the data
-
-If you only need the current data, use a shallow clone to avoid downloading older versions of the files:
-
-```sh
-git clone --depth 1 https://github.com/seanelvidge/England-football-results.git
-```
-
-This downloads the latest commit and all seven current CSV files. It does not remove any historical football results from the datasets. A normal clone also downloads the available Git history; later pulls can add more history to a shallow clone.
-
-SQLite and Parquet files are separate downloads from the [latest data release](https://github.com/seanelvidge/England-football-results/releases/latest). See the [SQLite README](sqlite/README.md) and [Parquet README](parquet/README.md) for download instructions and examples.
-
-The nightly workflow builds and checks all three formats together, commits the CSVs, then publishes the exports in a release tied to that commit. Each release includes a `data-manifest.json` with the commit and file checksums. Use one release when combining formats; a checkout of a different commit may contain different CSV data.
-
-Generated SQLite and Parquet files are kept out of Git history. The internal rankings state is an optional Actions cache and is rebuilt from the CSVs if missing or invalid.
 
 ## Dataset index
 
@@ -43,7 +27,7 @@ The same seven datasets are also available as [SQLite](sqlite/README.md) and [Pa
 
 | Dataset file | Contents | Detailed schema |
 | --- | --- | --- |
-| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/11/03 (212,804 matches). | [View schema](#england-league-results) |
+| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/11/04 (212,808 matches). | [View schema](#england-league-results) |
 | [`EnglandLeagueResults_wRanks.csv`](EnglandLeagueResults_wRanks.csv) | Match results with chronological team-strength ratings and pre-match probabilities. | [View schema](#england-league-results-with-team-strength-rankings) |
 | [`EnglandLeagueNames.csv`](EnglandLeagueNames.csv) | Division names, their active seasons and their tiers. | [View schema](#england-league-names) |
 | [`EnglishTeamPointDeductions.csv`](EnglishTeamPointDeductions.csv) | Points deductions and additions, effective dates and reasons. | [View schema](#english-team-point-deductions) |
