@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-04",
-  "matches": 212808,
+  "as_of": "2026-11-06",
+  "matches": 212810,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -17,14 +17,14 @@
   },
   "tiers": {
     "1": {
-      "home_advantage": 0.17141247001165089,
-      "log_draw": -0.2814584000595687,
-      "log_excess_margin": -0.4146062742644339
+      "home_advantage": 0.17201238989659323,
+      "log_draw": -0.2817021259669172,
+      "log_excess_margin": -0.41461518814201215
     },
     "2": {
-      "home_advantage": 0.19180253087372856,
-      "log_draw": -0.2382350811959189,
-      "log_excess_margin": -0.508417590534534
+      "home_advantage": 0.19280995265065792,
+      "log_draw": -0.2385143708349383,
+      "log_excess_margin": -0.5082340158776425
     },
     "3": {
       "home_advantage": 0.17690582727469634,
@@ -39,21 +39,21 @@
   },
   "teams": {
     "Bolton Wanderers": {
-      "skill": 0.06969599889155688,
-      "variance": 0.05362498455038881,
-      "date": "2026-11-03",
+      "skill": 0.024740219675847226,
+      "variance": 0.051981848487654574,
+      "date": "2026-11-06",
       "tier": 2
     },
     "Derby County": {
-      "skill": 0.05961014344248505,
-      "variance": 0.04627201966357387,
-      "date": "2026-11-03",
+      "skill": 0.09942810046268973,
+      "variance": 0.04520117692384825,
+      "date": "2026-11-06",
       "tier": 2
     },
     "Everton": {
-      "skill": 1.4534106834444895,
-      "variance": 0.05454636091181972,
-      "date": "2026-11-02",
+      "skill": 1.4810733316807465,
+      "variance": 0.05319557005442276,
+      "date": "2026-11-06",
       "tier": 1
     },
     "Accrington F.C.": {
@@ -405,9 +405,9 @@
       "tier": 3
     },
     "Coventry City": {
-      "skill": 1.001220139771735,
-      "variance": 0.059627748374457265,
-      "date": "2026-10-31",
+      "skill": 0.9731526785704719,
+      "variance": 0.05815264144420743,
+      "date": "2026-11-06",
       "tier": 1
     },
     "West Ham United": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "2c8c44a8568bb198976dbd76b8665ee1a0a91e2ff866294ef058d9684380740e",
+  "ranked_sha256": "b0c5183382a50399925e8ebeed547f0fd5876b56dd9f9a43a53682ea816d06d6",
   "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }
