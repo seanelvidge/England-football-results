@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-14",
-  "matches": 212845,
+  "as_of": "2026-11-20",
+  "matches": 212846,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -27,9 +27,9 @@
       "log_excess_margin": -0.5078095257926207
     },
     "3": {
-      "home_advantage": 0.18244096889559655,
-      "log_draw": -0.2874553952314172,
-      "log_excess_margin": -0.4574030896393946
+      "home_advantage": 0.18187149199283703,
+      "log_draw": -0.28772555694470076,
+      "log_excess_margin": -0.4578200471647428
     },
     "4": {
       "home_advantage": 0.17337645866971135,
@@ -123,9 +123,9 @@
       "tier": 2
     },
     "Sheffield Wednesday": {
-      "skill": -0.10512536881608409,
-      "variance": 0.05293438742647995,
-      "date": "2026-11-14",
+      "skill": -0.08017054449102018,
+      "variance": 0.05206496552880865,
+      "date": "2026-11-20",
       "tier": 3
     },
     "Nottingham Forest": {
@@ -279,9 +279,9 @@
       "tier": 3
     },
     "Barnsley": {
-      "skill": -0.49041890097142793,
-      "variance": 0.04917916993807247,
-      "date": "2026-11-14",
+      "skill": -0.5136126993126734,
+      "variance": 0.048591741446930486,
+      "date": "2026-11-20",
       "tier": 3
     },
     "Glossop North End": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "7982faf21325006146fe3360f524aeb6e7482d150c81e78636e767c1e4f5ea58",
+  "ranked_sha256": "01d7e7c951b748b3b474b5f56dd904cdb775d78a7a61e2a7317df8bca9319246",
   "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }
