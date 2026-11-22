@@ -13,7 +13,7 @@
 
 ## Overview
 
-This is a plain text database of all England football (soccer) league results from 1888 to 2026/11/21 (covering 212,887 matches).
+This is a plain text database of all England football (soccer) league results from 1888 to 2026/11/22 (covering 212,890 matches).
 
 The database is updated nightly for the top four tiers in English football: Premier League, EFL Championship, EFL League One and EFL League Two.
 
@@ -27,7 +27,7 @@ The same seven datasets are also available as [SQLite](sqlite/README.md) and [Pa
 
 | Dataset file | Contents | Detailed schema |
 | --- | --- | --- |
-| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/11/21 (212,887 matches). | [View schema](#england-league-results) |
+| [`EnglandLeagueResults.csv`](EnglandLeagueResults.csv) | Match results from 1888 to 2026/11/22 (212,890 matches). | [View schema](#england-league-results) |
 | [`EnglandLeagueResults_wRanks.csv`](EnglandLeagueResults_wRanks.csv) | Match results with chronological team-strength ratings and pre-match probabilities. | [View schema](#england-league-results-with-team-strength-rankings) |
 | [`EnglandLeagueNames.csv`](EnglandLeagueNames.csv) | Division names, their active seasons and their tiers. | [View schema](#england-league-names) |
 | [`EnglishTeamPointDeductions.csv`](EnglishTeamPointDeductions.csv) | Points deductions and additions, effective dates and reasons. | [View schema](#english-team-point-deductions) |

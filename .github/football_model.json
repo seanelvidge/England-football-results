@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-21",
-  "matches": 212887,
+  "as_of": "2026-11-22",
+  "matches": 212890,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -17,13 +17,13 @@
   },
   "tiers": {
     "1": {
-      "home_advantage": 0.17390917636413195,
-      "log_draw": -0.28074210555013573,
-      "log_excess_margin": -0.4154211581813648
+      "home_advantage": 0.17732955433631395,
+      "log_draw": -0.2812198266022924,
+      "log_excess_margin": -0.4138409089449745
     },
     "2": {
-      "home_advantage": 0.19735896906457756,
-      "log_draw": -0.2392512786976923,
+      "home_advantage": 0.19713409910835059,
+      "log_draw": -0.23852365671912568,
       "log_excess_margin": -0.5088530076878893
     },
     "3": {
@@ -69,9 +69,9 @@
       "tier": 2
     },
     "Burnley": {
-      "skill": 0.429888961080242,
-      "variance": 0.05374237480900999,
-      "date": "2026-11-07",
+      "skill": 0.41774475133662997,
+      "variance": 0.054583518579100286,
+      "date": "2026-11-22",
       "tier": 2
     },
     "Stoke City": {
@@ -99,9 +99,9 @@
       "tier": 1
     },
     "Blackburn Rovers": {
-      "skill": 0.29271979492721484,
-      "variance": 0.046571769799112345,
-      "date": "2026-11-07",
+      "skill": 0.3022113597044397,
+      "variance": 0.04794890786831027,
+      "date": "2026-11-22",
       "tier": 2
     },
     "Notts County": {
@@ -135,9 +135,9 @@
       "tier": 1
     },
     "Manchester United": {
-      "skill": 1.5219750488995643,
-      "variance": 0.05350891273056,
-      "date": "2026-11-08",
+      "skill": 1.451730420845942,
+      "variance": 0.05305249481536693,
+      "date": "2026-11-22",
       "tier": 1
     },
     "Walsall": {
@@ -219,9 +219,9 @@
       "tier": 2
     },
     "Liverpool": {
-      "skill": 1.783633768903688,
-      "variance": 0.052616357287296626,
-      "date": "2026-11-08",
+      "skill": 1.8497326691568219,
+      "variance": 0.05226401364370384,
+      "date": "2026-11-22",
       "tier": 1
     },
     "Arsenal": {
@@ -345,9 +345,9 @@
       "tier": 3
     },
     "Hull City": {
-      "skill": 0.8213517123749869,
-      "variance": 0.06440087153673321,
-      "date": "2026-11-07",
+      "skill": 0.933655922072053,
+      "variance": 0.06420691679877932,
+      "date": "2026-11-22",
       "tier": 1
     },
     "Leeds City": {
@@ -519,9 +519,9 @@
       "tier": 4
     },
     "Brighton & Hove Albion": {
-      "skill": 1.9228038269155017,
-      "variance": 0.049994681279222256,
-      "date": "2026-11-08",
+      "skill": 1.8360218905474606,
+      "variance": 0.05087363756203292,
+      "date": "2026-11-22",
       "tier": 1
     },
     "Merthyr Town": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "51376405e71af842fd0de37c47f03e06c1c30db17ad17fe9904e206a9348da06",
+  "ranked_sha256": "f3b573e1096617b987d69ba3781491d211af3f1d71d8b54cf665e7cc08b22eff",
   "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }
