@@ -70,7 +70,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1888-11-24,1888/1889,Everton,Burnley,3-2,3,2,Football League First Division,1,H
 1888-11-24,1888/1889,Notts County,Stoke City,0-3,0,3,Football League First Division,1,A
 1888-12-01,1888/1889,Accrington F.C.,Burnley,5-1,5,1,Football League First Division,1,H
-1888-12-01,1888/1889,Everton,West Bromwich Albion,1-4,1,4,Football League First Division,1,A
+1888-12-01,1888/1889,West Bromwich Albion,Everton,4-1,4,1,Football League First Division,1,H
 1888-12-01,1888/1889,Stoke City,Blackburn Rovers,2-1,2,1,Football League First Division,1,H
 1888-12-08,1888/1889,Wolverhampton Wanderers,Accrington F.C.,4-0,4,0,Football League First Division,1,H
 1888-12-08,1888/1889,Preston North End,Derby County,5-0,5,0,Football League First Division,1,H
@@ -119,7 +119,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1889-02-04,1888/1889,Blackburn Rovers,Burnley,4-2,4,2,Football League First Division,1,H
 1889-02-09,1888/1889,Aston Villa,Preston North End,0-2,0,2,Football League First Division,1,A
 1889-02-09,1888/1889,Everton,Wolverhampton Wanderers,1-2,1,2,Football League First Division,1,A
-1889-02-23,1888/1889,West Bromwich Albion,Everton,1-0,1,0,Football League First Division,1,H
+1889-02-23,1888/1889,Everton,West Bromwich Albion,0-1,0,1,Football League First Division,1,A
 1889-02-23,1888/1889,Wolverhampton Wanderers,Notts County,2-1,2,1,Football League First Division,1,H
 1889-03-02,1888/1889,Derby County,Burnley,1-0,1,0,Football League First Division,1,H
 1889-03-05,1888/1889,Notts County,Bolton Wanderers,0-4,0,4,Football League First Division,1,A
@@ -935,7 +935,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1893-04-08,1892/1893,Manchester United,Accrington F.C.,3-3,3,3,Football League First Division,1,D
 1893-04-08,1892/1893,Burnley,Everton,3-0,3,0,Football League First Division,1,H
 1893-04-08,1892/1893,Notts County,Wolverhampton Wanderers,3-0,3,0,Football League First Division,1,H
-1893-04-08,1892/1893,Manchester City,Lincoln City,3-1,3,1,Football League Second Division,2,H
+1893-04-17,1892/1893,Manchester City,Lincoln City,3-1,3,1,Football League Second Division,2,H
 1893-04-08,1892/1893,Northwich Victoria,Port Vale,2-4,2,4,Football League Second Division,2,A
 1893-04-08,1892/1893,Burton Swifts,Grimsby Town,5-1,5,1,Football League Second Division,2,H
 1893-04-10,1892/1893,Preston North End,Wolverhampton Wanderers,4-0,4,0,Football League First Division,1,H
@@ -1668,7 +1668,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1894-12-26,1894/1895,Grimsby Town,Arsenal,4-2,4,2,Football League Second Division,2,H
 1894-12-26,1894/1895,Walsall,Manchester United,1-2,1,2,Football League Second Division,2,A
 1894-12-27,1894/1895,Nottingham Forest,Sunderland,2-1,2,1,Football League First Division,1,H
-1894-12-27,1894/1895,Sheffield Wednesday,Derby County,1-1,1,1,Football League First Division,1,D
+1894-12-29,1894/1895,Sheffield Wednesday,Derby County,1-1,1,1,Football League First Division,1,D
 1894-12-27,1894/1895,Wolverhampton Wanderers,West Bromwich Albion,3-1,3,1,Football League First Division,1,H
 1894-12-29,1894/1895,Nottingham Forest,Blackburn Rovers,2-3,2,3,Football League First Division,1,A
 1894-12-29,1894/1895,Preston North End,Sunderland,1-0,1,0,Football League First Division,1,H
@@ -2562,7 +2562,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1896-11-28,1896/1897,Birmingham City,Manchester United,1-0,1,0,Football League Second Division,2,H
 1896-11-28,1896/1897,Leicester City,Walsall,4-2,4,2,Football League Second Division,2,H
 1896-11-28,1896/1897,Blackpool,Notts County,3-2,3,2,Football League Second Division,2,H
-1896-12-03,1896/1897,Lincoln City,Arsenal,2-3,2,3,Football League Second Division,2,A
+1896-12-05,1896/1897,Lincoln City,Arsenal,2-3,2,3,Football League Second Division,2,A
 1896-12-05,1896/1897,Sunderland,Sheffield Wednesday,0-0,0,0,Football League First Division,1,D
 1896-12-05,1896/1897,Stoke City,Derby County,2-2,2,2,Football League First Division,1,D
 1896-12-05,1896/1897,Sheffield United,West Bromwich Albion,0-1,0,1,Football League First Division,1,A
@@ -2667,7 +2667,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1897-01-16,1896/1897,Lincoln City,Darwen,1-0,1,0,Football League Second Division,2,H
 1897-01-16,1896/1897,Leicester City,Burton Wanderers,2-1,2,1,Football League Second Division,2,H
 1897-01-16,1896/1897,Burton Swifts,Grimsby Town,0-0,0,0,Football League Second Division,2,D
-1897-01-19,1896/1897,Notts County,Manchester United,3-0,3,0,Football League Second Division,2,H
+1896-12-19,1896/1897,Notts County,Manchester United,3-0,3,0,Football League Second Division,2,H
 1897-01-23,1896/1897,Stoke City,Sheffield Wednesday,0-0,0,0,Football League First Division,1,D
 1897-01-23,1896/1897,West Bromwich Albion,Nottingham Forest,4-0,4,0,Football League First Division,1,H
 1897-01-23,1896/1897,Sheffield United,Wolverhampton Wanderers,1-3,1,3,Football League First Division,1,A
@@ -4170,7 +4170,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1899-12-09,1899/1900,Derby County,Blackburn Rovers,0-2,0,2,Football League First Division,1,A
 1899-12-09,1899/1900,Middlesbrough,Loughborough,3-0,3,0,Football League Second Division,2,H
 1899-12-09,1899/1900,Barnsley,New Brighton Tower,1-1,1,1,Football League Second Division,2,D
-1899-12-12,1899/1900,Chesterfield,Bolton Wanderers,3-3,3,3,Football League Second Division,2,D
+1899-12-06,1899/1900,Chesterfield,Bolton Wanderers,3-3,3,3,Football League Second Division,2,D
 1899-12-16,1899/1900,Derby County,Wolverhampton Wanderers,0-2,0,2,Football League First Division,1,A
 1899-12-16,1899/1900,Sunderland,Sheffield United,1-1,1,1,Football League First Division,1,D
 1899-12-16,1899/1900,Stoke City,Newcastle United,2-2,2,2,Football League First Division,1,D
@@ -4225,15 +4225,15 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1899-12-26,1899/1900,Gainsborough Trinity,Burton Swifts,4-1,4,1,Football League Second Division,2,H
 1899-12-27,1899/1900,Nottingham Forest,Manchester City,2-0,2,0,Football League First Division,1,H
 1899-12-27,1899/1900,Leicester City,Walsall,2-1,2,1,Football League Second Division,2,H
-1899-12-29,1899/1900,Wolverhampton Wanderers,Bury,1-0,1,0,Football League First Division,1,H
-1899-12-29,1899/1900,Sheffield United,Everton,5-0,5,0,Football League First Division,1,H
-1899-12-29,1899/1900,Preston North End,Nottingham Forest,3-0,3,0,Football League First Division,1,H
-1899-12-29,1899/1900,Notts County,Derby County,0-0,0,0,Football League First Division,1,D
-1899-12-29,1899/1900,Liverpool,Stoke City,0-0,0,0,Football League First Division,1,D
-1899-12-29,1899/1900,Manchester City,Blackburn Rovers,1-1,1,1,Football League First Division,1,D
-1899-12-29,1899/1900,Burnley,Glossop North End,3-1,3,1,Football League First Division,1,H
-1899-12-29,1899/1900,Aston Villa,Sunderland,4-2,4,2,Football League First Division,1,H
-1899-12-29,1899/1900,Newcastle United,West Bromwich Albion,4-2,4,2,Football League First Division,1,H
+1899-12-30,1899/1900,Wolverhampton Wanderers,Bury,1-0,1,0,Football League First Division,1,H
+1899-12-30,1899/1900,Sheffield United,Everton,5-0,5,0,Football League First Division,1,H
+1899-12-30,1899/1900,Preston North End,Nottingham Forest,3-0,3,0,Football League First Division,1,H
+1899-12-30,1899/1900,Notts County,Derby County,0-0,0,0,Football League First Division,1,D
+1899-12-30,1899/1900,Liverpool,Stoke City,0-0,0,0,Football League First Division,1,D
+1899-12-30,1899/1900,Manchester City,Blackburn Rovers,1-1,1,1,Football League First Division,1,D
+1899-12-30,1899/1900,Burnley,Glossop North End,3-1,3,1,Football League First Division,1,H
+1899-12-30,1899/1900,Aston Villa,Sunderland,4-2,4,2,Football League First Division,1,H
+1899-12-30,1899/1900,Newcastle United,West Bromwich Albion,4-2,4,2,Football League First Division,1,H
 1899-12-30,1899/1900,Bolton Wanderers,Loughborough,7-0,7,0,Football League Second Division,2,H
 1899-12-30,1899/1900,Burton Swifts,Barnsley,4-0,4,0,Football League Second Division,2,H
 1899-12-30,1899/1900,Chesterfield,Sheffield Wednesday,1-0,1,0,Football League Second Division,2,H
@@ -5649,7 +5649,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1902-03-22,1901/1902,Chesterfield,Gainsborough Trinity,2-0,2,0,Football League Second Division,2,H
 1902-03-22,1901/1902,Burnley,Bristol City,0-1,0,1,Football League Second Division,2,A
 1902-03-22,1901/1902,Arsenal,Glossop North End,4-0,4,0,Football League Second Division,2,H
-1902-03-24,1901/1902,Stockport County,Leicester City,2-0,2,0,Football League Second Division,2,H
+1902-03-22,1901/1902,Stockport County,Leicester City,2-0,2,0,Football League Second Division,2,H
 1902-03-28,1901/1902,Notts County,Wolverhampton Wanderers,5-3,5,3,Football League First Division,1,H
 1902-03-28,1901/1902,Manchester City,Sheffield Wednesday,0-3,0,3,Football League First Division,1,A
 1902-03-28,1901/1902,Grimsby Town,Newcastle United,3-0,3,0,Football League First Division,1,H
@@ -7524,7 +7524,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1905-04-03,1904/1905,Port Vale,Leicester City,1-3,1,3,Football League Second Division,2,A
 1905-04-05,1904/1905,Newcastle United,Aston Villa,2-0,2,0,Football League First Division,1,H
 1905-04-05,1904/1905,Everton,Arsenal,1-0,1,0,Football League First Division,1,H
-1905-04-05,1904/1905,Leicester City,Burnley,2-2,2,2,Football League Second Division,2,D
+1905-04-15,1904/1905,Leicester City,Burnley,2-2,2,2,Football League Second Division,2,D
 1905-04-08,1904/1905,Wolverhampton Wanderers,Bury,2-0,2,0,Football League First Division,1,H
 1905-04-08,1904/1905,Sheffield United,Sheffield Wednesday,4-2,4,2,Football League First Division,1,H
 1905-04-08,1904/1905,Preston North End,Blackburn Rovers,0-0,0,0,Football League First Division,1,D
@@ -30436,13 +30436,13 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1928-09-05,1928/1929,Swindon Town,Plymouth Argyle,0-0,0,0,Football League Third Division South,3,D
 1928-09-05,1928/1929,Torquay United,Gillingham,2-1,2,1,Football League Third Division South,3,H
 1928-09-05,1928/1929,Watford,Coventry City,4-2,4,2,Football League Third Division South,3,H
-1928-09-06,1928/1929,Reading,Southampton,0-1,0,1,Football League Second Division,2,A
-1928-09-06,1928/1929,Preston North End,Oldham Athletic,3-2,3,2,Football League Second Division,2,H
-1928-09-06,1928/1929,Port Vale,Millwall,5-2,5,2,Football League Second Division,2,H
-1928-09-06,1928/1929,Hull City,Notts County,1-1,1,1,Football League Second Division,2,D
-1928-09-06,1928/1929,Chelsea,Middlesbrough,2-0,2,0,Football League Second Division,2,H
-1928-09-06,1928/1929,Bristol City,Swansea City,2-1,2,1,Football League Second Division,2,H
-1928-09-06,1928/1929,Leyton Orient,Stoke City,1-0,1,0,Football League Second Division,2,H
+1928-09-08,1928/1929,Reading,Southampton,0-1,0,1,Football League Second Division,2,A
+1928-09-08,1928/1929,Preston North End,Oldham Athletic,3-2,3,2,Football League Second Division,2,H
+1928-09-08,1928/1929,Port Vale,Millwall,5-2,5,2,Football League Second Division,2,H
+1928-09-08,1928/1929,Hull City,Notts County,1-1,1,1,Football League Second Division,2,D
+1928-09-08,1928/1929,Chelsea,Middlesbrough,2-0,2,0,Football League Second Division,2,H
+1928-09-08,1928/1929,Bristol City,Swansea City,2-1,2,1,Football League Second Division,2,H
+1928-09-08,1928/1929,Leyton Orient,Stoke City,1-0,1,0,Football League Second Division,2,H
 1928-09-06,1928/1929,Newport County,Queens Park Rangers,0-0,0,0,Football League Third Division South,3,D
 1928-09-08,1928/1929,Birmingham City,Everton,1-3,1,3,Football League First Division,1,A
 1928-09-08,1928/1929,Bolton Wanderers,Blackburn Rovers,0-3,0,3,Football League First Division,1,A
@@ -33506,7 +33506,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1930-03-08,1929/1930,Torquay United,AFC Bournemouth,7-0,7,0,Football League Third Division South,3,H
 1930-03-08,1929/1930,Watford,Queens Park Rangers,1-1,1,1,Football League Third Division South,3,D
 1930-03-10,1929/1930,Charlton Athletic,Nottingham Forest,5-0,5,0,Football League Second Division,2,H
-1930-03-10,1929/1930,Wrexham,Darlington,2-2,2,2,Football League Third Division North,3,D
+1930-03-08,1929/1930,Wrexham,Darlington,2-2,2,2,Football League Third Division North,3,D
 1930-03-10,1929/1930,Luton Town,Leyton Orient,1-2,1,2,Football League Third Division South,3,A
 1930-03-11,1929/1930,Burnley,Newcastle United,0-3,0,3,Football League First Division,1,A
 1930-03-12,1929/1930,Arsenal,Manchester United,4-2,4,2,Football League First Division,1,H
@@ -34555,7 +34555,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1930-11-01,1930/1931,Northampton Town,Norwich City,3-1,3,1,Football League Third Division South,3,H
 1930-11-01,1930/1931,Southend United,Coventry City,2-0,2,0,Football League Third Division South,3,H
 1930-11-01,1930/1931,Torquay United,Thames,5-1,5,1,Football League Third Division South,3,H
-1930-11-04,1930/1931,Bristol Rovers,Swindon Town,4-1,4,1,Football League Third Division South,3,H
+1930-11-01,1930/1931,Bristol Rovers,Swindon Town,4-1,4,1,Football League Third Division South,3,H
 1930-11-08,1930/1931,Birmingham City,West Ham United,0-2,0,2,Football League First Division,1,A
 1930-11-08,1930/1931,Blackburn Rovers,Chelsea,2-0,2,0,Football League First Division,1,H
 1930-11-08,1930/1931,Blackpool,Newcastle United,0-0,0,0,Football League First Division,1,D
@@ -36625,7 +36625,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1931-12-12,1931/1932,Reading,Torquay United,4-1,4,1,Football League Third Division South,3,H
 1931-12-16,1931/1932,Gateshead,Rotherham United,4-1,4,1,Football League Third Division North,3,H
 1931-12-16,1931/1932,Exeter City,Watford,2-0,2,0,Football League Third Division South,3,H
-1931-12-16,1931/1932,Thames,AFC Bournemouth,4-2,4,2,Football League Third Division South,3,H
+1931-12-14,1931/1932,Thames,AFC Bournemouth,4-2,4,2,Football League Third Division South,3,H
 1931-12-19,1931/1932,Huddersfield Town,Blackpool,5-0,5,0,Football League First Division,1,H
 1931-12-19,1931/1932,Bolton Wanderers,Everton,2-1,2,1,Football League First Division,1,H
 1931-12-19,1931/1932,Chelsea,Birmingham City,2-1,2,1,Football League First Division,1,H
@@ -39172,7 +39172,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1933-04-05,1932/1933,Bradford Park Avenue,Manchester United,1-1,1,1,Football League Second Division,2,D
 1933-04-05,1932/1933,Lincoln City,Fulham,3-0,3,0,Football League Second Division,2,H
 1933-04-05,1932/1933,York City,Barrow,3-1,3,1,Football League Third Division North,3,H
-1933-04-05,1932/1933,Newport County,Luton Town,3-2,3,2,Football League Third Division South,3,H
+1933-04-06,1932/1933,Newport County,Luton Town,3-2,3,2,Football League Third Division South,3,H
 1933-04-08,1932/1933,Aston Villa,Manchester City,1-1,1,1,Football League First Division,1,D
 1933-04-08,1932/1933,Chelsea,Leeds United,6-0,6,0,Football League First Division,1,H
 1933-04-08,1932/1933,Huddersfield Town,Sheffield Wednesday,4-0,4,0,Football League First Division,1,H
@@ -41962,7 +41962,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1934-11-10,1934/1935,Southend United,Newport County,0-1,0,1,Football League Third Division South,3,A
 1934-11-10,1934/1935,Swindon Town,Gillingham,3-0,3,0,Football League Third Division South,3,H
 1934-11-10,1934/1935,Torquay United,Leyton Orient,4-2,4,2,Football League Third Division South,3,H
-1934-11-12,1934/1935,Blackburn Rovers,Chelsea,1-2,1,2,Football League First Division,1,A
+1934-11-17,1934/1935,Blackburn Rovers,Chelsea,1-2,1,2,Football League First Division,1,A
 1934-11-17,1934/1935,Arsenal,Aston Villa,1-2,1,2,Football League First Division,1,A
 1934-11-17,1934/1935,Birmingham City,Grimsby Town,3-2,3,2,Football League First Division,1,H
 1934-11-17,1934/1935,Leeds United,Sunderland,2-4,2,4,Football League First Division,1,A
@@ -42433,7 +42433,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1935-01-19,1934/1935,Reading,Swindon Town,2-1,2,1,Football League Third Division South,3,H
 1935-01-19,1934/1935,Torquay United,Aldershot,2-1,2,1,Football League Third Division South,3,H
 1935-01-19,1934/1935,Watford,Coventry City,2-0,2,0,Football League Third Division South,3,H
-1935-01-23,1934/1935,Rotherham United,Wrexham,2-0,2,0,Football League Third Division North,3,H
+1935-02-23,1934/1935,Rotherham United,Wrexham,2-0,2,0,Football League Third Division North,3,H
 1935-01-26,1934/1935,Stoke City,Manchester City,2-0,2,0,Football League First Division,1,H
 1935-01-26,1934/1935,Fulham,West Ham United,3-0,3,0,Football League Second Division,2,H
 1935-01-26,1934/1935,Brentford,Blackpool,2-1,2,1,Football League Second Division,2,H
@@ -42779,7 +42779,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1935-03-16,1934/1935,Torquay United,Coventry City,1-0,1,0,Football League Third Division South,3,H
 1935-03-20,1934/1935,Derby County,Sheffield Wednesday,4-0,4,0,Football League First Division,1,H
 1935-03-20,1934/1935,Liverpool,Everton,2-1,2,1,Football League First Division,1,H
-1935-03-20,1934/1935,Burnley,Hull City,1-3,1,3,Football League Second Division,2,A
+1935-03-19,1934/1935,Burnley,Hull City,1-3,1,3,Football League Second Division,2,A
 1935-03-20,1934/1935,Brighton & Hove Albion,Reading,1-0,1,0,Football League Third Division South,3,H
 1935-03-23,1934/1935,Arsenal,Grimsby Town,1-1,1,1,Football League First Division,1,D
 1935-03-23,1934/1935,Birmingham City,Derby County,3-2,3,2,Football League First Division,1,H
@@ -43428,7 +43428,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1935-09-16,1935/1936,Luton Town,Queens Park Rangers,2-0,2,0,Football League Third Division South,3,H
 1935-09-16,1935/1936,Millwall,Newport County,2-2,2,2,Football League Third Division South,3,D
 1935-09-16,1935/1936,Northampton Town,Crystal Palace,3-1,3,1,Football League Third Division South,3,H
-1935-09-17,1935/1936,Manchester United,Bradford City,3-1,3,1,Football League Second Division,2,H
+1935-09-07,1935/1936,Manchester United,Bradford City,3-1,3,1,Football League Second Division,2,H
 1935-09-18,1935/1936,Derby County,Brentford,2-1,2,1,Football League First Division,1,H
 1935-09-18,1935/1936,West Bromwich Albion,Birmingham City,0-0,0,0,Football League First Division,1,D
 1935-09-18,1935/1936,Preston North End,Everton,2-2,2,2,Football League First Division,1,D
@@ -46462,7 +46462,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1937-03-13,1936/1937,Reading,Southend United,2-3,2,3,Football League Third Division South,3,A
 1937-03-13,1936/1937,Torquay United,Aldershot,5-1,5,1,Football League Third Division South,3,H
 1937-03-13,1936/1937,Walsall,Bristol Rovers,5-2,5,2,Football League Third Division South,3,H
-1937-03-16,1936/1937,Gateshead,Wrexham,0-0,0,0,Football League Third Division North,3,D
+1937-03-26,1936/1937,Gateshead,Wrexham,0-0,0,0,Football League Third Division North,3,D
 1937-03-16,1936/1937,Southport,Barrow,3-3,3,3,Football League Third Division North,3,D
 1937-03-17,1936/1937,Wolverhampton Wanderers,Portsmouth,1-1,1,1,Football League First Division,1,D
 1937-03-17,1936/1937,Newcastle United,Nottingham Forest,3-2,3,2,Football League Second Division,2,H
@@ -49410,7 +49410,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1938-11-19,1938/1939,Swindon Town,Bristol Rovers,2-1,2,1,Football League Third Division South,3,H
 1938-11-19,1938/1939,Torquay United,Brighton & Hove Albion,0-2,0,2,Football League Third Division South,3,A
 1938-11-19,1938/1939,Watford,Ipswich Town,0-0,0,0,Football League Third Division South,3,D
-1938-11-21,1938/1939,Leicester City,Portsmouth,5-0,5,0,Football League First Division,1,H
+1938-11-12,1938/1939,Leicester City,Portsmouth,5-0,5,0,Football League First Division,1,H
 1938-11-26,1938/1939,Stoke City,Everton,0-0,0,0,Football League First Division,1,D
 1938-11-26,1938/1939,Bolton Wanderers,Grimsby Town,1-1,1,1,Football League First Division,1,D
 1938-11-26,1938/1939,Charlton Athletic,Sunderland,3-0,3,0,Football League First Division,1,H
@@ -49597,7 +49597,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1938-12-26,1938/1939,Everton,Derby County,2-2,2,2,Football League First Division,1,D
 1938-12-26,1938/1939,Birmingham City,Middlesbrough,2-1,2,1,Football League First Division,1,H
 1938-12-26,1938/1939,Blackpool,Huddersfield Town,1-1,1,1,Football League First Division,1,D
-1938-12-26,1938/1939,Charlton Athletic,Arsenal,1-0,1,0,Football League First Division,1,H
+1938-12-27,1938/1939,Charlton Athletic,Arsenal,1-0,1,0,Football League First Division,1,H
 1938-12-26,1938/1939,Grimsby Town,Wolverhampton Wanderers,2-4,2,4,Football League First Division,1,A
 1938-12-26,1938/1939,Leeds United,Chelsea,1-1,1,1,Football League First Division,1,D
 1938-12-26,1938/1939,Stoke City,Liverpool,3-1,3,1,Football League First Division,1,H
@@ -64455,7 +64455,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1953-09-05,1953/1954,Swindon Town,Queens Park Rangers,0-1,0,1,Football League Third Division South,3,A
 1953-09-05,1953/1954,Torquay United,Exeter City,3-2,3,2,Football League Third Division South,3,H
 1953-09-05,1953/1954,Walsall,Norwich City,1-4,1,4,Football League Third Division South,3,A
-1953-09-07,1953/1954,Sheffield Wednesday,Aston Villa,3-1,3,1,Football League First Division,1,H
+1953-11-07,1953/1954,Sheffield Wednesday,Aston Villa,3-1,3,1,Football League First Division,1,H
 1953-09-07,1953/1954,Wolverhampton Wanderers,Liverpool,2-1,2,1,Football League First Division,1,H
 1953-09-07,1953/1954,Sheffield United,Cardiff City,0-1,0,1,Football League First Division,1,A
 1953-09-07,1953/1954,Burnley,Tottenham Hotspur,4-2,4,2,Football League First Division,1,H
@@ -97134,7 +97134,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1969-10-01,1969/1970,Exeter City,Swansea City,6-0,6,0,Football League Fourth Division,4,H
 1969-10-01,1969/1970,Chester,Bradford Park Avenue,1-0,1,0,Football League Fourth Division,4,H
 1969-10-01,1969/1970,Aldershot,Hartlepool United,4-1,4,1,Football League Fourth Division,4,H
-1969-10-01,1969/1970,Oldham Athletic,Wrexham,2-3,2,3,Football League Fourth Division,4,A
+1969-09-30,1969/1970,Oldham Athletic,Wrexham,2-3,2,3,Football League Fourth Division,4,A
 1969-10-01,1969/1970,Gillingham,Southport,2-4,2,4,Football League Third Division,3,A
 1969-10-01,1969/1970,Bradford City,Reading,4-0,4,0,Football League Third Division,3,H
 1969-10-01,1969/1970,Shrewsbury Town,Torquay United,1-0,1,0,Football League Third Division,3,H
@@ -100190,7 +100190,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1971-03-17,1970/1971,Fulham,Wrexham,1-0,1,0,Football League Third Division,3,H
 1971-03-17,1970/1971,Bradford City,Gillingham,0-1,0,1,Football League Third Division,3,A
 1971-03-17,1970/1971,Aston Villa,Walsall,0-0,0,0,Football League Third Division,3,D
-1971-03-18,1970/1971,Newcastle United,Everton,2-1,2,1,Football League First Division,1,H
+1971-03-17,1970/1971,Newcastle United,Everton,2-1,2,1,Football League First Division,1,H
 1971-03-19,1970/1971,Southport,Crewe Alexandra,1-0,1,0,Football League Fourth Division,4,H
 1971-03-19,1970/1971,York City,Stockport County,2-1,2,1,Football League Fourth Division,4,H
 1971-03-19,1970/1971,Walsall,Swansea City,0-1,0,1,Football League Third Division,3,A
@@ -102870,7 +102870,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1972-08-28,1972/1973,Exeter City,Hartlepool United,1-1,1,1,Football League Fourth Division,4,D
 1972-08-28,1972/1973,Darlington,Aldershot,1-4,1,4,Football League Fourth Division,4,A
 1972-08-28,1972/1973,Leyton Orient,Middlesbrough,2-0,2,0,Football League Second Division,2,H
-1972-08-28,1972/1973,Huddersfield Town,Carlisle United,1-1,1,1,Football League Second Division,2,D
+1972-08-26,1972/1973,Huddersfield Town,Carlisle United,1-1,1,1,Football League Second Division,2,D
 1972-08-28,1972/1973,Blackpool,Sunderland,0-0,0,0,Football League Second Division,2,D
 1972-08-28,1972/1973,York City,Rotherham United,0-1,0,1,Football League Third Division,3,A
 1972-08-28,1972/1973,Tranmere Rovers,Notts County,0-2,0,2,Football League Third Division,3,A
@@ -113346,7 +113346,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1977-10-11,1977/1978,Rotherham United,Plymouth Argyle,1-2,1,2,Football League Third Division,3,A
 1977-10-12,1977/1978,Torquay United,Southport,2-2,2,2,Football League Fourth Division,4,D
 1977-10-12,1977/1978,Exeter City,Sheffield Wednesday,2-1,2,1,Football League Third Division,3,H
-1977-10-13,1977/1978,Plymouth Argyle,Walsall,3-3,3,3,Football League Third Division,3,D
+1977-09-13,1977/1978,Plymouth Argyle,Walsall,3-3,3,3,Football League Third Division,3,D
 1977-10-14,1977/1978,Barnsley,Grimsby Town,1-2,1,2,Football League Fourth Division,4,A
 1977-10-14,1977/1978,Crewe Alexandra,Northampton Town,3-2,3,2,Football League Fourth Division,4,H
 1977-10-14,1977/1978,Southend United,Hartlepool United,1-1,1,1,Football League Fourth Division,4,D
@@ -114047,7 +114047,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1978-01-21,1977/1978,Shrewsbury Town,Lincoln City,0-1,0,1,Football League Third Division,3,A
 1978-01-21,1977/1978,Plymouth Argyle,Carlisle United,0-1,0,1,Football League Third Division,3,A
 1978-01-24,1977/1978,Darlington,Rochdale,1-0,1,0,Football League Fourth Division,4,H
-1978-01-25,1977/1978,Shrewsbury Town,Swindon Town,2-3,2,3,Football League Third Division,3,A
+1978-02-25,1977/1978,Shrewsbury Town,Swindon Town,2-3,2,3,Football League Third Division,3,A
 1978-01-27,1977/1978,Southend United,AFC Bournemouth,5-1,5,1,Football League Fourth Division,4,H
 1978-01-27,1977/1978,Stockport County,York City,2-0,2,0,Football League Fourth Division,4,H
 1978-01-27,1977/1978,Colchester United,Tranmere Rovers,0-0,0,0,Football League Third Division,3,D
@@ -116241,7 +116241,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1979-03-17,1978/1979,Grimsby Town,Aldershot,0-0,0,0,Football League Fourth Division,4,D
 1979-03-17,1978/1979,Preston North End,West Ham United,0-0,0,0,Football League Second Division,2,D
 1979-03-17,1978/1979,Leyton Orient,Cambridge United,3-0,3,0,Football League Second Division,2,H
-1979-03-17,1978/1979,Leicester City,Newcastle United,2-1,2,1,Football League Second Division,2,H
+1979-02-17,1978/1979,Leicester City,Newcastle United,2-1,2,1,Football League Second Division,2,H
 1979-03-17,1978/1979,Charlton Athletic,Cardiff City,1-1,1,1,Football League Second Division,2,D
 1979-03-17,1978/1979,Brighton & Hove Albion,Sheffield United,2-0,2,0,Football League Second Division,2,H
 1979-03-17,1978/1979,Plymouth Argyle,Colchester United,1-1,1,1,Football League Third Division,3,D
@@ -121161,7 +121161,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1981-09-19,1981/1982,Southend United,Portsmouth,2-0,2,0,Football League Third Division,3,H
 1981-09-21,1981/1982,Mansfield Town,Northampton Town,4-1,4,1,Football League Fourth Division,4,H
 1981-09-21,1981/1982,Stockport County,Sheffield United,1-0,1,0,Football League Fourth Division,4,H
-1981-09-21,1981/1982,Cambridge United,Sheffield Wednesday,1-2,1,2,Football League Second Division,2,A
+1981-11-21,1981/1982,Cambridge United,Sheffield Wednesday,1-2,1,2,Football League Second Division,2,A
 1981-09-21,1981/1982,Southend United,Swindon Town,0-0,0,0,Football League Third Division,3,D
 1981-09-21,1981/1982,Brentford,Gillingham,0-1,0,1,Football League Third Division,3,A
 1981-09-22,1981/1982,Arsenal,Birmingham City,1-0,1,0,Football League First Division,1,H
@@ -121641,7 +121641,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1981-11-14,1981/1982,Bristol City,Southend United,0-2,0,2,Football League Third Division,3,A
 1981-11-14,1981/1982,Chester,Exeter City,0-2,0,2,Football League Third Division,3,A
 1981-11-14,1981/1982,Fulham,Walsall,1-1,1,1,Football League Third Division,3,D
-1981-11-16,1981/1982,Oldham Athletic,Chelsea,1-0,1,0,Football League Second Division,2,H
+1981-11-14,1981/1982,Oldham Athletic,Chelsea,1-0,1,0,Football League Second Division,2,H
 1981-11-21,1981/1982,Tottenham Hotspur,Manchester United,3-1,3,1,Football League First Division,1,H
 1981-11-21,1981/1982,West Bromwich Albion,Liverpool,1-1,1,1,Football League First Division,1,D
 1981-11-21,1981/1982,Stoke City,Ipswich Town,2-0,2,0,Football League First Division,1,H
@@ -122634,7 +122634,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1982-04-13,1981/1982,Walsall,Preston North End,0-3,0,3,Football League Third Division,3,A
 1982-04-13,1981/1982,Fulham,Swindon Town,2-0,2,0,Football League Third Division,3,H
 1982-04-14,1981/1982,Tottenham Hotspur,Sunderland,2-2,2,2,Football League First Division,1,D
-1982-04-14,1981/1982,Halifax Town,Hull City,2-2,2,2,Football League Fourth Division,4,D
+1982-05-14,1981/1982,Halifax Town,Hull City,2-2,2,2,Football League Fourth Division,4,D
 1982-04-14,1981/1982,Plymouth Argyle,Wimbledon,2-0,2,0,Football League Third Division,3,H
 1982-04-16,1981/1982,Stockport County,York City,4-1,4,1,Football League Fourth Division,4,H
 1982-04-17,1981/1982,Arsenal,Nottingham Forest,2-0,2,0,Football League First Division,1,H
@@ -126474,7 +126474,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1984-03-13,1983/1984,Norwich City,Notts County,0-1,0,1,Football League First Division,1,A
 1984-03-13,1983/1984,Luton Town,Ipswich Town,2-1,2,1,Football League First Division,1,H
 1984-03-13,1983/1984,Coventry City,Aston Villa,3-3,3,3,Football League First Division,1,D
-1984-03-13,1983/1984,Nottingham Forest,Everton,1-0,1,0,Football League First Division,1,H
+1984-03-14,1983/1984,Nottingham Forest,Everton,1-0,1,0,Football League First Division,1,H
 1984-03-13,1983/1984,Bristol City,Rochdale,1-1,1,1,Football League Fourth Division,4,D
 1984-03-13,1983/1984,Barnsley,Shrewsbury Town,3-0,3,0,Football League Second Division,2,H
 1984-03-13,1983/1984,Oxford United,Gillingham,0-1,0,1,Football League Third Division,3,A
@@ -146692,7 +146692,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1994-02-26,1993/1994,Walsall,Northampton Town,1-3,1,3,Football League Third Division,4,A
 1994-02-26,1993/1994,Chester,Rochdale,3-1,3,1,Football League Third Division,4,H
 1994-02-26,1993/1994,Arsenal,Blackburn Rovers,1-0,1,0,Premier League,1,H
-1994-02-26,1993/1994,Ipswich Town,Sheffield United,3-2,3,2,Premier League,1,H
+1994-02-22,1993/1994,Ipswich Town,Sheffield United,3-2,3,2,Premier League,1,H
 1994-02-26,1993/1994,Manchester City,Swindon Town,2-1,2,1,Premier League,1,H
 1994-02-26,1993/1994,Norwich City,Sheffield Wednesday,1-1,1,1,Premier League,1,D
 1994-02-26,1993/1994,Southampton,Wimbledon,1-0,1,0,Premier League,1,H
@@ -146888,7 +146888,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1994-03-22,1993/1994,Wrexham,Bristol Rovers,3-2,3,2,Football League Second Division,3,H
 1994-03-22,1993/1994,Wigan Athletic,Doncaster Rovers,0-0,0,0,Football League Third Division,4,D
 1994-03-22,1993/1994,Arsenal,Manchester United,2-2,2,2,Premier League,1,D
-1994-03-22,1993/1994,Newcastle United,Ipswich Town,2-0,2,0,Premier League,1,H
+1994-03-23,1993/1994,Newcastle United,Ipswich Town,2-0,2,0,Premier League,1,H
 1994-03-23,1993/1994,Crystal Palace,Middlesbrough,0-1,0,1,Football League First Division,2,A
 1994-03-25,1993/1994,Tranmere Rovers,Southend United,1-1,1,1,Football League First Division,2,D
 1994-03-26,1993/1994,Barnsley,Luton Town,1-0,1,0,Football League First Division,2,H
@@ -146933,7 +146933,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1994-03-26,1993/1994,Oldham Athletic,Manchester City,0-0,0,0,Premier League,1,D
 1994-03-26,1993/1994,Sheffield United,Southampton,0-0,0,0,Premier League,1,D
 1994-03-26,1993/1994,Coventry City,Norwich City,2-1,2,1,Premier League,1,H
-1994-03-27,1993/1994,Wimbledon,Leeds United,1-0,1,0,Premier League,1,H
+1994-03-26,1993/1994,Wimbledon,Leeds United,1-0,1,0,Premier League,1,H
 1994-03-28,1993/1994,Sheffield United,West Ham United,3-2,3,2,Premier League,1,H
 1994-03-29,1993/1994,Oxford United,Birmingham City,2-0,2,0,Football League First Division,2,H
 1994-03-29,1993/1994,Tranmere Rovers,Derby County,4-0,4,0,Football League First Division,2,H
@@ -147170,9 +147170,9 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1994-04-19,1993/1994,Crewe Alexandra,Wigan Athletic,4-1,4,1,Football League Third Division,4,H
 1994-04-19,1993/1994,Bury,Gillingham,0-0,0,0,Football League Third Division,4,D
 1994-04-19,1993/1994,Arsenal,Wimbledon,1-1,1,1,Premier League,1,D
-1994-04-20,1993/1994,Derby County,Charlton Athletic,2-0,2,0,Football League First Division,2,H
-1994-04-21,1993/1994,Derby County,Notts County,1-1,1,1,Football League First Division,2,D
-1994-04-21,1993/1994,Millwall,Wolverhampton Wanderers,1-0,1,0,Football League First Division,2,H
+1994-04-16,1993/1994,Derby County,Charlton Athletic,2-0,2,0,Football League First Division,2,H
+1994-04-20,1993/1994,Derby County,Notts County,1-1,1,1,Football League First Division,2,D
+1994-04-20,1993/1994,Millwall,Wolverhampton Wanderers,1-0,1,0,Football League First Division,2,H
 1994-04-21,1993/1994,Port Vale,York City,2-1,2,1,Football League Second Division,3,H
 1994-04-21,1993/1994,Cardiff City,AFC Bournemouth,2-1,2,1,Football League Second Division,3,H
 1994-04-23,1993/1994,Wolverhampton Wanderers,Luton Town,1-0,1,0,Football League First Division,2,H
@@ -147828,7 +147828,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1994-10-09,1994/1995,Stoke City,Luton Town,1-2,1,2,Football League First Division,2,A
 1994-10-09,1994/1995,Newcastle United,Blackburn Rovers,1-1,1,1,Premier League,1,D
 1994-10-10,1994/1995,Coventry City,Ipswich Town,2-0,2,0,Premier League,1,H
-1994-10-13,1994/1995,Northampton Town,Mansfield Town,0-1,0,1,Football League Third Division,4,A
+1994-10-11,1994/1995,Northampton Town,Mansfield Town,0-1,0,1,Football League Third Division,4,A
 1994-10-15,1994/1995,Luton Town,Middlesbrough,5-1,5,1,Football League First Division,2,H
 1994-10-15,1994/1995,Port Vale,Charlton Athletic,0-2,0,2,Football League First Division,2,A
 1994-10-15,1994/1995,Portsmouth,Swindon Town,4-3,4,3,Football League First Division,2,H
@@ -148166,16 +148166,16 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1994-12-03,1994/1995,Leicester City,Aston Villa,1-1,1,1,Premier League,1,D
 1994-12-03,1994/1995,Ipswich Town,Manchester City,1-2,1,2,Premier League,1,A
 1994-12-03,1994/1995,Wimbledon,Blackburn Rovers,0-3,0,3,Premier League,1,A
-1994-12-04,1994/1995,Bolton Wanderers,Port Vale,1-0,1,0,Football League First Division,2,H
+1994-12-06,1994/1995,Bolton Wanderers,Port Vale,1-0,1,0,Football League First Division,2,H
 1994-12-04,1994/1995,Millwall,Wolverhampton Wanderers,1-0,1,0,Football League First Division,2,H
 1994-12-04,1994/1995,Stoke City,Oldham Athletic,0-1,0,1,Football League First Division,2,A
-1994-12-04,1994/1995,Everton,Leeds United,3-0,3,0,Premier League,1,H
+1994-12-05,1994/1995,Everton,Leeds United,3-0,3,0,Premier League,1,H
 1994-12-04,1994/1995,Queens Park Rangers,West Ham United,2-1,2,1,Premier League,1,H
 1994-12-07,1994/1995,Portsmouth,Stoke City,0-1,0,1,Football League First Division,2,A
 1994-12-07,1994/1995,Port Vale,Sunderland,0-0,0,0,Football League First Division,2,D
-1994-12-07,1994/1995,Reading,Middlesbrough,1-1,1,1,Football League First Division,2,D
+1994-12-06,1994/1995,Reading,Middlesbrough,1-1,1,1,Football League First Division,2,D
 1994-12-07,1994/1995,Barnsley,Bristol City,2-1,2,1,Football League First Division,2,H
-1994-12-07,1994/1995,Notts County,Tranmere Rovers,1-0,1,0,Football League First Division,2,H
+1994-12-06,1994/1995,Notts County,Tranmere Rovers,1-0,1,0,Football League First Division,2,H
 1994-12-10,1994/1995,Wolverhampton Wanderers,Notts County,1-0,1,0,Football League First Division,2,H
 1994-12-10,1994/1995,Bristol City,Bolton Wanderers,0-1,0,1,Football League First Division,2,A
 1994-12-10,1994/1995,Grimsby Town,Watford,0-0,0,0,Football League First Division,2,D
@@ -148533,12 +148533,12 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1995-01-28,1994/1995,Torquay United,Doncaster Rovers,0-1,0,1,Football League Third Division,4,A
 1995-01-28,1994/1995,Blackburn Rovers,Ipswich Town,4-1,4,1,Premier League,1,H
 1995-02-01,1994/1995,West Bromwich Albion,Watford,0-1,0,1,Football League First Division,2,A
-1995-02-01,1994/1995,York City,Wrexham,0-1,0,1,Football League Second Division,3,A
-1995-02-01,1994/1995,Shrewsbury Town,Plymouth Argyle,3-2,3,2,Football League Second Division,3,H
-1995-02-01,1994/1995,Leyton Orient,Blackpool,0-1,0,1,Football League Second Division,3,A
-1995-02-01,1994/1995,Bradford City,Bristol Rovers,2-1,2,1,Football League Second Division,3,H
-1995-02-01,1994/1995,Chester,Wycombe Wanderers,0-2,0,2,Football League Second Division,3,A
-1995-02-01,1994/1995,Doncaster Rovers,Gillingham,1-2,1,2,Football League Third Division,4,A
+1995-02-07,1994/1995,York City,Wrexham,0-1,0,1,Football League Second Division,3,A
+1995-02-07,1994/1995,Shrewsbury Town,Plymouth Argyle,3-2,3,2,Football League Second Division,3,H
+1995-02-07,1994/1995,Leyton Orient,Blackpool,0-1,0,1,Football League Second Division,3,A
+1995-02-07,1994/1995,Bradford City,Bristol Rovers,2-1,2,1,Football League Second Division,3,H
+1995-01-31,1994/1995,Chester,Wycombe Wanderers,0-2,0,2,Football League Second Division,3,A
+1995-02-07,1994/1995,Doncaster Rovers,Gillingham,1-2,1,2,Football League Third Division,4,A
 1995-02-01,1994/1995,Newcastle United,Everton,2-0,2,0,Premier League,1,H
 1995-02-01,1994/1995,Blackburn Rovers,Leeds United,1-1,1,1,Premier League,1,D
 1995-02-04,1994/1995,Sunderland,Port Vale,1-1,1,1,Football League First Division,2,D
@@ -148587,9 +148587,9 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1995-02-04,1994/1995,Wimbledon,Leeds United,0-0,0,0,Premier League,1,D
 1995-02-05,1994/1995,West Bromwich Albion,Charlton Athletic,0-1,0,1,Football League First Division,2,A
 1995-02-05,1994/1995,Tottenham Hotspur,Blackburn Rovers,3-1,3,1,Premier League,1,H
-1995-02-07,1994/1995,Doncaster Rovers,Exeter City,1-0,1,0,Football League Third Division,4,H
+1995-01-31,1994/1995,Doncaster Rovers,Exeter City,1-0,1,0,Football League Third Division,4,H
 1995-02-07,1994/1995,Scarborough,Lincoln City,1-1,1,1,Football League Third Division,4,D
-1995-02-08,1994/1995,Notts County,Bolton Wanderers,1-1,1,1,Football League First Division,2,D
+1995-02-07,1994/1995,Notts County,Bolton Wanderers,1-1,1,1,Football League First Division,2,D
 1995-02-11,1994/1995,Wolverhampton Wanderers,Bristol City,2-0,2,0,Football League First Division,2,H
 1995-02-11,1994/1995,Watford,Burnley,2-0,2,0,Football League First Division,2,H
 1995-02-11,1994/1995,Reading,Derby County,1-0,1,0,Football League First Division,2,H
@@ -148870,18 +148870,18 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1995-03-15,1994/1995,Derby County,Burnley,4-0,4,0,Football League First Division,2,H
 1995-03-15,1994/1995,Bristol Rovers,Cambridge United,2-1,2,1,Football League Second Division,3,H
 1995-03-15,1994/1995,Brighton & Hove Albion,Cardiff City,0-0,0,0,Football League Second Division,3,D
-1995-03-15,1994/1995,Walsall,Darlington,2-0,2,0,Football League Third Division,4,H
-1995-03-15,1994/1995,Bury,Barnet,3-0,3,0,Football League Third Division,4,H
+1995-03-14,1994/1995,Walsall,Darlington,2-0,2,0,Football League Third Division,4,H
+1995-03-14,1994/1995,Bury,Barnet,3-0,3,0,Football League Third Division,4,H
 1995-03-15,1994/1995,Southampton,West Ham United,1-1,1,1,Premier League,1,D
 1995-03-15,1994/1995,Queens Park Rangers,Norwich City,2-0,2,0,Premier League,1,H
 1995-03-15,1994/1995,Manchester United,Tottenham Hotspur,0-0,0,0,Premier League,1,D
 1995-03-15,1994/1995,Leicester City,Leeds United,1-3,1,3,Premier League,1,A
 1995-03-15,1994/1995,Everton,Manchester City,1-1,1,1,Premier League,1,D
-1995-03-16,1994/1995,Port Vale,Stoke City,1-1,1,1,Football League First Division,2,D
-1995-03-16,1994/1995,Middlesbrough,Barnsley,1-1,1,1,Football League First Division,2,D
-1995-03-16,1994/1995,Oldham Athletic,Notts County,1-1,1,1,Football League First Division,2,D
-1995-03-16,1994/1995,York City,Wycombe Wanderers,0-0,0,0,Football League Second Division,3,D
-1995-03-16,1994/1995,Wrexham,Rotherham United,3-1,3,1,Football League Second Division,3,H
+1995-03-14,1994/1995,Port Vale,Stoke City,1-1,1,1,Football League First Division,2,D
+1995-03-14,1994/1995,Middlesbrough,Barnsley,1-1,1,1,Football League First Division,2,D
+1995-03-14,1994/1995,Oldham Athletic,Notts County,1-1,1,1,Football League First Division,2,D
+1995-03-14,1994/1995,York City,Wycombe Wanderers,0-0,0,0,Football League Second Division,3,D
+1995-03-14,1994/1995,Wrexham,Rotherham United,3-1,3,1,Football League Second Division,3,H
 1995-03-17,1994/1995,Swansea City,Shrewsbury Town,0-0,0,0,Football League Second Division,3,D
 1995-03-18,1994/1995,Barnsley,Port Vale,3-1,3,1,Football League First Division,2,H
 1995-03-18,1994/1995,Luton Town,Tranmere Rovers,2-0,2,0,Football League First Division,2,H
@@ -148935,7 +148935,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1995-03-21,1994/1995,Notts County,Bristol City,1-1,1,1,Football League First Division,2,D
 1995-03-21,1994/1995,Charlton Athletic,Grimsby Town,2-1,2,1,Football League First Division,2,H
 1995-03-21,1994/1995,Burnley,Luton Town,2-1,2,1,Football League First Division,2,H
-1995-03-21,1994/1995,Bolton Wanderers,Sheffield United,1-1,1,1,Football League First Division,2,D
+1995-03-22,1994/1995,Bolton Wanderers,Sheffield United,1-1,1,1,Football League First Division,2,D
 1995-03-21,1994/1995,Birmingham City,Oxford United,3-0,3,0,Football League Second Division,3,H
 1995-03-21,1994/1995,Shrewsbury Town,York City,1-0,1,0,Football League Second Division,3,H
 1995-03-21,1994/1995,Hull City,Peterborough United,1-1,1,1,Football League Second Division,3,D
@@ -149215,7 +149215,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1995-04-19,1994/1995,Millwall,Notts County,0-0,0,0,Football League First Division,2,D
 1995-04-19,1994/1995,Brighton & Hove Albion,Wycombe Wanderers,1-1,1,1,Football League Second Division,3,D
 1995-04-19,1994/1995,Plymouth Argyle,Birmingham City,1-3,1,3,Football League Second Division,3,A
-1995-04-19,1994/1995,Blackburn Rovers,Crystal Palace,2-1,2,1,Premier League,1,H
+1995-04-20,1994/1995,Blackburn Rovers,Crystal Palace,2-1,2,1,Premier League,1,H
 1995-04-21,1994/1995,Reading,Bolton Wanderers,2-1,2,1,Football League First Division,2,H
 1995-04-21,1994/1995,Tranmere Rovers,Southend United,0-2,0,2,Football League First Division,2,A
 1995-04-22,1994/1995,Burnley,Portsmouth,1-2,1,2,Football League First Division,2,A
@@ -150297,7 +150297,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1995-12-16,1995/1996,Wimbledon,Tottenham Hotspur,0-1,0,1,Premier League,1,A
 1995-12-16,1995/1996,Arsenal,Chelsea,1-1,1,1,Premier League,1,D
 1995-12-17,1995/1996,Leicester City,Norwich City,3-2,3,2,Football League First Division,2,H
-1995-12-17,1995/1996,Peterborough United,Stockport County,0-1,0,1,Football League Second Division,3,A
+1995-12-19,1995/1996,Peterborough United,Stockport County,0-1,0,1,Football League Second Division,3,A
 1995-12-17,1995/1996,Liverpool,Manchester United,2-0,2,0,Premier League,1,H
 1995-12-18,1995/1996,Manchester City,Nottingham Forest,1-1,1,1,Premier League,1,D
 1995-12-19,1995/1996,Fulham,Cardiff City,4-2,4,2,Football League Third Division,4,H
@@ -150526,7 +150526,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1996-01-23,1995/1996,Scarborough,Rochdale,1-1,1,1,Football League Third Division,4,D
 1996-01-23,1995/1996,Plymouth Argyle,Scunthorpe United,1-3,1,3,Football League Third Division,4,A
 1996-01-23,1995/1996,Mansfield Town,Cambridge United,2-1,2,1,Football League Third Division,4,H
-1996-01-23,1995/1996,West Ham United,Manchester United,0-1,0,1,Premier League,1,A
+1996-01-22,1995/1996,West Ham United,Manchester United,0-1,0,1,Premier League,1,A
 1996-01-24,1995/1996,Sunderland,Grimsby Town,1-0,1,0,Football League First Division,2,H
 1996-01-27,1995/1996,Millwall,Portsmouth,1-1,1,1,Football League First Division,2,D
 1996-01-30,1995/1996,Sunderland,Tranmere Rovers,0-0,0,0,Football League First Division,2,D
@@ -151390,16 +151390,16 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1996-05-04,1995/1996,Scunthorpe United,Darlington,3-3,3,3,Football League Third Division,4,D
 1996-05-04,1995/1996,Wigan Athletic,Northampton Town,1-2,1,2,Football League Third Division,4,A
 1996-05-04,1995/1996,Colchester United,Doncaster Rovers,1-0,1,0,Football League Third Division,4,H
-1996-05-04,1995/1996,Arsenal,Bolton Wanderers,2-1,2,1,Premier League,1,H
-1996-05-04,1995/1996,Chelsea,Blackburn Rovers,2-3,2,3,Premier League,1,A
-1996-05-04,1995/1996,Coventry City,Leeds United,0-0,0,0,Premier League,1,D
-1996-05-04,1995/1996,Everton,Aston Villa,1-0,1,0,Premier League,1,H
-1996-05-04,1995/1996,Manchester City,Liverpool,2-2,2,2,Premier League,1,D
-1996-05-04,1995/1996,Middlesbrough,Manchester United,0-3,0,3,Premier League,1,A
-1996-05-04,1995/1996,Nottingham Forest,Queens Park Rangers,3-0,3,0,Premier League,1,H
-1996-05-04,1995/1996,Newcastle United,Tottenham Hotspur,1-1,1,1,Premier League,1,D
-1996-05-04,1995/1996,West Ham United,Sheffield Wednesday,1-1,1,1,Premier League,1,D
-1996-05-04,1995/1996,Southampton,Wimbledon,0-0,0,0,Premier League,1,D
+1996-05-05,1995/1996,Arsenal,Bolton Wanderers,2-1,2,1,Premier League,1,H
+1996-05-05,1995/1996,Chelsea,Blackburn Rovers,2-3,2,3,Premier League,1,A
+1996-05-05,1995/1996,Coventry City,Leeds United,0-0,0,0,Premier League,1,D
+1996-05-05,1995/1996,Everton,Aston Villa,1-0,1,0,Premier League,1,H
+1996-05-05,1995/1996,Manchester City,Liverpool,2-2,2,2,Premier League,1,D
+1996-05-05,1995/1996,Middlesbrough,Manchester United,0-3,0,3,Premier League,1,A
+1996-05-05,1995/1996,Nottingham Forest,Queens Park Rangers,3-0,3,0,Premier League,1,H
+1996-05-05,1995/1996,Newcastle United,Tottenham Hotspur,1-1,1,1,Premier League,1,D
+1996-05-05,1995/1996,West Ham United,Sheffield Wednesday,1-1,1,1,Premier League,1,D
+1996-05-05,1995/1996,Southampton,Wimbledon,0-0,0,0,Premier League,1,D
 1996-05-05,1995/1996,Stoke City,Southend United,1-0,1,0,Football League First Division,2,H
 1996-05-05,1995/1996,West Bromwich Albion,Derby County,3-2,3,2,Football League First Division,2,H
 1996-05-05,1995/1996,Watford,Leicester City,0-1,0,1,Football League First Division,2,A
@@ -153707,7 +153707,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1997-09-13,1997/1998,Stoke City,Stockport County,2-1,2,1,Football League First Division,2,H
 1997-09-13,1997/1998,Swindon Town,Tranmere Rovers,2-1,2,1,Football League First Division,2,H
 1997-09-13,1997/1998,Wolverhampton Wanderers,Charlton Athletic,3-1,3,1,Football League First Division,2,H
-1997-09-13,1997/1998,Bury,Manchester City,1-1,1,1,Football League First Division,2,D
+1997-09-12,1997/1998,Bury,Manchester City,1-1,1,1,Football League First Division,2,D
 1997-09-13,1997/1998,Oldham Athletic,Northampton Town,2-2,2,2,Football League Second Division,3,D
 1997-09-13,1997/1998,Plymouth Argyle,Brentford,0-0,0,0,Football League Second Division,3,D
 1997-09-13,1997/1998,Preston North End,Walsall,0-0,0,0,Football League Second Division,3,D
@@ -155160,18 +155160,18 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1998-03-28,1997/1998,Southampton,Newcastle United,2-1,2,1,Premier League,1,H
 1998-03-28,1997/1998,Manchester United,Wimbledon,2-0,2,0,Premier League,1,H
 1998-03-29,1997/1998,Wolverhampton Wanderers,Portsmouth,2-0,2,0,Football League First Division,2,H
-1998-03-29,1997/1998,Rochdale,Doncaster Rovers,4-1,4,1,Football League Third Division,4,H
-1998-03-29,1997/1998,Swansea City,Chester,2-0,2,0,Football League Third Division,4,H
-1998-03-29,1997/1998,Shrewsbury Town,Exeter City,1-1,1,1,Football League Third Division,4,D
-1998-03-29,1997/1998,Scunthorpe United,Torquay United,2-0,2,0,Football League Third Division,4,H
-1998-03-29,1997/1998,Rotherham United,Scarborough,0-0,0,0,Football League Third Division,4,D
-1998-03-29,1997/1998,Notts County,Leyton Orient,1-0,1,0,Football League Third Division,4,H
-1998-03-29,1997/1998,Barnet,Hartlepool United,1-1,1,1,Football League Third Division,4,D
-1998-03-29,1997/1998,Lincoln City,Colchester United,0-1,0,1,Football League Third Division,4,A
-1998-03-29,1997/1998,Hull City,Macclesfield Town,0-0,0,0,Football League Third Division,4,D
-1998-03-29,1997/1998,Cardiff City,Brighton & Hove Albion,0-0,0,0,Football League Third Division,4,D
-1998-03-29,1997/1998,Cambridge United,Darlington,1-0,1,0,Football League Third Division,4,H
-1998-03-29,1997/1998,Mansfield Town,Peterborough United,2-0,2,0,Football League Third Division,4,H
+1998-03-28,1997/1998,Rochdale,Doncaster Rovers,4-1,4,1,Football League Third Division,4,H
+1998-03-28,1997/1998,Swansea City,Chester,2-0,2,0,Football League Third Division,4,H
+1998-03-28,1997/1998,Shrewsbury Town,Exeter City,1-1,1,1,Football League Third Division,4,D
+1998-03-28,1997/1998,Scunthorpe United,Torquay United,2-0,2,0,Football League Third Division,4,H
+1998-03-28,1997/1998,Rotherham United,Scarborough,0-0,0,0,Football League Third Division,4,D
+1998-03-28,1997/1998,Notts County,Leyton Orient,1-0,1,0,Football League Third Division,4,H
+1998-03-28,1997/1998,Barnet,Hartlepool United,1-1,1,1,Football League Third Division,4,D
+1998-03-28,1997/1998,Lincoln City,Colchester United,0-1,0,1,Football League Third Division,4,A
+1998-03-28,1997/1998,Hull City,Macclesfield Town,0-0,0,0,Football League Third Division,4,D
+1998-03-28,1997/1998,Cardiff City,Brighton & Hove Albion,0-0,0,0,Football League Third Division,4,D
+1998-03-28,1997/1998,Cambridge United,Darlington,1-0,1,0,Football League Third Division,4,H
+1998-03-28,1997/1998,Mansfield Town,Peterborough United,2-0,2,0,Football League Third Division,4,H
 1998-03-30,1997/1998,West Ham United,Leeds United,3-0,3,0,Premier League,1,H
 1998-03-31,1997/1998,Wrexham,Grimsby Town,0-0,0,0,Football League Second Division,3,D
 1998-03-31,1997/1998,Walsall,Gillingham,1-0,1,0,Football League Second Division,3,H
@@ -155873,30 +155873,30 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1998-09-26,1998/1999,Chelsea,Middlesbrough,2-0,2,0,Premier League,1,H
 1998-09-26,1998/1999,Aston Villa,Derby County,1-0,1,0,Premier League,1,H
 1998-09-27,1998/1999,Crystal Palace,Sheffield United,1-0,1,0,Football League First Division,2,H
-1998-09-27,1998/1999,York City,Bristol Rovers,1-0,1,0,Football League Second Division,3,H
-1998-09-27,1998/1999,Macclesfield Town,Reading,2-1,2,1,Football League Second Division,3,H
-1998-09-27,1998/1999,Preston North End,Gillingham,1-1,1,1,Football League Second Division,3,D
-1998-09-27,1998/1999,Stoke City,Blackpool,1-3,1,3,Football League Second Division,3,A
-1998-09-27,1998/1999,Burnley,Wigan Athletic,1-1,1,1,Football League Second Division,3,D
-1998-09-27,1998/1999,Chesterfield,Wrexham,2-1,2,1,Football League Second Division,3,H
-1998-09-27,1998/1999,AFC Bournemouth,Oldham Athletic,2-0,2,0,Football League Second Division,3,H
-1998-09-27,1998/1999,Lincoln City,Fulham,1-2,1,2,Football League Second Division,3,A
-1998-09-27,1998/1999,Luton Town,Walsall,0-1,0,1,Football League Second Division,3,A
-1998-09-27,1998/1999,Northampton Town,Manchester City,2-2,2,2,Football League Second Division,3,D
-1998-09-27,1998/1999,Notts County,Millwall,3-1,3,1,Football League Second Division,3,H
-1998-09-27,1998/1999,Colchester United,Wycombe Wanderers,2-1,2,1,Football League Second Division,3,H
-1998-09-27,1998/1999,Brentford,Darlington,3-0,3,0,Football League Third Division,4,H
-1998-09-27,1998/1999,Brighton & Hove Albion,Scunthorpe United,1-3,1,3,Football League Third Division,4,A
-1998-09-27,1998/1999,Swansea City,Southend United,3-1,3,1,Football League Third Division,4,H
-1998-09-27,1998/1999,Cambridge United,Exeter City,1-1,1,1,Football League Third Division,4,D
-1998-09-27,1998/1999,Chester,Cardiff City,2-2,2,2,Football League Third Division,4,D
-1998-09-27,1998/1999,Plymouth Argyle,Scarborough,0-0,0,0,Football League Third Division,4,D
-1998-09-27,1998/1999,Hartlepool United,Peterborough United,1-2,1,2,Football League Third Division,4,A
-1998-09-27,1998/1999,Mansfield Town,Hull City,2-0,2,0,Football League Third Division,4,H
-1998-09-27,1998/1999,Rochdale,Leyton Orient,2-1,2,1,Football League Third Division,4,H
-1998-09-27,1998/1999,Shrewsbury Town,Carlisle United,1-1,1,1,Football League Third Division,4,D
-1998-09-27,1998/1999,Barnet,Rotherham United,4-2,4,2,Football League Third Division,4,H
-1998-09-27,1998/1999,Halifax Town,Torquay United,1-1,1,1,Football League Third Division,4,D
+1998-09-26,1998/1999,York City,Bristol Rovers,1-0,1,0,Football League Second Division,3,H
+1998-09-26,1998/1999,Macclesfield Town,Reading,2-1,2,1,Football League Second Division,3,H
+1998-09-26,1998/1999,Preston North End,Gillingham,1-1,1,1,Football League Second Division,3,D
+1998-09-26,1998/1999,Stoke City,Blackpool,1-3,1,3,Football League Second Division,3,A
+1998-09-26,1998/1999,Burnley,Wigan Athletic,1-1,1,1,Football League Second Division,3,D
+1998-09-26,1998/1999,Chesterfield,Wrexham,2-1,2,1,Football League Second Division,3,H
+1998-09-26,1998/1999,AFC Bournemouth,Oldham Athletic,2-0,2,0,Football League Second Division,3,H
+1998-09-26,1998/1999,Lincoln City,Fulham,1-2,1,2,Football League Second Division,3,A
+1998-09-26,1998/1999,Luton Town,Walsall,0-1,0,1,Football League Second Division,3,A
+1998-09-26,1998/1999,Northampton Town,Manchester City,2-2,2,2,Football League Second Division,3,D
+1998-09-26,1998/1999,Notts County,Millwall,3-1,3,1,Football League Second Division,3,H
+1998-09-26,1998/1999,Colchester United,Wycombe Wanderers,2-1,2,1,Football League Second Division,3,H
+1998-09-26,1998/1999,Brentford,Darlington,3-0,3,0,Football League Third Division,4,H
+1998-09-26,1998/1999,Brighton & Hove Albion,Scunthorpe United,1-3,1,3,Football League Third Division,4,A
+1998-09-26,1998/1999,Swansea City,Southend United,3-1,3,1,Football League Third Division,4,H
+1998-09-26,1998/1999,Cambridge United,Exeter City,1-1,1,1,Football League Third Division,4,D
+1998-09-26,1998/1999,Chester,Cardiff City,2-2,2,2,Football League Third Division,4,D
+1998-09-26,1998/1999,Plymouth Argyle,Scarborough,0-0,0,0,Football League Third Division,4,D
+1998-09-26,1998/1999,Hartlepool United,Peterborough United,1-2,1,2,Football League Third Division,4,A
+1998-09-26,1998/1999,Mansfield Town,Hull City,2-0,2,0,Football League Third Division,4,H
+1998-09-26,1998/1999,Rochdale,Leyton Orient,2-1,2,1,Football League Third Division,4,H
+1998-09-26,1998/1999,Shrewsbury Town,Carlisle United,1-1,1,1,Football League Third Division,4,D
+1998-09-26,1998/1999,Barnet,Rotherham United,4-2,4,2,Football League Third Division,4,H
+1998-09-26,1998/1999,Halifax Town,Torquay United,1-1,1,1,Football League Third Division,4,D
 1998-09-27,1998/1999,Leicester City,Wimbledon,1-1,1,1,Premier League,1,D
 1998-09-28,1998/1999,West Ham United,Southampton,1-0,1,0,Premier League,1,H
 1998-09-29,1998/1999,Portsmouth,Birmingham City,0-1,0,1,Football League First Division,2,A
@@ -155958,7 +155958,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1998-10-04,1998/1999,Arsenal,Newcastle United,3-0,3,0,Premier League,1,H
 1998-10-04,1998/1999,Liverpool,Chelsea,1-1,1,1,Premier League,1,D
 1998-10-05,1998/1999,Fulham,Wycombe Wanderers,2-0,2,0,Football League Second Division,3,H
-1998-10-05,1998/1999,Millwall,Manchester City,1-1,1,1,Football League Second Division,3,D
+1998-09-29,1998/1999,Millwall,Manchester City,1-1,1,1,Football League Second Division,3,D
 1998-10-05,1998/1999,Walsall,Reading,0-2,0,2,Football League Second Division,3,A
 1998-10-09,1998/1999,Bradford City,Bury,3-0,3,0,Football League First Division,2,H
 1998-10-09,1998/1999,Swindon Town,Huddersfield Town,3-0,3,0,Football League First Division,2,H
@@ -156724,7 +156724,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1999-01-31,1998/1999,Arsenal,Chelsea,1-0,1,0,Premier League,1,H
 1999-01-31,1998/1999,Charlton Athletic,Manchester United,0-1,0,1,Premier League,1,A
 1999-02-02,1998/1999,Brentford,Carlisle United,1-1,1,1,Football League Third Division,4,D
-1999-02-02,1998/1999,Manchester United,Derby County,1-0,1,0,Premier League,1,H
+1999-02-03,1998/1999,Manchester United,Derby County,1-0,1,0,Premier League,1,H
 1999-02-05,1998/1999,Bristol City,Queens Park Rangers,0-0,0,0,Football League First Division,2,D
 1999-02-05,1998/1999,Colchester United,York City,2-1,2,1,Football League Second Division,3,H
 1999-02-05,1998/1999,Swansea City,Brighton & Hove Albion,2-2,2,2,Football League Third Division,4,D
@@ -157661,7 +157661,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 1999-08-21,1999/2000,Watford,Bradford City,1-0,1,0,Premier League,1,H
 1999-08-21,1999/2000,West Ham United,Leicester City,2-1,2,1,Premier League,1,H
 1999-08-21,1999/2000,Newcastle United,Wimbledon,3-3,3,3,Premier League,1,D
-1999-08-22,1999/2000,Cardiff City,Wrexham,1-1,1,1,Football League Second Division,3,D
+1999-08-20,1999/2000,Cardiff City,Wrexham,1-1,1,1,Football League Second Division,3,D
 1999-08-22,1999/2000,Stoke City,Millwall,3-1,3,1,Football League Second Division,3,H
 1999-08-22,1999/2000,Arsenal,Manchester United,1-2,1,2,Premier League,1,A
 1999-08-23,1999/2000,Leeds United,Liverpool,1-2,1,2,Premier League,1,A
@@ -159931,7 +159931,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 2000-09-23,2000/2001,Bradford City,Southampton,0-1,0,1,Premier League,1,A
 2000-09-24,2000/2001,Wolverhampton Wanderers,Norwich City,4-0,4,0,Football League First Division,2,H
 2000-09-24,2000/2001,Leicester City,Everton,1-1,1,1,Premier League,1,D
-2000-09-27,2000/2001,AFC Bournemouth,Wrexham,1-2,1,2,Football League Second Division,3,A
+2000-09-26,2000/2001,AFC Bournemouth,Wrexham,1-2,1,2,Football League Second Division,3,A
 2000-09-29,2000/2001,Kidderminster Harriers,Blackpool,1-4,1,4,Football League Third Division,4,A
 2000-09-30,2000/2001,Nottingham Forest,Wolverhampton Wanderers,0-0,0,0,Football League First Division,2,D
 2000-09-30,2000/2001,Barnsley,Grimsby Town,2-0,2,0,Football League First Division,2,H
@@ -162515,8 +162515,8 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 2001-12-08,2001/2002,Charlton Athletic,Tottenham Hotspur,3-1,3,1,Premier League,1,H
 2001-12-09,2001/2002,Preston North End,Burnley,2-3,2,3,Football League First Division,2,A
 2001-12-09,2001/2002,Coventry City,Watford,0-2,0,2,Football League First Division,2,A
-2001-12-09,2001/2002,Wrexham,Bristol City,0-2,0,2,Football League Second Division,3,A
-2001-12-09,2001/2002,Hartlepool United,Luton Town,1-2,1,2,Football League Third Division,4,A
+2001-12-08,2001/2002,Wrexham,Bristol City,0-2,0,2,Football League Second Division,3,A
+2001-12-08,2001/2002,Hartlepool United,Luton Town,1-2,1,2,Football League Third Division,4,A
 2001-12-09,2001/2002,Ipswich Town,Newcastle United,0-1,0,1,Premier League,1,A
 2001-12-09,2001/2002,Blackburn Rovers,Leeds United,1-2,1,2,Premier League,1,A
 2001-12-09,2001/2002,Arsenal,Aston Villa,3-2,3,2,Premier League,1,H
@@ -163148,7 +163148,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 2002-03-02,2001/2002,Bristol City,Brentford,0-2,0,2,Football League Second Division,3,A
 2002-03-02,2001/2002,Cheltenham Town,Rushden & Diamonds,1-1,1,1,Football League Third Division,4,D
 2002-03-02,2001/2002,Exeter City,Darlington,4-2,4,2,Football League Third Division,4,H
-2002-03-02,2001/2002,Swansea City,Hull City,1-0,1,0,Football League Third Division,4,H
+2002-03-01,2001/2002,Swansea City,Hull City,1-0,1,0,Football League Third Division,4,H
 2002-03-02,2001/2002,Leyton Orient,Halifax Town,3-1,3,1,Football League Third Division,4,H
 2002-03-02,2001/2002,Lincoln City,Carlisle United,3-1,3,1,Football League Third Division,4,H
 2002-03-02,2001/2002,Macclesfield Town,Plymouth Argyle,1-1,1,1,Football League Third Division,4,D
@@ -192130,7 +192130,7 @@ Date,Season,HomeTeam,AwayTeam,Score,hGoal,aGoal,Division,Tier,Result
 2016-05-15,2015/2016,Chelsea,Leicester City,1-1,1,1,Premier League,1,D
 2016-05-15,2015/2016,Arsenal,Aston Villa,4-0,4,0,Premier League,1,H
 2016-05-15,2015/2016,Newcastle United,Tottenham Hotspur,5-1,5,1,Premier League,1,H
-2016-05-16,2015/2016,Manchester United,AFC Bournemouth,3-1,3,1,Premier League,1,H
+2016-05-17,2015/2016,Manchester United,AFC Bournemouth,3-1,3,1,Premier League,1,H
 2016-08-05,2016/2017,Fulham,Newcastle United,1-0,1,0,EFL Championship,2,H
 2016-08-06,2016/2017,Birmingham City,Cardiff City,0-0,0,0,EFL Championship,2,D
 2016-08-06,2016/2017,Blackburn Rovers,Norwich City,1-4,1,4,EFL Championship,2,A
