@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-24",
-  "matches": 212905,
+  "as_of": "2026-11-25",
+  "matches": 212909,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -22,9 +22,9 @@
       "log_excess_margin": -0.4126456695954761
     },
     "2": {
-      "home_advantage": 0.19854703502077153,
-      "log_draw": -0.23764566650507432,
-      "log_excess_margin": -0.505954611944385
+      "home_advantage": 0.1963287286800503,
+      "log_draw": -0.23876344112484324,
+      "log_excess_margin": -0.5063673163537556
     },
     "3": {
       "home_advantage": 0.17643171696898408,
@@ -39,9 +39,9 @@
   },
   "teams": {
     "Bolton Wanderers": {
-      "skill": 0.030740078752039723,
-      "variance": 0.05287810142882069,
-      "date": "2026-11-21",
+      "skill": -0.009467591305319337,
+      "variance": 0.05148026132816827,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Derby County": {
@@ -69,21 +69,21 @@
       "tier": 2
     },
     "Burnley": {
-      "skill": 0.4177447301417003,
-      "variance": 0.054583518139643745,
-      "date": "2026-11-22",
+      "skill": 0.36338258034605686,
+      "variance": 0.052850517488805454,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Stoke City": {
-      "skill": 0.4202622058150576,
-      "variance": 0.04715875318349799,
-      "date": "2026-11-21",
+      "skill": 0.44125632210571597,
+      "variance": 0.04640928692886064,
+      "date": "2026-11-25",
       "tier": 2
     },
     "West Bromwich Albion": {
-      "skill": 0.557047131474655,
-      "variance": 0.04844117703335478,
-      "date": "2026-11-21",
+      "skill": 0.5939138532337107,
+      "variance": 0.047395588563537164,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Wolverhampton Wanderers": {
@@ -99,9 +99,9 @@
       "tier": 1
     },
     "Blackburn Rovers": {
-      "skill": 0.3022113532521256,
-      "variance": 0.04794890735190682,
-      "date": "2026-11-22",
+      "skill": 0.32865563319344243,
+      "variance": 0.0469592919201624,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Notts County": {
@@ -195,9 +195,9 @@
       "tier": 4
     },
     "Birmingham City": {
-      "skill": 0.6448083725024737,
-      "variance": 0.04701193303439299,
-      "date": "2026-11-21",
+      "skill": 0.6906981302803769,
+      "variance": 0.04604354180692009,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Port Vale": {
@@ -507,9 +507,9 @@
       "tier": 2
     },
     "Watford": {
-      "skill": -0.01310971084858445,
-      "variance": 0.046678226518715546,
-      "date": "2026-11-21",
+      "skill": -0.03806903989886494,
+      "variance": 0.04593768544009087,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Southend United": {
@@ -537,9 +537,9 @@
       "tier": 1
     },
     "Millwall": {
-      "skill": 0.3896049464828298,
-      "variance": 0.0458460641775284,
-      "date": "2026-11-21",
+      "skill": 0.36859244202713143,
+      "variance": 0.04518229284514924,
+      "date": "2026-11-25",
       "tier": 2
     },
     "Bristol Rovers": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "2885274d9687cf07ad7697532dcb5693eb64cedf72c65a03a520777ea57a174f",
+  "ranked_sha256": "2891cad1f5e454077b397b6b7fb42f76e8b4ebb84c45b6fe02f3cae8c8fc8173",
   "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }
