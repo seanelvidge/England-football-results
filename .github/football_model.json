@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-25",
-  "matches": 212909,
+  "as_of": "2026-11-26",
+  "matches": 212910,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -27,9 +27,9 @@
       "log_excess_margin": -0.5063673163537556
     },
     "3": {
-      "home_advantage": 0.17643171696898408,
-      "log_draw": -0.2865965719302569,
-      "log_excess_margin": -0.4577805036658185
+      "home_advantage": 0.17598469557980287,
+      "log_draw": -0.2868603130124742,
+      "log_excess_margin": -0.4582241553946186
     },
     "4": {
       "home_advantage": 0.17558279340310642,
@@ -315,9 +315,9 @@
       "tier": 3
     },
     "Doncaster Rovers": {
-      "skill": -0.45613530136931196,
-      "variance": 0.04875112624923977,
-      "date": "2026-11-21",
+      "skill": -0.4743032212751167,
+      "variance": 0.048072978770805325,
+      "date": "2026-11-26",
       "tier": 3
     },
     "Bristol City": {
@@ -387,9 +387,9 @@
       "tier": 1
     },
     "Huddersfield Town": {
-      "skill": 0.0846859802329541,
-      "variance": 0.048158634574048995,
-      "date": "2026-11-21",
+      "skill": 0.10181505703437714,
+      "variance": 0.04752116229836443,
+      "date": "2026-11-26",
       "tier": 3
     },
     "Rotherham County": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "2891cad1f5e454077b397b6b7fb42f76e8b4ebb84c45b6fe02f3cae8c8fc8173",
+  "ranked_sha256": "31c6cdc8fb7e7ff256c9609bd6deb1eb736bb15c0433eecd67213d437d94101b",
   "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }
