@@ -1,7 +1,7 @@
 {
   "model_version": "davidson-margin-v3",
-  "as_of": "2026-11-26",
-  "matches": 212910,
+  "as_of": "2026-11-27",
+  "matches": 212912,
   "beta": 0.9,
   "weekly_rho": 0.995,
   "weekly_process_variance": 0.0017,
@@ -17,14 +17,14 @@
   },
   "tiers": {
     "1": {
-      "home_advantage": 0.17901855014590776,
-      "log_draw": -0.2814855512660763,
-      "log_excess_margin": -0.4126456695954761
+      "home_advantage": 0.17962035473307847,
+      "log_draw": -0.28175818355896043,
+      "log_excess_margin": -0.4130649106329411
     },
     "2": {
-      "home_advantage": 0.1963287286800503,
-      "log_draw": -0.23876344112484324,
-      "log_excess_margin": -0.5063673163537556
+      "home_advantage": 0.19723289271100486,
+      "log_draw": -0.23903772687949504,
+      "log_excess_margin": -0.5062233591444114
     },
     "3": {
       "home_advantage": 0.17598469557980287,
@@ -129,9 +129,9 @@
       "tier": 3
     },
     "Nottingham Forest": {
-      "skill": 1.4108247047699602,
-      "variance": 0.053166834859091155,
-      "date": "2026-11-21",
+      "skill": 1.4385222522345935,
+      "variance": 0.05227302660794415,
+      "date": "2026-11-27",
       "tier": 1
     },
     "Manchester United": {
@@ -297,9 +297,9 @@
       "tier": 2
     },
     "Middlesbrough": {
-      "skill": 0.7629730976489684,
-      "variance": 0.04687489085890039,
-      "date": "2026-11-24",
+      "skill": 0.7260748278472633,
+      "variance": 0.045778820223261456,
+      "date": "2026-11-27",
       "tier": 2
     },
     "Chesterfield": {
@@ -357,9 +357,9 @@
       "tier": 2
     },
     "Chelsea": {
-      "skill": 1.4815100084126307,
-      "variance": 0.05154984176585398,
-      "date": "2026-11-21",
+      "skill": 1.4550824395744226,
+      "variance": 0.050780495500806266,
+      "date": "2026-11-27",
       "tier": 1
     },
     "Fulham": {
@@ -435,9 +435,9 @@
       "tier": 4
     },
     "Southampton": {
-      "skill": 0.8657007540088278,
-      "variance": 0.04776304432086259,
-      "date": "2026-11-24",
+      "skill": 0.9010613787780665,
+      "variance": 0.046601941951514396,
+      "date": "2026-11-27",
       "tier": 2
     },
     "Exeter City": {
@@ -921,6 +921,6 @@
       "tier": 3
     }
   },
-  "ranked_sha256": "31c6cdc8fb7e7ff256c9609bd6deb1eb736bb15c0433eecd67213d437d94101b",
+  "ranked_sha256": "12f72aa8d20fab1eb226e7d29e5ed34b12109eb7159ac1d18adb9d2a47c3d63e",
   "source_sha256": "2dcb383fc349e973606a7fd36c6ed8d6c21f705fc197c4a0cfffc9d25aa9f3ca"
 }
